@@ -1,0 +1,7 @@
+.containerAlignment {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:grey;
+    align-items: flex-start;
+}

@@ -1,47 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FlippingCard.css";
+import ReactCardFlip from "react-card-flip"
 
-const FlippingCard = () => {
-  return (
-    <div className="container containerAlignment">
-      <div className="row align-items-center">
-        <div className=" col cardAlignment">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">
-                <h1>Hello</h1>
-              </div>
+const FlippingCard = ({ front, back }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const handleClick = () => {
+      setIsFlipped(!isFlipped);
+  }
+    return (
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
 
-              <div className="flip-card-back">
-                <h1>Bye</h1>
-              </div>
+            {/* ReactCardFlip requires two children. This is the first child (card front) */}
+            <div className="flip-card">
+                <div className="flip-card-inner">
+                    <div className="flip-card-front" onClick={handleClick}>
+                        <h1>{front}</h1>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">
-                <h1>Hello</h1>
-              </div>
 
-              <div className="flip-card-back">
-                <h1>Bye</h1>
-              </div>
+            {/* ReactCardFlip requires two children. This is the second child (card back) */}
+            <div className="flip-card">
+                <div className="flip-card-inner">
+                <div className="flip-card-back" onClick={handleClick}>
+                    <h1>{back}</h1>
+                </div>
+                </div>
             </div>
-          </div>
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">
-                <h1>Hello</h1>
-              </div>
 
-              <div className="flip-card-back">
-                <h1>Bye</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </ReactCardFlip>
   );
 };
 
