@@ -24,7 +24,7 @@ export const funWords = [
         back: "Messele",
     }, 
     {
-        front: "EvolveU",
-        back: "InceptionU",
+        front: "Illyas",
+        back: "Jason",
     }
 ]

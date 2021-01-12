@@ -1,7 +1,17 @@
 .containerAlignment {
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     background-color:grey;
-    align-items: flex-start;
+
+    /* added */
+    width: 640px;
+    height: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    flex-direction: row;
+}
+
+.rowAlignment {
+    flex-direction: row;
 }
