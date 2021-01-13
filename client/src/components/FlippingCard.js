@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
+
 const FlippingCard = ({ front, back }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const handleClick = () => {

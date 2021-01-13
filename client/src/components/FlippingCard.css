@@ -35,3 +35,48 @@
 .flip-card-back {
   background-color: dodgerblue;
 }
+
+@media only screen and (max-width: 600px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 20px;
+  }
+}

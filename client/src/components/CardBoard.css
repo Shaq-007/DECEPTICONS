@@ -6,7 +6,7 @@
   width: auto;
   height: auto;
   /* margin: auto; */
-  /* display: flex; */
+  display: flex;
   perspective: 1000px;
 }
 
