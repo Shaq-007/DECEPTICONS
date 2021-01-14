@@ -3,7 +3,8 @@
   height: 160px;
   width: 180px;
   margin: 10px;
-  align-items: space-around;
+  /* align-items: space-around; */
+  display: inline-block;
 }
 
 /* This container is needed to position the front and back side */
@@ -13,24 +14,69 @@
   text-align: center;
 }
 
-/* Style the front side */
-.flip-card-front {
+/* Style the front and back side */
+.flip-card-front,
+.flip-card-back {
   height: 160px;
   width: 180px;
   background-color: rgb(59, 59, 214);
   color: white;
   border-radius: 5px;
-  position:absolute;
-
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Style the back side */
-.flip-card-back {
-  height: 160px;
-  width: 180px;
-  background-color: dodgerblue;
-  color: white;
-  border-radius: 5px;
-  position: absolute;
+.flip-card-front {
+  background-color: rgb(59, 59, 214);
+}
 
+.flip-card-back {
+  background-color: dodgerblue;
+}
+
+@media only screen and (max-width: 600px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
+    width:100px;
+    height: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 20px;
+  }
 }

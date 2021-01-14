@@ -7,15 +7,14 @@ const PlayPage = () => {
   return (
     <div>
       <div className="container containerAlignment">
-        <div className="row align-items-center rowAlignment">
-          <div className="col">
-            <CardBoard funWords={ funWords }/>
+        <div className="row rowAlignment">
+          <div className="card-columns">
+            <CardBoard funWords={funWords} />
           </div>
-       </div>
+        </div>
+      </div>
     </div>
-  </div>
   );
-}
-
+};
 
 export default PlayPage;
