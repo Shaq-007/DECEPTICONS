@@ -5,31 +5,11 @@ export const funWords = [
   },
   {
     front: "",
-    back: "Agata",
-  },
-  {
-    front: "",
-    back: "Liliana",
-  },
-  {
-    front: "",
-    back: "Margo",
-  },
-  {
-    front: "",
-    back: "Greg",
-  },
-  {
-    front: "",
-    back: "Messele",
-  },
-  {
-    front: "",
     back: "Tony",
   },
   {
     front: "",
-    back: "Agata",
+    back: "Liliana",
   },
   {
     front: "",
@@ -37,11 +17,31 @@ export const funWords = [
   },
   {
     front: "",
-    back: "Margo",
+    back: "Greg",
   },
   {
     front: "",
     back: "Greg",
+  },
+  {
+    front: "",
+    back: "Agata",
+  },
+  {
+    front: "",
+    back: "Agata",
+  },
+  {
+    front: "",
+    back: "Margo",
+  },
+  {
+    front: "",
+    back: "Margo",
+  },
+  {
+    front: "",
+    back: "Messele",
   },
   {
     front: "",

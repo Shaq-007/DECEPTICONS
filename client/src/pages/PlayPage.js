@@ -17,4 +17,7 @@ const PlayPage = () => {
   );
 };
 
+// this code randomly sorts the deck
+funWords.sort(() => Math.random() - 0.5)
+
 export default PlayPage;
