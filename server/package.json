@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Shaq-007/DECEPTICONS#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11",
+    "validator": "^13.5.2"
   }
 }
