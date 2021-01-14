@@ -1,50 +1,50 @@
 export const funWords = [
   {
-    front: "Al",
+    front: "",
     back: "Tony",
   },
   {
-    front: "Mona",
+    front: "",
     back: "Agata",
   },
   {
-    front: "Shakeel",
+    front: "",
     back: "Liliana",
   },
   {
-    front: "Jen",
+    front: "",
     back: "Margo",
   },
   {
-    front: "Chris",
+    front: "",
     back: "Greg",
   },
   {
-    front: "Danielle",
+    front: "",
     back: "Messele",
   },
   {
-    front: "Iliyas",
-    back: "Jason",
+    front: "",
+    back: "Tony",
   },
   {
-    front: "Amenze",
-    back: "Kurt",
+    front: "",
+    back: "Agata",
   },
   {
-    front: "Fernando",
-    back: "Jason",
+    front: "",
+    back: "Liliana",
   },
   {
-    front: "Sam",
-    back: "Jill",
+    front: "",
+    back: "Margo",
   },
   {
-    front: "Bret",
-    back: "Sid",
+    front: "",
+    back: "Greg",
   },
   {
-    front: "Henry",
-    back: "Jason",
+    front: "",
+    back: "Messele",
   },
 ];
