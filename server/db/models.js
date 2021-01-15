@@ -39,6 +39,16 @@ const userSchema = new mongoose.Schema (
 );
 const User = mongoose.model("User", userSchema);
 
+const imageSchema = new mongoose.Schema({
+    name: String,
+    categoryName: String,
+    img:{
+        data: Buffer,
+        contentType:String
+    }
+})
+
+const Image = mongoose.model("Image", imageSchema)
 
 // const ImageSchema = new mongoose.Schema({
 //     name: String,
@@ -55,4 +65,4 @@ const User = mongoose.model("User", userSchema);
 
 
 
-module.exports = { User, CategoryAnimal };
+module.exports = { User, Image };
