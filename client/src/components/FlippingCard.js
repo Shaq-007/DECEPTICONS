@@ -3,9 +3,19 @@ import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
 
-const FlippingCard = ({ front, back }) => {
+const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const handleClick = () => {
+  // const handleClick = () => {
+  //   setIsFlipped(!isFlipped);
+  // };
+  const clickOnBackOfCard = () => {
+    // console.log(cardsFlippedCount);
+    if (cardsFlippedCount < 2){
+      setCardsFlippedCount (cardsFlippedCount+1);
+      setIsFlipped(!isFlipped);
+    }
+  };
+  const clickOnFrontOfCard = () => {
     setIsFlipped(!isFlipped);
   };
   return (
@@ -13,7 +23,7 @@ const FlippingCard = ({ front, back }) => {
       {/* ReactCardFlip requires two children. This is the first child (card front) */}
       <div className="flip-card">
         <div className="flip-card-inner">
-          <div className="flip-card-front" onClick={handleClick}>
+          <div className="flip-card-front" onClick={clickOnBackOfCard}>
             <h1>{front}</h1>
           </div>
         </div>
@@ -22,7 +32,7 @@ const FlippingCard = ({ front, back }) => {
       {/* ReactCardFlip requires two children. This is the second child (card back) */}
       <div className="flip-card">
         <div className="flip-card-inner">
-          <div className="flip-card-back" onClick={handleClick}>
+          <div className="flip-card-back" onClick={clickOnFrontOfCard}>
             <h1>{back}</h1>
           </div>
         </div>
