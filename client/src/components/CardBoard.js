@@ -4,6 +4,7 @@ import FlippingCard from "../components/FlippingCard";
 const CardBoard = ({ funWords }) => {
     const [cardsFlippedCount, setCardsFlippedCount] = useState(0);
     const [matchLogic, setMatchLogic] = useState([]);
+    const [solved, setSolved] = useState([]);
     const [disabled, setDisabled] = useState(false);
     return (
         <div>
@@ -20,6 +21,8 @@ const CardBoard = ({ funWords }) => {
                             setMatchLogic={setMatchLogic}
                             disabled={disabled}
                             setDisabled={setDisabled}
+                            solved={solved}
+                            setSolved={setSolved}
                         />
                     );
                 })

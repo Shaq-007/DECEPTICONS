@@ -3,7 +3,7 @@ import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
 
-const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, matchLogic }) => {
+const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, matchLogic, solved }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   
   // const handleClick = () => {
@@ -11,8 +11,8 @@ const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, ma
   // };
   const clickOnBackOfCard = () => {
     matchLogic.push(back);
-    console.log(matchLogic);
-    console.log(cardsFlippedCount);
+    // console.log(matchLogic);
+    // console.log(cardsFlippedCount);
     if (cardsFlippedCount < 2){
       setCardsFlippedCount (cardsFlippedCount+1);
       setIsFlipped(!isFlipped);
@@ -21,7 +21,13 @@ const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, ma
   };
   const findingAMatch = () => {
   if (matchLogic[0] === matchLogic[1]) {
-    //keep these cards facing up 
+    for(let i = 0; i < matchLogic.length; i++) {
+      solved.push(matchLogic[i]);
+      matchLogic.splice(i, 1);
+      console.log(solved, "this is solved");
+      console.log(matchLogic, "this is matchlogic");
+      i--; //decrement i IF we remove an item
+    }
   }
 }
   // const clickOnFrontOfCard = () => {
