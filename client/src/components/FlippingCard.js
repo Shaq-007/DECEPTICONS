@@ -3,21 +3,30 @@ import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
 
-const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount }) => {
+const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, matchLogic }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  
   // const handleClick = () => {
   //   setIsFlipped(!isFlipped);
   // };
   const clickOnBackOfCard = () => {
-    // console.log(cardsFlippedCount);
+    matchLogic.push(back);
+    console.log(matchLogic);
+    console.log(cardsFlippedCount);
     if (cardsFlippedCount < 2){
       setCardsFlippedCount (cardsFlippedCount+1);
       setIsFlipped(!isFlipped);
+      findingAMatch();
     }
   };
-  const clickOnFrontOfCard = () => {
-    setIsFlipped(!isFlipped);
-  };
+  const findingAMatch = () => {
+  if (matchLogic[0] === matchLogic[1]) {
+    //keep these cards facing up 
+  }
+}
+  // const clickOnFrontOfCard = () => {
+  //   setIsFlipped(!isFlipped);
+  // };
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       {/* ReactCardFlip requires two children. This is the first child (card front) */}
@@ -32,7 +41,7 @@ const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount }) 
       {/* ReactCardFlip requires two children. This is the second child (card back) */}
       <div className="flip-card">
         <div className="flip-card-inner">
-          <div className="flip-card-back" onClick={clickOnFrontOfCard}>
+          <div className="flip-card-back">
             <h1>{back}</h1>
           </div>
         </div>
