@@ -12,38 +12,43 @@ const FlippingCard = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // const handleClick = () => {
-  //   setIsFlipped(!isFlipped);
-  // };
   const clickOnBackOfCard = () => {
     matchLogic.push(back);
-    // console.log(matchLogic);
-    // console.log(cardsFlippedCount);
     if (cardsFlippedCount < 2) {
       setCardsFlippedCount(cardsFlippedCount + 1);
       setIsFlipped(!isFlipped);
-      findingAMatch();
-    }
+      isAMatch();
+    } // else isNotAMatch();
   };
-  const findingAMatch = () => {
+  const isAMatch = () => {
     if (matchLogic[0] === matchLogic[1]) {
       for (let i = 0; i < matchLogic.length; i++) {
         solved.push(matchLogic[i]);
         matchLogic.splice(i, 1);
         i--;
         resetCards();
-        console.log(matchLogic, "this is matchlogic");
-        console.log(solved, "this is solved");
-      }
-    }
+      }}
   };
+
+  // const isNotAMatch = () => {
+  //     for (let i = 0; i < matchLogic.length; i++) {
+  //     if (matchLogic[0] !== matchLogic[1])
+  //     matchLogic.splice(i, 1);
+  //     i--;
+  //     resetCards();
+  //     }
+  // }
+
+  // const isNotAMatch = () => {
+  //   if (matchLogic[0] !== matchLogic[1]) {
+  //     matchLogic.splice(0, matchLogic.length)
+  //   }
+  // }
+
   const resetCards = () => {
     setCardsFlippedCount(0);
   };
 
-  // const clickOnFrontOfCard = () => {
-  //   setIsFlipped(!isFlipped);
-  // };
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       {/* ReactCardFlip requires two children. This is the first child (card front) */}
