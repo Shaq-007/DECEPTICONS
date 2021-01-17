@@ -24,9 +24,10 @@ const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, ma
     for(let i = 0; i < matchLogic.length; i++) {
       solved.push(matchLogic[i]);
       matchLogic.splice(i, 1);
-      console.log(solved, "this is solved");
+      i--;
+      resetCards();
       console.log(matchLogic, "this is matchlogic");
-      i--; //decrement i IF we remove an item
+      console.log(solved, "this is solved");
     }
   }
 }
