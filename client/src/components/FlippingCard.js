@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
-
-const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, matchLogic, solved }) => {
+const FlippingCard = ({
+  front,
+  back,
+  setCardsFlippedCount,
+  cardsFlippedCount,
+  matchLogic,
+  solved,
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  
+
   // const handleClick = () => {
   //   setIsFlipped(!isFlipped);
   // };
@@ -13,24 +19,28 @@ const FlippingCard = ({ front, back, setCardsFlippedCount, cardsFlippedCount, ma
     matchLogic.push(back);
     // console.log(matchLogic);
     // console.log(cardsFlippedCount);
-    if (cardsFlippedCount < 2){
-      setCardsFlippedCount (cardsFlippedCount+1);
+    if (cardsFlippedCount < 2) {
+      setCardsFlippedCount(cardsFlippedCount + 1);
       setIsFlipped(!isFlipped);
       findingAMatch();
     }
   };
   const findingAMatch = () => {
-  if (matchLogic[0] === matchLogic[1]) {
-    for(let i = 0; i < matchLogic.length; i++) {
-      solved.push(matchLogic[i]);
-      matchLogic.splice(i, 1);
-      i--;
-      resetCards();
-      console.log(matchLogic, "this is matchlogic");
-      console.log(solved, "this is solved");
+    if (matchLogic[0] === matchLogic[1]) {
+      for (let i = 0; i < matchLogic.length; i++) {
+        solved.push(matchLogic[i]);
+        matchLogic.splice(i, 1);
+        i--;
+        resetCards();
+        console.log(matchLogic, "this is matchlogic");
+        console.log(solved, "this is solved");
+      }
     }
-  }
-}
+  };
+  const resetCards = () => {
+    setCardsFlippedCount(0);
+  };
+
   // const clickOnFrontOfCard = () => {
   //   setIsFlipped(!isFlipped);
   // };
