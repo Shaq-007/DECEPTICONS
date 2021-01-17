@@ -13,8 +13,8 @@ const FlippingCard = ({
   const [isFlipped, setIsFlipped] = useState(false);
 
   const clickOnBackOfCard = () => {
-    matchLogic.push(back);
     if (cardsFlippedCount < 2) {
+      matchLogic.push(back);
       setCardsFlippedCount(cardsFlippedCount + 1);
       setIsFlipped(!isFlipped);
       isAMatch();
