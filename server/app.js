@@ -1,5 +1,8 @@
+const express = require('espress');
+const app = express()
+
 var fs = require('fs');
-const { User, Image } = require("./db/models")
+const { User, Image } = require("./db/models");
 
 //Set up mongoose connection
 require("./db/mongoose");
@@ -19,7 +22,7 @@ async function createUser() {
 
 async function getUsers() {
     const users = await User
-    .find({username:'use3', userlevel:10});
+    .find({username:'user3', userlevel:10});
     console.log(users)
 }
 // getUsers()
@@ -40,7 +43,7 @@ async function updateUser(id){
     const result = await user.save();
     console.log(result);
 }
-updateUser('60020568999aa323fcf1c275')
+// updateUser('60020568999aa323fcf1c275')
 
 /// Remove a document
 
@@ -49,17 +52,3 @@ async function removeUser(id){
     console.log(user);
 }
 // removeUser('600105e8d92e34612c5d0371')
-
-
-// /////////////////////
-// async function createCategoryAnimal() { 
-//     var imageData = fs.readFileSync(__dirname + '/images/Oil-ground.png');
-//     const categoryanimal = new CategoryAnimal({
-//         categoryAnimal: 'Animals',
-//         img: imageData
-//     })
-// /// saving the xx into the database
-//     const result = await categoryanimal.save();
-//     console.log(result);
-// }
-// createCategoryAnimal();

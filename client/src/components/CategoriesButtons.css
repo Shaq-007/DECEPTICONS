@@ -1,0 +1,75 @@
+body {
+    margin:0;
+    padding:0;
+}
+
+.buttonsAlignment {
+    width: 400px;
+    height: 100vh;
+    
+    
+}
+
+.animals, .shapes, .letters, .custom {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+.button-image:before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: text-top;
+    background-color: transparent;
+    background-position : center center;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.animals:before{
+     background-image : url(../images/turtle.svg);
+}
+
+.shapes:before{
+    background-image : url(../images/toys.svg);
+}
+
+.letters:before{
+    background-image : url(../images/abc.svg);
+}
+
+.custom:before{
+    background-image : url(../images/playtime.svg);
+}
+
+.animals {
+    background-color: #e24195;
+    border: #e24195;
+}
+
+.shapes {
+    background-color: #cedb2a;
+    border: #cedb2a;
+}
+
+.letters {
+    background-color: #fdd076;
+    border: #fdd076;
+}
+
+.custom {
+    background-color: #3ab7d9;
+    border:  #3ab7d9;
+}
+
+.bgImage {
+    background-image: url(../images/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    height: 100%;
+}
