@@ -1,27 +1,19 @@
 .flip-card {
   background-color: transparent;
-  height: 150px;
-  width: 125px;
-  margin: 10px;
+  height: 140px;
+  width: 100%;
   display: grid;
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  height: 150px;
-  width: 125px;
-  text-align: center;
+  border-radius: 5px;
 }
 
 /* Style the front and back side */
 .flip-card-front,
 .flip-card-back {
-  height: 150px;
-  width: 125px;
+  height: 140px;
+  width: 100%;
   background-color: rgb(59, 59, 214);
   color: white;
   border-radius: 5px;
-  position: absolute;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -35,55 +27,6 @@
   background-color: dodgerblue;
 }
 
-@media only screen and (max-width: 600px) {
-  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width: 50px;
-    height: 70px;
-    display:grid;
-    margin-top:0px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr)
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 20px;
-  }
-}
-
-
-@media only screen and (max-width: 768px) {
-  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width: 50px;
-    height: 70px;
-    margin-top:0px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr)
-  }
-}
-
-
-@media only screen and (max-width: 768px) {
-  h1 {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width: 50px;
-    height: 70px;
-    margin-top: 0px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr)
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  h1 {
-    font-size: 20px;
-  }
+.individualCard {
+  width: 100%;
 }

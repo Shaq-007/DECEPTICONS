@@ -49,25 +49,23 @@ const FlippingCard = ({
   }
 
   return (
-    <ReactCardFlip isFlipped={isFacedUp} flipDirection="horizontal">
-      {/* ReactCardFlip requires two children. This is the first child (card front) */}
-      <div className="flip-card">
-        <div className="flip-card-inner">
-          <div className="flip-card-front" onClick={clickOnBackOfCard}>
-            <h1>{front}</h1>
-          </div>
+    <div className="individualCard">
+      <ReactCardFlip isFlipped={isFacedUp} flipDirection="horizontal">
+        {/* ReactCardFlip requires two children. This is the first child (card front) */}
+        <div className="flip-card">
+            <div className="flip-card-front" onClick={clickOnBackOfCard}>
+              <h1>{front}</h1>
+            </div>
         </div>
-      </div>
 
-      {/* ReactCardFlip requires two children. This is the second child (card back) */}
-      <div className="flip-card">
-        <div className="flip-card-inner">
-          <div className="flip-card-back"> 
-            <h1>{back}</h1>
-          </div>
+        {/* ReactCardFlip requires two children. This is the second child (card back) */}
+        <div className="flip-card">
+            <div className="flip-card-back"> 
+              <h1>{back}</h1>
+            </div>
         </div>
-      </div>
-    </ReactCardFlip>
+      </ReactCardFlip>
+    </div>
   );
 };
 
