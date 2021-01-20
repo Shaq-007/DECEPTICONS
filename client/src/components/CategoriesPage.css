@@ -15,9 +15,20 @@ html, body {
     overflow: hidden;
 }
 
+.guestName {
+    color:white;
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* this holds all 4 buttons in one container and positions the buttons vertically */
 .buttonsContainer {
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* this helps to position the buttons in the center horizontally */
@@ -34,22 +45,27 @@ html, body {
     color: white;
     transition: 0.7s;
 }
+.custom {
+    font-size: 40px;
+    color: white;
+    transition: 0.7s;
+}
 
 /* this controls the animation for each button on hover */
 .animals:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
  }
 
  .shapes:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
  }
 
  .letters:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
  }
 
  .custom:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
  }
 
 

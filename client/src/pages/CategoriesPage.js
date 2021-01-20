@@ -1,10 +1,14 @@
 import React from "react";
 import CategoryButtons from "../components/CategoryButtons";
-import "../components/CategoriesButtons.css";
+import "../components/CategoriesPage.css";
 
 const CategoriesPage = () => {
   return (
     <div className="container bgImage">
+      <div className="guestName">
+      <h1> Hi Name,</h1>
+      <h4>Pick your category!</h4>
+      </div>
       <div className="buttonsContainer">
           <CategoryButtons value='Animals' styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals" />
           <CategoryButtons value='Shapes' styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes" />
