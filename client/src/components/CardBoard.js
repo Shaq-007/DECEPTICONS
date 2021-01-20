@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FlippingCard from "../components/FlippingCard";
+import "./CardBoard.css";
 
 const CardBoard = ({ funWords }) => {
     const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
@@ -7,7 +8,7 @@ const CardBoard = ({ funWords }) => {
     const [cardStatus, setCardStatus] =useState([false,false,false,false,false,false,false,false,false,false,false,false]);
    
     return (
-        <div>
+        <div className="cardRows">
             {
                 funWords.map((words, i) => {
                     return (

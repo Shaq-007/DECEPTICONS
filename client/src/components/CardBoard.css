@@ -1,20 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
 .containerAlignment {
   justify-content: center;
-  background-color: grey;
-
-  /* added */
-  width: auto;
-  height: auto;
-  /* margin: auto; */
   display: flex;
-  perspective: 1000px;
+  padding: 0;
 }
 
-.rowAlignment {
-  margin-top: 40px;
-  margin-bottom: 40px;
+.cardRows {
+  width: 640px;
+  background-color: grey;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 50px;
+  justify-content: space-around;
+  overflow: hidden;
 }
 
-.card-columns {
-  column-count: 3;
+@media only screen and (max-width: 600px) {
+  .cardRows {
+    width: 90%;
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cardRows {
+    width: 90%;
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .cardRows {
+    width: 90%;
+    height: 500px;
+  }
 }

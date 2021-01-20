@@ -1,29 +1,28 @@
 .flip-card {
   background-color: transparent;
-  height: 160px;
-  width: 180px;
+  height: 150px;
+  width: 125px;
   margin: 10px;
-  /* align-items: space-around; */
-  display: inline-block;
+  display: grid;
 }
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
-  height: 160px;
-  width: 180px;
+  height: 150px;
+  width: 125px;
   text-align: center;
 }
 
 /* Style the front and back side */
 .flip-card-front,
 .flip-card-back {
-  height: 160px;
-  width: 180px;
+  height: 150px;
+  width: 125px;
   background-color: rgb(59, 59, 214);
   color: white;
   border-radius: 5px;
   position: absolute;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
@@ -38,10 +37,12 @@
 
 @media only screen and (max-width: 600px) {
   .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width:100px;
-    height: 120px;
-    margin-left: 1px;
-    margin-right: 1px;
+    width: 50px;
+    height: 70px;
+    display:grid;
+    margin-top:0px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr)
   }
 }
 
@@ -51,14 +52,18 @@
   }
 }
 
+
 @media only screen and (max-width: 768px) {
   .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width:100px;
-    height: 120px;
-    margin-left: 1px;
-    margin-right: 1px;
+    width: 50px;
+    height: 70px;
+    margin-top:0px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr)
   }
 }
+
 
 @media only screen and (max-width: 768px) {
   h1 {
@@ -68,10 +73,12 @@
 
 @media only screen and (max-width: 576px) {
   .flip-card-front, .flip-card-back, .flip-card, .flip-card-inner {
-    width:100px;
-    height: 120px;
-    margin-left: 1px;
-    margin-right: 1px;
+    width: 50px;
+    height: 70px;
+    margin-top: 0px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr)
   }
 }
 
