@@ -1,56 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FlippingCard.css";
 import ReactCardFlip from "react-card-flip";
 
 const FlippingCard = ({
   front,
   back,
-  setCardsFlippedCount,
-  cardsFlippedCount,
-  matchLogic,
+  twoCardsInPlay,
   solved,
+  id,
+  isFacedUp,
+  cardStatus,
+  setCardStatus
 }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
 
   const clickOnBackOfCard = () => {
-    if (cardsFlippedCount < 2) {
-      matchLogic.push(back);
-      setCardsFlippedCount(cardsFlippedCount + 1);
-      setIsFlipped(!isFlipped);
-      isAMatch();
-    } // else isNotAMatch();
-  };
-  const isAMatch = () => {
-    if (matchLogic[0] === matchLogic[1]) {
-      for (let i = 0; i < matchLogic.length; i++) {
-        solved.push(matchLogic[i]);
-        matchLogic.splice(i, 1);
-        i--;
-        resetCards();
-      }}
+    if (twoCardsInPlay.length < 2) {
+      twoCardsInPlay.push({id: id, value: back});
+      const newCardStatus = [...cardStatus];
+      newCardStatus[id]=true;
+      setCardStatus(newCardStatus)
+      if (twoCardsInPlay.length === 2) {
+        checkIfMatch();
+      }
+    }
   };
 
-  // const isNotAMatch = () => {
-  //     for (let i = 0; i < matchLogic.length; i++) {
-  //     if (matchLogic[0] !== matchLogic[1])
-  //     matchLogic.splice(i, 1);
-  //     i--;
-  //     resetCards();
-  //     }
-  // }
-
-  // const isNotAMatch = () => {
-  //   if (matchLogic[0] !== matchLogic[1]) {
-  //     matchLogic.splice(0, matchLogic.length)
-  //   }
-  // }
-
-  const resetCards = () => {
-    setCardsFlippedCount(0);
-  };
+  const checkIfMatch = () => {
+    if (twoCardsInPlay[0].value === twoCardsInPlay[1].value) {
+      for (let i = 0; i< twoCardsInPlay.length; i++) {
+      solved.push(twoCardsInPlay[i]);
+      twoCardsInPlay.splice(i, 1);
+      i--;
+    }
+  } else if (twoCardsInPlay[0].value !== twoCardsInPlay[1].value) {
+      
+      setTimeout(() => { 
+        const newCardStatus = [...cardStatus];
+        twoCardsInPlay.forEach(cardInPlay => {
+          newCardStatus[cardInPlay.id]=false;
+        });
+        setCardStatus(newCardStatus);
+        for (let i = 0; i < twoCardsInPlay.length; i++) {
+          twoCardsInPlay.splice(i, 1);
+          i--;
+        }
+       }, 1500);
+    }
+  }
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+    <ReactCardFlip isFlipped={isFacedUp} flipDirection="horizontal">
       {/* ReactCardFlip requires two children. This is the first child (card front) */}
       <div className="flip-card">
         <div className="flip-card-inner">
@@ -63,7 +62,7 @@ const FlippingCard = ({
       {/* ReactCardFlip requires two children. This is the second child (card back) */}
       <div className="flip-card">
         <div className="flip-card-inner">
-          <div className="flip-card-back">
+          <div className="flip-card-back"> 
             <h1>{back}</h1>
           </div>
         </div>
@@ -73,12 +72,3 @@ const FlippingCard = ({
 };
 
 export default FlippingCard;
-
-// Original Card set-up
-//       <div className="row align-items-center">
-//         <div className=" col cardAlignment">
-//           <div className="playingCard"></div>
-//           <div className="playingCard"></div>
-//           <div className="playingCard"></div>
-//         </div>
-//       </div>
