@@ -1,7 +1,7 @@
 const express = require('express');
 // const mongoose = require("mongoose");
 // const { User } = require('./db/models');
-let user_controller = require('./controllers')
+let controllers = require('./controllers')
 const app = express();
 //Set up mongoose connection
 // const app = require('./app');
@@ -13,12 +13,23 @@ const app = express();
 
 
 app.get('/api/users', async (req,res) => {
-    const users = user_controller.get_user()
+    const users = await controllers.get_user()
     if (users != null) {
-        console.log(`succes, users found: ${users}`);
+        console.log(`success, users found: ${users}`);
         res.status(200).json(users);
     } else {
         console.log('error:cannot find users');
+        res.sendStatus(400)
+    }
+});
+
+app.get('/api/images', async (req,res) =>{
+    const images = await controllers.get_image_category()
+    if (images != null) {
+        console.log(`success, images found: ${images}`);
+        res.status(200).json(images);
+    } else {
+        console.log('error:cannot find images');
         res.sendStatus(400)
     }
 });

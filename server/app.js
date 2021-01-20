@@ -1,13 +1,13 @@
 const express = require('express');
 const indexRouter = require('./routes/index');
 
-const app = express()
+// const app = express()
 
 // var fs = require('fs');
 // const { User, Image } = require("./db/models");
 
 //Set up mongoose connection
-require("./db/mongoose");
+// require("./db/mongoose");
 
 app.use('/api', indexRouter);
 
@@ -46,7 +46,7 @@ app.use('/api', indexRouter);
 //     .find({categoryName:'Colors'});
 //     console.log(imagesByCategory)
 // }
-// // getImagesByCategory()
+// getImagesByCategory()
 
 // //// To update a document changing userlevel to 4
 // export async function updateUser(id){
