@@ -1,22 +1,59 @@
-body {
+html, body {
     margin:0;
     padding:0;
+    min-height: 100%;
 }
 
-.buttonsAlignment {
-    width: 400px;
+/* this controls the background image */
+.bgImage {
+    background-image: url(../images/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
     height: 100vh;
-    
-    
+    padding:0;
+    overflow: hidden;
 }
 
+/* this holds all 4 buttons in one container and positions the buttons vertically */
+.buttonsContainer {
+    margin-top: 100px;
+}
+
+/* this helps to position the buttons in the center horizontally */
+.buttonsAlignment {
+    width: 300px;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+/* this controls the font, font color, and animation of the buttons */
 .animals, .shapes, .letters, .custom {
     font-size: 40px;
     margin-bottom: 20px;
     color: white;
+    transition: 0.7s;
 }
 
+/* this controls the animation for each button on hover */
+.animals:hover{
+    transform: scale(1.2);
+ }
 
+ .shapes:hover{
+    transform: scale(1.2);
+ }
+
+ .letters:hover{
+    transform: scale(1.2);
+ }
+
+ .custom:hover{
+    transform: scale(1.2);
+ }
+
+
+/* this styles the images included in each button */
 .button-image:before {
     content: "";
     width: 50px;
@@ -30,6 +67,7 @@ body {
     background-size: 100% 100%;
 }
 
+/* this is how where you add custom images to each button */
 .animals:before{
      background-image : url(../images/turtle.svg);
 }
@@ -46,6 +84,7 @@ body {
     background-image : url(../images/playtime.svg);
 }
 
+/* this sets the background color for each button */
 .animals {
     background-color: #e24195;
     border: #e24195;
@@ -66,10 +105,5 @@ body {
     border:  #3ab7d9;
 }
 
-.bgImage {
-    background-image: url(../images/background2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 100%;
-    height: 100%;
-}
+
+
