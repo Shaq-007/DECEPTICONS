@@ -1,25 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const TestPage = () => {
-  const [images, setImages] = useState([{}]);
+  const [images, setImages] = useState();
 
-  // useEffect(() => {
   const getImages = async () => {
     let response = await fetch("/api/images");
     let data = await response.json();
     setImages(data);
-  };
-  // }, []);
+    };
   console.log("these are the images :", images);
+
+  let arrayBufferToBase64 = (buffer) => {
+      var binary = '';
+      var bytes = [].slice.call(new Uint8Array(buffer));
+      bytes.forEach((b) => binary += String.fromCharCode(b));
+      return window.btoa(binary);
+  };
+
+    let giveMeTheImage = (img) => {
+      var base64Flag = 'data:image/jpeg;base64,';
+      var imageStr =  arrayBufferToBase64(img.data.data);
+      return base64Flag + imageStr;
+    }
+
   return (
     <div>
       <div>Test Page</div>
       <button onClick={getImages}>Click me</button>
-      <div>{images[0].name}</div>
-      <div>{images[0].categoryName}</div>
-      <div>{images[0].img.data[0]}</div>
-      
-      {/* <img src={`data:image/jpeg;base64,${images[0].img.data}`} /> */}
+      {images && images.length > 0 ? (
+        <div>
+            <div>{images[0].name}</div>
+            <div>{images[0].categoryName}</div>
+            <div>     
+              <img src={giveMeTheImage(images[0].img)} alt=' this is it' />
+            </div> 
+        </div>
+      ) : (
+        <p>Awaiting for data...<br/><br/> did you click the button?</p>        
+      )}
     </div>
   );
 };
