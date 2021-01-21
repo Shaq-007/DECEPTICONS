@@ -17,7 +17,7 @@ const TestPage = () => {
       <button onClick={getImages}>Click me</button>
       <div>{images[0].name}</div>
       <div>{images[0].categoryName}</div>
-      <div>{images[0].img.data}</div>
+      <div>{images[0].img.data[0]}</div>
       
       {/* <img src={`data:image/jpeg;base64,${images[0].img.data}`} /> */}
     </div>
