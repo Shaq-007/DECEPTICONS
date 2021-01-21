@@ -5,11 +5,11 @@ const SignupPage = () => {
   return (
    
     <div className="container Background">
-      <h1>Memory Land</h1>
+      <h1 className="title">Memory Land</h1>
 
        <div className="formAlignment">
            
-             <div className="form-text newPlay">New User Signup</div>
+             <div className="form-text instruction">New User Signup</div>
              <div><label for="exampleInputName" className="form-label">Name</label>
              <input type="name" className="form-control" id="exampleInputName" aria-describedby="namelHelp" />
             <label for="exampleInputPassword1" className="form-label">Password</label>

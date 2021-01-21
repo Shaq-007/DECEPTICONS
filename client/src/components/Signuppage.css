@@ -10,7 +10,7 @@
     
     overflow: hidden;
 }
-h1{
+.title{
     font-family: 'Henny Penny', cursive;
     font-size: 100px;
     font-weight: 700;
@@ -20,8 +20,6 @@ h1{
     margin-left:35%;
     margin-right: auto;
 }
-
-    
 .formAlignment{
     font-family: 'Atma', cursive;
     width: 30%;
@@ -30,14 +28,8 @@ h1{
     margin-left: auto;
     margin-right: auto;
    }
-.Play{
-    font-size: 30px;
-    font-weight: 700;
-    color: rgb(209, 13, 13);
-}
-
-.newPlay{
-    font-size: 30px;
+.instruction{
+    font-size: 50px;
     font-weight: 700;
     color: rgb(57, 9, 145);
 }

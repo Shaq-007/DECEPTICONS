@@ -10,7 +10,7 @@
 
   /* overflow: hidden; */
 }
-h1 {
+.title {
   font-family: "Henny Penny", cursive;
   font-size: 100px;
   font-weight: 700;
@@ -19,6 +19,7 @@ h1 {
   margin-top: 100px;
   margin-left: 35%;
   margin-right: auto;
+
 }
 
 .formAlignment {
@@ -29,13 +30,13 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-.Play {
+.instruction{
   font-size: 30px;
   font-weight: 700;
   color: rgb(209, 13, 13);
 }
 
-.newPlay {
+.newUser{
   font-size: 30px;
   font-weight: 700;
   color: rgb(57, 9, 145);
