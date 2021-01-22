@@ -36,50 +36,77 @@ exports.create_user = async function (req, res) {
   }
   return newRecord;
 };
-
-exports.get_users = async function () {
-  const users = await User.find();
-  return users;
+exports.get_users = async function (req, res) {
+  // an array of entries is returned
+  const userEntries = await User.find();
+  if (userEntries != null) {
+    console.log(`Success: users found: ${userEntries}`); // success
+    res.status(200).json(userEntries);
+  } else {
+    console.log(`Error: cannot find users: ${userEntries}`); // failure
+    res.sendStatus(400);
+  }
 };
 
-// Display detail  for ONE user.
+
+// exports.get_users = async function () {
+//   const users = await User.find();
+//   return users;
+// };
+
+// Display ONE user.
 exports.get_oneuser = async function (req,res) {
-    console.info('in controller:', req.params.userid)
+    console.info('The user id is: ', req.params.userid)
     try{
         const oneuser = await User.findById(req.params.userid);
         if (!oneuser) {
-            return res.status(404).send()
+            return res.status(404).send('User does not exist')
         }
         res.send(oneuser)
     } catch (e) {
         res.status(400).send(e)
     }
-    return 
 };
+
+// app.get('/api/users/:id', async (req,res,next) => {
+//     let userid = req.params.id
+//     console.info('we are looking up for: ', userid)
+//     try{
+//         let data = await User.findById(userid);
+//         console.info('findById returned',  + data);
+//         if (data === null) {
+//             throw new Error('User not found')
+//         }
+//         res.send(data)
+//     }
+//     catch (error) {
+//         res.sendStatus(404)
+//     }
+// });
+
 
 //// To update a document changing userlevel to 4
 exports.update_userLevel = async function (req, res) {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    const user = await User.findByIdAndUpdate(req.params.userid, req.body, {
       new: true,
     });
 
     if (!user) {
-      return res.status(404).send();
+      return res.status(404).send('User does not exist');
     }
     res.send(user);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send();
   }
-  return user;
 };
 
-/// Remove a user 
+/// Remove an user 
 exports.delete_user = async function (req, res) {
     try{
-        const user = await User.findByIdAndDelete(req.params.id)
+        const user = await User.findByIdAndDelete(req.params.userid)
         if (!user) {
-           return res.status(404).send() 
+           return res.status(404).send('User does not exist') 
         }
         res.send(user)
     } catch (e) {
@@ -89,12 +116,7 @@ exports.delete_user = async function (req, res) {
 
 
 
-
-
-
-
-
-/// Remove a document from Project2
+/// Remove a document from Project2 using username not id
 // exports.delete_user = async function (req, res) {
 //   const user = req.body.username;
 
@@ -117,24 +139,3 @@ exports.get_image_category = async function () {
   console.log(imagesByCategory);
   return imagesByCategory;
 };
-
-// app.get('/api/users/:id', async (req,res,next) => {
-//     let userid = req.params.id
-//     console.info('we are looking up for: ', userid)
-//     try{
-//         let data = await User.findById(userid);
-//         console.info('findById returned',  + data);
-//         if (data === null) {
-//             throw new Error('User not found')
-//         }
-//         res.send(data)
-//     }
-//     catch (error) {
-//         res.sendStatus(404)
-//     }
-// });
-
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => console.log(`Listening on port ${port}...`));
-
-// module.exports = app;
