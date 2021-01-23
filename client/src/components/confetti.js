@@ -6,7 +6,6 @@ const Confetti1 = () => {
     return (
         <Confetti style= {{ marginLeft: "auto", marginRight: "auto"}}
         recycle={false}
-
         />
     )
 }
