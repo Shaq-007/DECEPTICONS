@@ -12,18 +12,18 @@ const indexRouter = require('./routes/index');
 app.use('/api', indexRouter);
 
 
-// export async function createUser() { 
-//     const user = new User({
-//         username: 'user3',
-//         email: 'user3@abc.com',
-//         password: 'whddjsshdhsd',
-//         userlevel: 10,
-//     })
-// /// saving the user into the database
-//     const result = await user.save();
-//     console.log(result);
-// }
-// // createUser();
+export async function createUser() { 
+    const user = new User({
+        username: 'user3',
+        email: 'user3@abc.com',
+        password: 'whddjsshdhsd',
+        userlevel: 10,
+    })
+/// saving the user into the database
+    const result = await user.save();
+    console.log(result);
+}
+// createUser();
 
 // export async function getUsers() {
 //     // const users = await User
@@ -41,14 +41,9 @@ app.use('/api', indexRouter);
 // }
 // // getUsers()
 
-// export async function getImagesByCategory() {
-//     const imagesByCategory = await Image
-//     .find({categoryName:'Colors'});
-//     console.log(imagesByCategory)
-// }
-// getImagesByCategory()
 
-// //// To update a document changing userlevel to 4
+
+//// To update a document changing userlevel to 4
 // export async function updateUser(id){
 //     const user = await User.findById(id);
 //     if(!user) return console.log('user does not exist');
@@ -57,10 +52,9 @@ app.use('/api', indexRouter);
 //     const result = await user.save();
 //     console.log(result);
 // }
-// // updateUser('60020568999aa323fcf1c275')
+// updateUser('60020568999aa323fcf1c275')
 
 // /// Remove a document
-
 // export async function removeUser(id){
 //     const user = await User.findByIdAndRemove(id);
 //     console.log(user);

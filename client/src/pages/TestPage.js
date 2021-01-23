@@ -53,7 +53,7 @@ export default TestPage;
 
 //   // useEffect(() => {
 //   const getUsers = async () => {
-//     let response = await fetch("/api/users");
+//     let response = await fetch("/users");
 //     let data = await response.json();
 //     setUsers(data);
 //   };
