@@ -33,6 +33,11 @@ const TestPage = () => {
             <div>{images[0].categoryName}</div>
             <div>     
               <img src={giveMeTheImage(images[0].img)} alt=' this is it' />
+              <img src={giveMeTheImage(images[1].img)} alt=' this is it' />
+              <img src={giveMeTheImage(images[2].img)} alt=' this is it' />
+              <img src={giveMeTheImage(images[3].img)} alt=' this is it' />
+              <img src={giveMeTheImage(images[4].img)} alt=' this is it' />
+              <img src={giveMeTheImage(images[5].img)} alt=' this is it' />
             </div> 
         </div>
       ) : (
