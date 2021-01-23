@@ -34,8 +34,8 @@ exports.create_user = async function (req, res) {
       res.status(500).json(error);
     }
   }
-  return newRecord;
 };
+
 exports.get_users = async function (req, res) {
   // an array of entries is returned
   const userEntries = await User.find();
@@ -48,24 +48,23 @@ exports.get_users = async function (req, res) {
   }
 };
 
-
 // exports.get_users = async function () {
 //   const users = await User.find();
 //   return users;
 // };
 
 // Display ONE user.
-exports.get_oneuser = async function (req,res) {
-    console.info('The user id is: ', req.params.userid)
-    try{
-        const oneuser = await User.findById(req.params.userid);
-        if (!oneuser) {
-            return res.status(404).send('User does not exist')
-        }
-        res.send(oneuser)
-    } catch (e) {
-        res.status(400).send(e)
+exports.get_oneuser = async function (req, res) {
+  console.info("The user id is: ", req.params.userid);
+  try {
+    const oneuser = await User.findById(req.params.userid);
+    if (!oneuser) {
+      return res.status(404).send("User does not exist");
     }
+    res.send(oneuser);
+  } catch (e) {
+    res.status(400).send();
+  }
 };
 
 // app.get('/api/users/:id', async (req,res,next) => {
@@ -84,7 +83,6 @@ exports.get_oneuser = async function (req,res) {
 //     }
 // });
 
-
 //// To update a document changing userlevel to 4
 exports.update_userLevel = async function (req, res) {
   try {
@@ -93,7 +91,7 @@ exports.update_userLevel = async function (req, res) {
     });
 
     if (!user) {
-      return res.status(404).send('User does not exist');
+      return res.status(404).send("User does not exist");
     }
     res.send(user);
   } catch (e) {
@@ -101,26 +99,24 @@ exports.update_userLevel = async function (req, res) {
   }
 };
 
-/// Remove an user 
+/// Remove an user
 exports.delete_user = async function (req, res) {
-    try{
-        const user = await User.findByIdAndDelete(req.params.userid)
-        if (!user) {
-           return res.status(404).send('User does not exist') 
-        }
-        res.send(user)
-    } catch (e) {
-        res.status(500).send()
+  try {
+    const user = await User.findByIdAndDelete(req.params.userid);
+    if (!user) {
+      return res.status(404).send("User does not exist");
     }
-}
-
-
+    res.send(user);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
 
 /// Remove a document from Project2 using username not id
 // exports.delete_user = async function (req, res) {
 //   const user = req.body.username;
 
-//   // delete a single entry 
+//   // delete a single entry
 //   const response = await User.deleteOne({ username: user });
 //   const result = JSON.stringify(response);
 
@@ -134,8 +130,14 @@ exports.delete_user = async function (req, res) {
 //   }
 // };
 
-exports.get_image_category = async function () {
+exports.get_image_category = async function (req,res) {
   const imagesByCategory = await Image.find({ categoryName: "Colors" });
   console.log(imagesByCategory);
-  return imagesByCategory;
+    if (imagesByCategory != null) {
+    console.log(`success, images found: ${imagesByCategory}`);
+    res.status(200).json(imagesByCategory);
+  } else {
+    console.log("error:cannot find images");
+    res.sendStatus(400);
+  }
 };
