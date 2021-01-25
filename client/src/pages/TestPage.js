@@ -4,7 +4,7 @@ const TestPage = () => {
   const [images, setImages] = useState();
 
   const getImages = async () => {
-    let response = await fetch("/images");
+    let response = await fetch("/images/colors");
     let data = await response.json();
     setImages(data);
     };
