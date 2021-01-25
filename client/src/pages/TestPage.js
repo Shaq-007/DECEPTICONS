@@ -20,7 +20,8 @@ const TestPage = () => {
     let giveMeTheImage = (img) => {
       var base64Flag = 'data:image/jpeg;base64,';
       var imageStr =  arrayBufferToBase64(img.data.data);
-      return base64Flag + imageStr;
+      const finalImage = base64Flag + imageStr;
+      return finalImage;
     }
 
   return (

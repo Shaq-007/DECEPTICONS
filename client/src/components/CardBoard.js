@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FlippingCard from "../components/FlippingCard";
 import "./CardBoard.css";
 import Confetti1 from "./confetti";
+// import RewardModal from "./RewardModal";
 
 
 const CardBoard = ({ funWords }) => {
