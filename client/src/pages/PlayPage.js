@@ -18,12 +18,33 @@ const PlayPage = () => {
       funWords[index].base64img = b64;
     })
   }, [images])
-
-  const getImages = async () => {
+  // Functions to call api
+  const getColorImages = async () => {
     let response = await fetch("/images/colors");
     let data = await response.json();
     setImages(data);
   };
+  const getShapeImages = async () => {
+    let response = await fetch("/images/shapes");
+    let data = await response.json();
+    setImages(data);
+  };
+  const getLetterImages = async () => {
+    let response = await fetch("/images/letters");
+    let data = await response.json();
+    setImages(data);
+  };
+  const getAnimalImages = async () => {
+    let response = await fetch("/images/animals");
+    let data = await response.json();
+    setImages(data);
+  };
+  // const getCustomImages = async () => {
+  //   let response = await fetch("/images/colors");
+  //   let data = await response.json();
+  //   setImages(data);
+  // };
+
   console.log("these are the funWords :", funWords);
 
   let arrayBufferToBase64 = (buffer) => {
@@ -44,7 +65,11 @@ const PlayPage = () => {
     <>
       <div className="playPage-image">
         <GoBackButton />
-        <button onClick={getImages}>Load Images</button>
+        <button onClick={getColorImages}>Load Color Images</button><br />
+        <button onClick={getShapeImages}>Load Shape Images</button><br />
+        <button onClick={getAnimalImages}>Load Animals Images</button><br />
+        <button onClick={getLetterImages}>Load Letters Images</button><br />
+        {/* <button onClick={getCustomImages}>Load Custom Images</button> */}<br />
         <div className="container-fluid containerAlignment">
           <CardBoard funWords={funWords} />
         </div>

@@ -5,6 +5,7 @@ import ReactCardFlip from "react-card-flip";
 const FlippingCard = ({
   front,
   back,
+  base64img,
   twoCardsInPlay,
   solved,
   id,
@@ -15,7 +16,7 @@ const FlippingCard = ({
 
   const clickOnBackOfCard = () => {
     if (twoCardsInPlay.length < 2) {
-      twoCardsInPlay.push({id: id, value: back});
+      twoCardsInPlay.push({id: id, value: base64img});
       const newCardStatus = [...cardStatus];
       newCardStatus[id]=true;
       setCardStatus(newCardStatus)
@@ -61,7 +62,8 @@ const FlippingCard = ({
         {/* ReactCardFlip requires two children. This is the second child (card back) */}
         <div className="flip-card">
             <div className="flip-card-back"> 
-              <h1>{back}</h1>
+              <img src={base64img} style={{height: "140px", width:"100%"}}/>
+             
             </div>
         </div>
       </ReactCardFlip>
