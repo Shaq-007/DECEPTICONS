@@ -30,6 +30,7 @@ const CardBoard = ({ funWords }) => {
                             id={i}
                             front={funWords[i].front}
                             back={funWords[i].back}
+                            base64img={funWords[i].base64img}
                             twoCardsInPlay={twoCardsInPlay}
                             setTwoCardsInPlay={setTwoCardsInPlay}
                             solved={solved}
