@@ -5,6 +5,7 @@ import Confetti1 from "./confetti";
 // import RewardModal from "./RewardModal";
 
 
+
 const CardBoard = ({ funWords }) => {
     const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
     const [solved, setSolved] = useState([]);
@@ -37,7 +38,7 @@ const CardBoard = ({ funWords }) => {
                             cardStatus={cardStatus}
                             setCardStatus={setCardStatus}
                         />
-                            {rewardAtEnd()}
+                             {rewardAtEnd()}
                         </>
                     );
                 })
