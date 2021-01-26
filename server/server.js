@@ -11,16 +11,22 @@ app.use(express.json());
 /// api call to create new users
 app.post("/users/create", controllers.create_user);
 
-app.get("/users",controllers.get_users);
+app.get("/users", controllers.get_users);
 
-app.get("/users/:userid",controllers.get_oneuser);
+app.get("/users/:userid", controllers.get_oneuser);
 
-app.patch("/users/update/:userid",controllers.update_userLevel);
+app.patch("/users/update/:userid", controllers.update_userLevel);
 
 app.delete("/users/delete/:userid", controllers.delete_user);
 
-// api calls for images
-app.get("/images/colors", controllers.get_image_category);
+// api GET calls for images depending on CATEGORY
+app.get("/images/colors", controllers.get_image_colors);
+
+app.get("/images/animals", controllers.get_image_animals);
+
+app.get("/images/shapes", controllers.get_image_shapes);
+
+app.get("/images/letters", controllers.get_image_letters);
 
 // app.get("/images", async (req, res) => {
 //   const images = await controllers.get_image_category();
