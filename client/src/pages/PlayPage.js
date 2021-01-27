@@ -4,20 +4,20 @@ import { funWords } from "../fakeDatabase.js/funWords";
 import "../components/CardBoard.css";
 import "../pages/PlayPage.css";
 import GoBackButton from "../components/GoBackButton";
+import CategoryButtons from "../components/CategoryButtons";
 
 const PlayPage = () => {
-
   const [images, setImages] = useState();
 
   useEffect(() => {
     if (!images) {
-      return
+      return;
     }
     images.forEach((i, index) => {
       let b64 = giveMeTheImage(i.img);
       funWords[index].base64img = b64;
-    })
-  }, [images])
+    });
+  }, [images]);
   // Functions to call api
   const getColorImages = async () => {
     let response = await fetch("/images/colors");
@@ -48,28 +48,50 @@ const PlayPage = () => {
   console.log("these are the funWords :", funWords);
 
   let arrayBufferToBase64 = (buffer) => {
-    var binary = '';
+    var binary = "";
     var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => binary += String.fromCharCode(b));
+    bytes.forEach((b) => (binary += String.fromCharCode(b)));
     return window.btoa(binary);
   };
 
   let giveMeTheImage = (img) => {
-    var base64Flag = 'data:image/jpeg;base64,';
+    var base64Flag = "data:image/jpeg;base64,";
     var imageStr = arrayBufferToBase64(img.data.data);
     const finalImage = base64Flag + imageStr;
     return finalImage;
-  }
+  };
 
   return (
     <>
       <div className="playPage-image">
         <GoBackButton />
-        <button onClick={getColorImages}>Load Color Images</button><br />
-        <button onClick={getShapeImages}>Load Shape Images</button><br />
-        <button onClick={getAnimalImages}>Load Animals Images</button><br />
-        <button onClick={getLetterImages}>Load Letters Images</button><br />
-        {/* <button onClick={getCustomImages}>Load Custom Images</button> */}<br />
+        <div className="row">
+          <CategoryButtons
+            value="Animals"
+            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
+            onClick={getAnimalImages}
+          />
+
+          <CategoryButtons
+            value="Shapes"
+            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
+            onClick={getShapeImages}
+          />
+
+          <CategoryButtons
+            value="Colors"
+            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
+            onClick={getColorImages}
+          />
+
+          <CategoryButtons
+            value="Letters"
+            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
+            onClick={getLetterImages}
+          />
+        </div>
+        {/* <button onClick={getCustomImages}>Load Custom Images</button> */}
+
         <div className="container-fluid containerAlignment">
           <CardBoard funWords={funWords} />
         </div>
@@ -78,6 +100,6 @@ const PlayPage = () => {
   );
 };
 
-// funWords.sort(() => Math.random() - 0.5);
+funWords.sort(() => Math.random() - 0.5);
 
 export default PlayPage;

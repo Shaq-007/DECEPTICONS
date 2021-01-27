@@ -10,7 +10,7 @@ function GoBackButton() {
           style={{
             width: "60px",
             hight: "60px",
-            marginLeft: "80px",
+            marginLeft: "48%",
           }}
           alt="play icon"
         />

@@ -1,125 +1,139 @@
-html, body {
-    margin:0;
-    padding:0;
-    min-height: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 /* this controls the background image */
 .bgImage {
-    background-image: url(../images/background2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 100%;
-    height: 100vh;
-    padding:0;
-    overflow: hidden;
+  background-image: url(../images/background2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
 }
 
 .guestName {
-    color:white;
-    width: 300px;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  color: white;
+  width: 300px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* this holds all 4 buttons in one container and positions the buttons vertically */
 .buttonsContainer {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* this helps to position the buttons in the center horizontally */
 .buttonsAlignment {
-    width: 300px;
-    margin-left: auto;
-    margin-right:auto;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* this controls the font, font color, and animation of the buttons */
-.animals, .shapes, .letters, .custom {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: white;
-    transition: 0.7s;
+.animals,
+.shapes,
+.letters,
+.custom,
+.colors {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: white;
+  transition: 0.7s;
 }
 .custom {
-    font-size: 40px;
-    color: white;
-    transition: 0.7s;
+  font-size: 40px;
+  color: white;
+  transition: 0.7s;
 }
 
 /* this controls the animation for each button on hover */
-.animals:hover{
-    transform: scale(1.1);
- }
+.animals:hover {
+  transform: scale(1.1);
+}
 
- .shapes:hover{
-    transform: scale(1.1);
- }
+.shapes:hover {
+  transform: scale(1.1);
+}
 
- .letters:hover{
-    transform: scale(1.1);
- }
+.letters:hover {
+  transform: scale(1.1);
+}
 
- .custom:hover{
-    transform: scale(1.1);
- }
+.custom:hover {
+  transform: scale(1.1);
+}
 
+.colors:hover {
+  transform: scale(1.1);
+}
 
 /* this styles the images included in each button */
 .button-image:before {
-    content: "";
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin-right: 15px;
-    vertical-align: text-top;
-    background-color: transparent;
-    background-position : center center;
-    background-repeat:no-repeat;
-    background-size: 100% 100%;
+  content: "";
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: text-top;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 /* this is how where you add custom images to each button */
-.animals:before{
-     background-image : url(../images/turtle.svg);
+.animals:before {
+  background-image: url(../images/turtle.svg);
 }
 
-.shapes:before{
-    background-image : url(../images/toys.svg);
+.shapes:before {
+  background-image: url(../images/toys.svg);
 }
 
-.letters:before{
-    background-image : url(../images/abc.svg);
+.letters:before {
+  background-image: url(../images/abc.svg);
 }
 
-.custom:before{
-    background-image : url(../images/playtime.svg);
+.custom:before {
+  background-image: url(../images/playtime.svg);
+}
+
+.colors:before {
+  background-image: url(../images/color.svg);
 }
 
 /* this sets the background color for each button */
 .animals {
-    background-color: #e24195;
-    border: #e24195;
+  background-color: #e24195;
+  border: #e24195;
 }
 
 .shapes {
-    background-color: #cedb2a;
-    border: #cedb2a;
+  background-color: #cedb2a;
+  border: #cedb2a;
 }
 
 .letters {
-    background-color: #fdd076;
-    border: #fdd076;
+  background-color: #fdd076;
+  border: #fdd076;
 }
 
 .custom {
-    background-color: #3ab7d9;
-    border:  #3ab7d9;
+  background-color: #3ab7d9;
+  border: #3ab7d9;
 }
 
-
-
+.colors {
+  background-color: #3ab7d9;
+  border: #3ab7d9;
+}
