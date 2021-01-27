@@ -62,7 +62,7 @@ const FlippingCard = ({
         {/* ReactCardFlip requires two children. This is the second child (card back) */}
         <div className="flip-card">
             <div className="flip-card-back"> 
-              <img src={base64img} style={{height: "140px", width:"100%"}}/>
+              <img src={base64img} alt="categorypicture" style={{height: "140px", width:"100%"}}/>
              
             </div>
         </div>
