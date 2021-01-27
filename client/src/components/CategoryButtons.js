@@ -1,9 +1,8 @@
 import React from 'react'
 
 const CategoryButtons = ({styleClass, value, onClick}) => (
-    <button 
-    className={`btn ${styleClass}`} 
-    onClick={(event: MouseEvent<HTMLButtonElement> ) => onClick(event)}>
+    <button onClick={onClick}
+    className={`btn ${styleClass}`}>
         {value}
     </button>
 );
