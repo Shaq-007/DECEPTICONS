@@ -11,7 +11,8 @@ const FlippingCard = ({
   id,
   isFacedUp,
   cardStatus,
-  setCardStatus
+  setCardStatus,
+  setTwoCardsInPlay
 }) => {
 
   const clickOnBackOfCard = () => {

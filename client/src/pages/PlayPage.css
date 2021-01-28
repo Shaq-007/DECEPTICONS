@@ -8,3 +8,13 @@
   padding: 0;
   /* position: relative; */
 }
+
+.containerAlignment {
+  margin-bottom: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.rowAlignment {
+  width: 100%;
+}

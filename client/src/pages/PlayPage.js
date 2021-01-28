@@ -4,20 +4,37 @@ import { funWords } from "../fakeDatabase.js/funWords";
 import "../components/CardBoard.css";
 import "../pages/PlayPage.css";
 import GoBackButton from "../components/GoBackButton";
+import RewardModal from "../components/RewardModal"
+import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 
 const PlayPage = () => {
   const [images, setImages] = useState();
+  const [reward, setReward] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const throwConfetti = () => {
+    if (reward === true) {
+      return <Confetti1/>
+    }
+  }
+
+  const openModal = () => {
+    if (showModal === true) {
+      return <RewardModal/>
+    }
+  }
 
   useEffect(() => {
     if (!images) {
-      return;
+      return
     }
     images.forEach((i, index) => {
       let b64 = giveMeTheImage(i.img);
       funWords[index].base64img = b64;
     });
   }, [images]);
+
   // Functions to call api
   const getColorImages = async () => {
     let response = await fetch("/images/colors");
@@ -60,13 +77,16 @@ const PlayPage = () => {
     const finalImage = base64Flag + imageStr;
     return finalImage;
   };
-
+  
   return (
     <>
       <div className="playPage-image">
         <GoBackButton />
-        <div className="row">
-          <CategoryButtons
+        <RewardModal reward={reward} showModal={showModal} setShowModal={setShowModal}/>
+        <div className="containerAlignment">
+          <div className="row rowAlignment">
+            <div className="col-4">
+            <CategoryButtons
             value="Animals"
             styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
             onClick={getAnimalImages}
@@ -89,13 +109,16 @@ const PlayPage = () => {
             styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
             onClick={getLetterImages}
           />
-        </div>
-        {/* <button onClick={getCustomImages}>Load Custom Images</button> */}
 
-        <div className="container-fluid containerAlignment">
-          <CardBoard funWords={funWords} />
+            </div>
+            <div className="col-8">
+              <CardBoard funWords={funWords} reward={reward} setReward={setReward}/>
+            </div>
+          </div>
         </div>
       </div>
+      {throwConfetti()}
+      {openModal()}
     </>
   );
 };

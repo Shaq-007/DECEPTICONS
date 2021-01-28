@@ -34,7 +34,6 @@ body {
 
 /* this helps to position the buttons in the center horizontally */
 .buttonsAlignment {
-  width: 300px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -45,6 +44,7 @@ body {
 .letters,
 .custom,
 .colors {
+  width: 100%;
   font-size: 40px;
   margin-bottom: 20px;
   color: white;

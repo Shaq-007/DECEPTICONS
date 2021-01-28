@@ -1,23 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FlippingCard from "../components/FlippingCard";
 import "./CardBoard.css";
-import Confetti1 from "./confetti";
-// import RewardModal from "./RewardModal";
 
-
-
-const CardBoard = ({ funWords }) => {
+const CardBoard = ({ funWords, setReward }) => {
     const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
     const [solved, setSolved] = useState([]);
     const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
 
-    const rewardAtEnd = () => {
-        let result = cardStatus.every( e => e === true);
+    useEffect(() => {
+        let result = cardStatus.every( item => item === true);
         if (solved.length === 12 && result === true) {
-            setTimeout(()=>{console.log("yayy!")}, 1000);
-            return <Confetti1/>
+            setReward(true);
         }
-    }
+    })
 
     return (
         <div className="cardRows">
@@ -39,7 +34,6 @@ const CardBoard = ({ funWords }) => {
                             cardStatus={cardStatus}
                             setCardStatus={setCardStatus}
                         />
-                             {rewardAtEnd()}
                         </>
                     );
                 })
