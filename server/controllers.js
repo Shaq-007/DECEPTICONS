@@ -2,7 +2,7 @@ const express = require("express");
 const { User, Image } = require("./db/models");
 
 //Set up mongoose connection
-require("./db/mongoose");
+// require("./db/mongoose");
 
 // add new user to database
 exports.create_user = async function (req, res) {
@@ -40,7 +40,7 @@ exports.get_users = async function (req, res) {
   // an array of entries is returned
   const userEntries = await User.find();
   if (userEntries != null) {
-    console.log(`Success: users found: ${userEntries}`); // success
+    // console.log(`Success: users found: ${userEntries}`); // success
     res.status(200).json(userEntries);
   } else {
     console.log(`Error: cannot find users: ${userEntries}`); // failure
@@ -135,9 +135,9 @@ exports.get_image_colors = async function (req, res) {
   const imagesByCategoryColors = await Image.find({
     categoryName: "Colors",
   });
-  console.log(imagesByCategoryColors);
+  // console.log(imagesByCategoryColors);
   if (imagesByCategoryColors != null) {
-    console.log(`success, images found: ${imagesByCategoryColors}`);
+    // console.log(`success, images found: ${imagesByCategoryColors}`);
     res.status(200).json(imagesByCategoryColors);
   } else {
     console.log("error:cannot find images");
@@ -149,9 +149,9 @@ exports.get_image_animals = async function (req, res) {
   const imagesByCategoryAnimals = await Image.find({
     categoryName: "Animals",
   });
-  console.log(imagesByCategoryAnimals);
+  // console.log(imagesByCategoryAnimals);
   if (imagesByCategoryAnimals != null) {
-    console.log(`success, images found: ${imagesByCategoryAnimals}`);
+    // console.log(`success, images found: ${imagesByCategoryAnimals}`);
     res.status(200).json(imagesByCategoryAnimals);
   } else {
     console.log("error:cannot find images");
@@ -163,9 +163,9 @@ exports.get_image_shapes = async function (req, res) {
   const imagesByCategoryShapes = await Image.find({
     categoryName: "Shapes",
   });
-  console.log(imagesByCategoryShapes);
+  // console.log(imagesByCategoryShapes);
   if (imagesByCategoryShapes != null) {
-    console.log(`success, images found: ${imagesByCategoryShapes}`);
+    // console.log(`success, images found: ${imagesByCategoryShapes}`);
     res.status(200).json(imagesByCategoryShapes);
   } else {
     console.log("error:cannot find images");
@@ -177,9 +177,9 @@ exports.get_image_letters = async function (req, res) {
   const imagesByCategoryLetters = await Image.find({
     categoryName: "Letters",
   });
-  console.log(imagesByCategoryLetters);
+  // console.log(imagesByCategoryLetters);
   if (imagesByCategoryLetters != null) {
-    console.log(`success, images found: ${imagesByCategoryLetters}`);
+    // console.log(`success, images found: ${imagesByCategoryLetters}`);
     res.status(200).json(imagesByCategoryLetters);
   } else {
     console.log("error:cannot find images");
