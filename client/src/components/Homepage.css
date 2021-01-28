@@ -1,14 +1,14 @@
 /* Below line is used for online Google font */
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
-.Background {
-  background-image: url(../images/background2.jpg);
-  position: absolute;
+.backgroundHomePageImage {
+  background-image: url(../images/kids2balloon.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background-size: 100% 100%;
   max-width: 100%;
-
-  /* overflow: hidden; */
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  background-position: 50% 50%;
 }
 .title {
   font-family: "Henny Penny", cursive;
@@ -16,28 +16,82 @@
   font-weight: 700;
   color: rgb(117, 8, 121);
   position: relative;
-  margin-top: 100px;
-  margin-left: 35%;
-  margin-right: auto;
-
+  margin-top: 2rem;
+  margin-left: 40rem;
 }
 
 .formAlignment {
   font-family: "Atma", cursive;
-  width: 30%;
-  margin-top: 200px;
+  width: 28%;
+  margin-top: 3rem;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 45rem;
 }
-.instruction{
+.instruction {
   font-size: 30px;
   font-weight: 700;
   color: rgb(209, 13, 13);
 }
 
-.newUser{
+.newUser {
+  font-family: "Atma", cursive;
   font-size: 30px;
   font-weight: 700;
   color: rgb(57, 9, 145);
+}
+
+/* adding responsiveness */
+
+/* MOBILE  */
+@media screen and (max-width: 700px) {
+  div.backgroundHomePageImage {
+    background-position: 30%;
+    background-size: cover;
+  }
+  h1.title {
+    font-size: 60px;
+    font-weight: 700;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-top: 2rem;
+  }
+  div.formAlignment {
+    width: 50%;
+    margin-top: 9rem;
+    margin-left: 9rem;
+    margin-right: auto;
+  }
+
+  div.form-text.instruction,
+  div.form-text.newUser {
+    font-size: 18px;
+  }
+}
+
+/* TABLET */
+@media only screen and (max-width: 1400px) and (min-width: 720px) {
+  div.backgroundHomePageImage {
+    background-position: 32%;
+    background-size: cover;
+  }
+  h1.title {
+    font-size: 120px;
+    font-weight: 700;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+  }
+  div.formAlignment {
+    width: 45%;
+    margin-top: 18rem;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+
+  div.form-text.instruction,
+  div.form-text.newUser {
+    font-size: 30px;
+  }
 }

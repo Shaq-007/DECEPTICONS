@@ -16,3 +16,5 @@ mongoose.connect(connectionURL, {
     useCreateIndex: true,
     useFindAndModify: false
 });
+
+module.exports = mongoose

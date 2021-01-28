@@ -1,35 +1,43 @@
 /* Below line is used for online Google font */
-@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap'); 
-.Background{
-    background-image: url(../images/background2.jpg);
-    position: absolute;
-    background-repeat: no-repeat;
+@import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
+
+.BackgroundSignUpImage {
+  background-image: url(../images/categoriesRainbow.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  max-width: 100%;
+  background-position: 50% 50%;
+  overflow: hidden;
+}
+
+.formAlignmentSignUp {
+  font-family: "Atma", cursive;
+  width: 25%;
+  margin-top: 6rem;
+  /* position: relative; */
+  margin-left: auto;
+  margin-right: auto;
+}
+.instructionSignUp {
+  font-size: 40px;
+  font-weight: 700;
+  color: rgb(57, 9, 145);
+}
+
+/* adding mobile responsiveness */
+
+@media screen and (max-width: 1300px) {
+  div.BackgroundSignUpImage {
     background-size: cover;
-    height: 100vh;
-    max-width: 100%;
-    
-    overflow: hidden;
-}
-.title{
-    font-family: 'Henny Penny', cursive;
-    font-size: 100px;
-    font-weight: 700;
-    color: rgb(117, 8, 121);
-    position: relative;
-    margin-top: 100px;
-    margin-left:35%;
-    margin-right: auto;
-}
-.formAlignment{
-    font-family: 'Atma', cursive;
-    width: 30%;
-    margin-top: 200px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-   }
-.instruction{
-    font-size: 50px;
-    font-weight: 700;
-    color: rgb(57, 9, 145);
+    background-position: 70%;
+  }
+  div.formAlignmentSignUp {
+    width: 50%;
+    margin-left: 2rem;
+  }
+  div.form-text.instructionSignUp {
+    font-size: 25px;
+    margin-bottom: 0.5rem;
+  }
 }
