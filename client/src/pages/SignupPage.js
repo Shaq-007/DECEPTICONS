@@ -8,14 +8,14 @@ const SignupPage = () => {
         <div className="form-text instructionSignUp">New User Signup</div>
         <div>
           <label for="exampleInputName" className="form-label">
-            Name
+            Email address
           </label>
           <input
             type="name"
             className="form-control"
             id="exampleInputName"
             aria-describedby="namelHelp"
-          />
+          /><br/>
           <label for="exampleInputPassword1" className="form-label">
             Password
           </label>
@@ -24,6 +24,7 @@ const SignupPage = () => {
             className="form-control"
             id="exampleInputPassword1"
           />
+          <br/>
           <label for="exampleInputPassword1" className="form-label">
             Confirm Password
           </label>

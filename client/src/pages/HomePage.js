@@ -7,7 +7,7 @@ const HomePage = () => {
       <h1 className="title">MemoryLand</h1>
 
       <div className="formAlignment">
-        <div className="form-text instruction">Login to Start Playing</div>
+        <div className="form-text instruction">Login to Start Playing</div><br/>
         <div>
           <label for="exampleInputEmail1" className="form-label">
             Email address
@@ -17,7 +17,7 @@ const HomePage = () => {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-          />
+          /><br/>
           <label for="exampleInputPassword1" className="form-label">
             Password
           </label>
