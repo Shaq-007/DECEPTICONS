@@ -11,7 +11,7 @@ const RewardModal = ({ showModal, setShowModal, reward }) => {
     return (
         <>
             {showModal ? (
-                <div className="modal" role="dialog">
+                <div className="modal" role="dialog" style={{display: "inline-block", marginTop:"130px"}}>
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -30,6 +30,7 @@ const RewardModal = ({ showModal, setShowModal, reward }) => {
                         </div>
                     </div>
                 </div>
+
             ) : null}
         </>
     )
