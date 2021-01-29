@@ -85,7 +85,7 @@ const PlayPage = () => {
         <RewardModal reward={reward} showModal={showModal} setShowModal={setShowModal}/>
         <div className="containerAlignment">
           <div className="row rowAlignment">
-            <div className="col-4">
+            <div className=" col-3 categoryRow">
             <CategoryButtons
             value="Animals"
             styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
@@ -111,7 +111,7 @@ const PlayPage = () => {
           />
 
             </div>
-            <div className="col-8">
+            <div className="col-9">
               <CardBoard funWords={funWords} reward={reward} setReward={setReward}/>
             </div>
           </div>

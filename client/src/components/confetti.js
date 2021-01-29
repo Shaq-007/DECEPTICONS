@@ -4,8 +4,9 @@ import Confetti from 'react-confetti';
 
 const Confetti1 = () => {
     return (
-        <Confetti style= {{ marginLeft: "auto", marginRight: "auto"}}
-        recycle={false}
+        <Confetti
+        numberOfPieces={1000}
+        gravity={0.1}
         />
     )
 }
