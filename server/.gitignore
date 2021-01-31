@@ -116,8 +116,7 @@ dist
 .pnp.*
 
 # others
-db/routes/images.js
-db/routes/user.js
 app_copy.js
 server_copy.js
+
 
