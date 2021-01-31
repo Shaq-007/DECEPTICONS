@@ -19,7 +19,7 @@ const CardBoard = ({ funWords, setReward }) => {
             {
                 funWords.map((words, i) => {
                     return (
-                        <>
+                        // <>
                         <FlippingCard
                             key={i}
                             id={i}
@@ -34,7 +34,7 @@ const CardBoard = ({ funWords, setReward }) => {
                             cardStatus={cardStatus}
                             setCardStatus={setCardStatus}
                         />
-                        </>
+                        // </>
                     );
                 })
             }     
