@@ -9,7 +9,6 @@ import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import Upload from "../components/Upload";
 
-console.log('funwords', funWords)
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
   var bytes = [].slice.call(new Uint8Array(buffer));
@@ -28,6 +27,7 @@ const PlayPage = () => {
   const [images, setImages] = useState();
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [myWords,setMyWords] = useState([])
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -68,14 +68,20 @@ const PlayPage = () => {
   //   setImages(data);
   // };
 
+  useEffect(() =>{
+    getColorImages();
+  },[]);
+
   useEffect(() => {
     if (!images) {
       return;
     }
+    const copyOfWords = funWords.slice();
     images.forEach((i, index) => {
       let b64 = giveMeTheImage(i.img);
-      funWords[index].base64img = b64;
+      copyOfWords[index].base64img = b64;
     });
+    setMyWords(copyOfWords)
   }, [images]);
 
   return (
@@ -116,7 +122,7 @@ const PlayPage = () => {
             </div>
             <div className="col-9">
               <CardBoard
-                funWords={funWords}
+                funWords={myWords}
                 reward={reward}
                 setReward={setReward}
               />

@@ -6,7 +6,7 @@ import Categories from "./pages/CategoriesPage";
 import PlayPage from "./pages/PlayPage";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
-import TestPage from "./pages/TestPage";
+import Upload from "./components/Upload";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/play" component={PlayPage} />
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/signup" component={SignupPage} />
-        <Route exact path="/test" component={TestPage} />
+        <Route exact path="/upload" component={Upload} />
       </Switch>
     </Router>
   );
