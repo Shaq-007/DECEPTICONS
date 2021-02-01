@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 function Upload() {
   // /** start states */
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
   const [file, setFile] = useState();
-  // const [desc, setDesc] = useState();
+  const [category, setCategory] = useState("");
 
   const send = async (event) => {
     event.preventDefault();
@@ -11,19 +11,18 @@ function Upload() {
 
     const formData = new FormData();
     // file is the name of the request parameter
-    // file is the state variable  that holds 
-    // event.target.file[0] from <input type= "file" .../> on line 67
-    formData.append('image', file);
-    formData.append('name', name);
-    formData.append('Category', name)
-        const options = {
-          method: 'POST',
-          body: formData,
-        };
-        
-        let response = await fetch('/images/save', options);
-        console.log('this is the response', response)
+    // file is the state variable  that holds
+    // event.target.file[0] from <input type= "file" .../> on line 70
+    formData.append("image", file);
+    formData.append("name", name);
+    formData.append("category", category);
+    const options = {
+      method: "POST",
+      body: formData,
+    };
 
+    let response = await fetch("/images/save", options);
+    // console.log('this is the response', response)
   };
 
   return (
@@ -52,12 +51,16 @@ function Upload() {
         <div>
           <label htmlFor="category">Image Category</label>
           <textarea
-            id="cat"
+            id="category"
             name="category"
-            value={name}
-            rows="2"
+            onChange={(event) => {
+              const { value } = event.target;
+              setCategory(value);
+            }}
+            value={category}
+            // rows="2"
             placeholder="Category"
-            required 
+            required
           ></textarea>
         </div>
         <div>
