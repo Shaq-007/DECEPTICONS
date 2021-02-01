@@ -27,7 +27,7 @@ const PlayPage = () => {
   const [images, setImages] = useState();
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [myWords,setMyWords] = useState([])
+  const [myWords, setMyWords] = useState([]);
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -68,9 +68,9 @@ const PlayPage = () => {
   //   setImages(data);
   // };
 
-  useEffect(() =>{
+  useEffect(() => {
     getColorImages();
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (!images) {
@@ -81,7 +81,7 @@ const PlayPage = () => {
       let b64 = giveMeTheImage(i.img);
       copyOfWords[index].base64img = b64;
     });
-    setMyWords(copyOfWords)
+    setMyWords(copyOfWords);
   }, [images]);
 
   return (
@@ -95,7 +95,7 @@ const PlayPage = () => {
         />
         <div className="containerAlignment">
           <div className="row rowAlignment">
-            <div className=" col-3 categoryRow">
+            <div className=" col-4 categoryRow">
               <CategoryButtons
                 value="Animals"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
@@ -120,16 +120,24 @@ const PlayPage = () => {
                 onClick={getLetterImages}
               />
             </div>
-            <div className="col-9">
+            <div className="col-5">
               <CardBoard
                 funWords={myWords}
                 reward={reward}
                 setReward={setReward}
               />
             </div>
-          </div>
+            <div className="col-3">
+              <button>This is to Upload images</button>
 
-          <Upload />
+              <CategoryButtons
+                value="Custom"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                onClick={getLetterImages}
+              />
+            </div>
+          </div>
+          {/* <Upload /> */}
         </div>
       </div>
       {throwConfetti()}
