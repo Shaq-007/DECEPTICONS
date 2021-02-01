@@ -4,9 +4,25 @@ import { funWords } from "../fakeDatabase.js/funWords";
 import "../components/CardBoard.css";
 import "../pages/PlayPage.css";
 import GoBackButton from "../components/GoBackButton";
-import RewardModal from "../components/RewardModal"
+import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
+import Upload from "../components/Upload";
+
+console.log('funwords', funWords)
+let arrayBufferToBase64 = (buffer) => {
+  var binary = "";
+  var bytes = [].slice.call(new Uint8Array(buffer));
+  bytes.forEach((b) => (binary += String.fromCharCode(b)));
+  return window.btoa(binary);
+};
+
+let giveMeTheImage = (img) => {
+  var base64Flag = "data:image/jpeg;base64,";
+  var imageStr = arrayBufferToBase64(img.data.data);
+  const finalImage = base64Flag + imageStr;
+  return finalImage;
+};
 
 const PlayPage = () => {
   const [images, setImages] = useState();
@@ -15,25 +31,15 @@ const PlayPage = () => {
 
   const throwConfetti = () => {
     if (reward === true) {
-      return <Confetti1/>
+      return <Confetti1 />;
     }
-  }
+  };
 
   const openModal = () => {
     if (showModal === true) {
-      return <RewardModal/>
+      return <RewardModal />;
     }
-  }
-
-  useEffect(() => {
-    if (!images) {
-      return
-    }
-    images.forEach((i, index) => {
-      let b64 = giveMeTheImage(i.img);
-      funWords[index].base64img = b64;
-    });
-  }, [images]);
+  };
 
   // Functions to call api
   const getColorImages = async () => {
@@ -62,59 +68,62 @@ const PlayPage = () => {
   //   setImages(data);
   // };
 
-  console.log("these are the funWords :", funWords);
+  useEffect(() => {
+    if (!images) {
+      return;
+    }
+    images.forEach((i, index) => {
+      let b64 = giveMeTheImage(i.img);
+      funWords[index].base64img = b64;
+    });
+  }, [images]);
 
-  let arrayBufferToBase64 = (buffer) => {
-    var binary = "";
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => (binary += String.fromCharCode(b)));
-    return window.btoa(binary);
-  };
-
-  let giveMeTheImage = (img) => {
-    var base64Flag = "data:image/jpeg;base64,";
-    var imageStr = arrayBufferToBase64(img.data.data);
-    const finalImage = base64Flag + imageStr;
-    return finalImage;
-  };
-  
   return (
     <>
       <div className="playPage-image">
         <GoBackButton />
-        <RewardModal reward={reward} showModal={showModal} setShowModal={setShowModal}/>
+        <RewardModal
+          reward={reward}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
         <div className="containerAlignment">
           <div className="row rowAlignment">
             <div className=" col-3 categoryRow">
-            <CategoryButtons
-            value="Animals"
-            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
-            onClick={getAnimalImages}
-          />
+              <CategoryButtons
+                value="Animals"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
+                onClick={getAnimalImages}
+              />
 
-          <CategoryButtons
-            value="Shapes"
-            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
-            onClick={getShapeImages}
-          />
+              <CategoryButtons
+                value="Shapes"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
+                onClick={getShapeImages}
+              />
 
-          <CategoryButtons
-            value="Colors"
-            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
-            onClick={getColorImages}
-          />
+              <CategoryButtons
+                value="Colors"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
+                onClick={getColorImages}
+              />
 
-          <CategoryButtons
-            value="Letters"
-            styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
-            onClick={getLetterImages}
-          />
-
+              <CategoryButtons
+                value="Letters"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
+                onClick={getLetterImages}
+              />
             </div>
             <div className="col-9">
-              <CardBoard funWords={funWords} reward={reward} setReward={setReward}/>
+              <CardBoard
+                funWords={funWords}
+                reward={reward}
+                setReward={setReward}
+              />
             </div>
           </div>
+
+          <Upload />
         </div>
       </div>
       {throwConfetti()}
