@@ -7,7 +7,9 @@ import GoBackButton from "../components/GoBackButton";
 import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
-import Upload from "../components/Upload";
+// import Upload from "../components/Upload";
+import UploadModal from "../components/UploadModal";
+import shuffle from 'shuffle-array';
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -62,11 +64,12 @@ const PlayPage = () => {
     let data = await response.json();
     setImages(data);
   };
-  // const getCustomImages = async () => {
-  //   let response = await fetch("/images/colors");
-  //   let data = await response.json();
-  //   setImages(data);
-  // };
+  const getCustomImages = async () => {
+    let response = await fetch("/images/custom");
+    let data = await response.json();
+    setImages(data);
+    console.log('this is the data', data)
+  };
 
   useEffect(() => {
     getColorImages();
@@ -83,6 +86,8 @@ const PlayPage = () => {
     });
     setMyWords(copyOfWords);
   }, [images]);
+
+  shuffle(myWords)
 
   return (
     <>
@@ -128,12 +133,12 @@ const PlayPage = () => {
               />
             </div>
             <div className="col-3">
-              <button>This is to Upload images</button>
-
+              {/* <button>This is to Upload images</button> */}
+              <UploadModal/>
               <CategoryButtons
                 value="Custom"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                onClick={getLetterImages}
+                onClick={getCustomImages}
               />
             </div>
           </div>
@@ -146,6 +151,6 @@ const PlayPage = () => {
   );
 };
 
-funWords.sort(() => Math.random() - 0.5);
+// funWords.sort(() => Math.random() - 0.5);
 
 export default PlayPage;
