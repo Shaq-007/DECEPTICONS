@@ -1,40 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import "./RewardModal.css";
+import rainbow from "../images/rewardrainbow.svg";
+
+Modal.setAppElement('#root')
 
 const RewardModal = ({ showModal, setShowModal, reward }) => {
 
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+
     useEffect(() => {
         if (reward === true) {
-            setShowModal(true);
+            setShowModal(true)
+            setModalIsOpen(true)
         }
-    })
+    }, [reward, setShowModal]);
+
+    const closeModal = () => {
+        setModalIsOpen(false)
+        window.location.reload(false);
+        
+
+    }
 
     return (
         <>
             {showModal ? (
-                <div className="modal" role="dialog" style={{display: "inline-block", marginTop:"130px"}}>
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Congratulations!</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <p>Wow, you did great!</p>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-primary">Play Again?</button>
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
+            
+            <Modal style={{overlay: { zIndex:'100'}, content: {width: "500px", height:"auto", margin:"auto"}}} 
+            isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                <h2 className="rewardModalTitle">Congratulations!</h2>
+                <p className="rewardModalBody">Wow, you did great!</p>
+                <div className="rewardModalImage">
+                    <img className="rewardImage" src={rainbow} alt="rainbow"/>
                 </div>
-
+                <div className="rewardButtonContainer">
+                    <button className="btn btn-success" onClick={closeModal}>Play Again?</button>
+                </div>
+            </Modal>                
             ) : null}
         </>
     )
 };
 
 export default RewardModal
+
 

@@ -1,0 +1,26 @@
+.rewardModalTitle {
+    color: orange;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+p.rewardModalBody {
+    color: rgb(228, 34, 131);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.rewardImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: auto;
+}
+
+.rewardButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
