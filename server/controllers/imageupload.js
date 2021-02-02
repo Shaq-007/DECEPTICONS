@@ -27,9 +27,9 @@ app.use(express.json());
 // Step 8: Handling the POST request
 //Uploading the image
 
-exports.get_image_custom = async function (req, res, next) {
+exports.post_image_custom = async function (req, res, next) {
   console.info("the req.body is", req.body);
-  console.log("the req.file is:", req.file);
+  // console.log("the req.file is:", req.file);
   var obj = {
     name: req.body.name,
     // desc: req.body.desc,

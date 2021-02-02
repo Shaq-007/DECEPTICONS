@@ -30,6 +30,8 @@ app.get("/images/shapes", image_controllers.get_image_shapes);
 
 app.get("/images/letters", image_controllers.get_image_letters);
 
+app.get("/images/custom", image_controllers.get_image_custom);
+
 ////  Code to upload custom photos
 //// Using the middleware Multer to upload the photo
 var path = require("path");
@@ -50,7 +52,7 @@ var upload = multer({ storage: storage });
 app.post(
   "/images/save",
   upload.single("image"),
-  upload_controller.get_image_custom
+  upload_controller.post_image_custom
 );
 
 // app.get("/images", async (req, res) => {
