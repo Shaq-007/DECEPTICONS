@@ -1,0 +1,54 @@
+.container-fluid {
+    background-image: url(../images/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+}
+
+.adminHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(226, 221, 221);
+}
+
+.adminAccessTitle {
+    color: red;
+}
+
+@media screen and (min-width: 320px) {
+    .adminAccessTitle {
+      font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .adminAccessTitle {
+      font-size: 40px;
+    }
+  }
+
+.buttonsContainer {
+    width: 100%;
+    display: flex;
+    margin-top: 80px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    height: 300px;
+    justify-content: center;
+}
+
+.adminConsole {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+}
+
+.adminButtons {
+    height: 100px;
+}
