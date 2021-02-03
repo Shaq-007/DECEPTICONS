@@ -1,5 +1,5 @@
 .container-fluid {
-    background-image: url(../images/background2.jpg);
+    background-image: url(../images/adminbackground.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: rgb(226, 221, 221);
+    background-color: rgb(233,235,236)
 }
 
 .adminAccessTitle {
