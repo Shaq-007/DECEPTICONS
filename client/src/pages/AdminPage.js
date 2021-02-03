@@ -1,8 +1,9 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 import "../components/AdminPage.css";
-
+import { Link } from "react-router-dom";
+ 
 const AdminPage = () => {
-    
     
     
     return (
@@ -14,12 +15,16 @@ const AdminPage = () => {
             
             <div className="buttonsContainer">
                 <div className="adminConsole">
-                    <button className="btn btn-lg btn-primary adminButtons">
-                       Manage Users
-                    </button>
-                    <button className="btn btn-lg btn-primary adminButtons">
-                       Manage Categories
-                    </button>
+                <Link to={"/adminusers"}>
+                        <button className="btn btn-lg btn-primary adminButtons">
+                            Manage Users
+                        </button>
+                    </Link>
+                    <Link to={"/admincategories"}>
+                        <button className="btn btn-lg btn-primary adminButtons">
+                            Manage Categories
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
