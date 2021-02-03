@@ -58,3 +58,19 @@ exports.get_image_letters = async function (req, res) {
     res.sendStatus(400);
   }
 };
+
+exports.get_image_custom = async function (req, res) {
+  console.log('custom images ',res)
+  const imagesByCategoryCustom = await Image.find({
+    categoryName: "Custom",
+  });
+  // console.log(imagesByCategoryCustom);
+  if (imagesByCategoryCustom != null) {
+    // console.log(`success, images found: ${imagesByCategoryCustom}`);
+    res.status(200).json(imagesByCategoryCustom);
+  } else {
+    console.log("error:cannot find images");
+    res.sendStatus(400);
+  }
+};
+
