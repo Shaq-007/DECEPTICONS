@@ -27,16 +27,26 @@ const RewardModal = ({ showModal, setShowModal, reward }) => {
         <>
             {showModal ? (
             
-            <Modal style={{overlay: { zIndex:'100'}, content: {width: "500px", height:"auto", margin:"auto"}}} 
-            isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                <h2 className="rewardModalTitle">Congratulations!</h2>
-                <p className="rewardModalBody">Wow, you did great!</p>
-                <div className="rewardModalImage">
-                    <img className="rewardImage" src={rainbow} alt="rainbow"/>
-                </div>
-                <div className="rewardButtonContainer">
-                    <button className="btn btn-success" onClick={closeModal}>Play Again?</button>
-                </div>
+            <Modal 
+                style={
+                    {overlay: { 
+                        zIndex:'100', 
+                        backgroundColor: 'rgba(255, 255, 255, 0.25)'
+                    }, 
+                    content: {
+                        width: "500px", 
+                        height:"auto", 
+                        margin:"auto",
+                    }}} 
+                isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                    <h2 className="rewardModalTitle">Congratulations!</h2>
+                    <p className="rewardModalBody">Wow, you did great!</p>
+                    <div className="rewardModalImage">
+                        <img className="rewardImage" src={rainbow} alt="rainbow"/>
+                    </div>
+                    <div className="rewardButtonContainer">
+                        <button className="btn btn-success" onClick={closeModal}>Play Again?</button>
+                    </div>
             </Modal>                
             ) : null}
         </>
