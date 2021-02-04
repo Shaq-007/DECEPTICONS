@@ -12,7 +12,8 @@ const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-
 
 //"Signup & Singnin method creation"//
 exports.signup = (req, res, next) => {
-    let { username, email, password, password_confirmation } = req.body;
+    let { username, email, password, password_confirmation, userlevel} = req.body;
+    console.log("req.body is: ", JSON.stringify(req.body));
 
     // validate the fields of the request and push errors into an array
     let errors = [];
@@ -32,13 +33,13 @@ exports.signup = (req, res, next) => {
         errors.push({ password: "mismatch" });
     }
     if (errors.length > 0) {
-        return res.status(422).jason({ errors: errors });
+        return res.status(422).json({ errors: errors });
     }
 
     // Signup Logic
     User.findOne({ email: email })
         .then(user => {
-            console.log(user)
+            console.log("This is the user: " , user)
             if (user) {
                 return res.status(422).json({ errors: [{ user: "email already exists" }] });
             }
@@ -47,7 +48,8 @@ exports.signup = (req, res, next) => {
                     username: username,
                     email: email,
                     password: password,
-                    password_confirmation: password
+                    password_confirmation: password,
+                    userlevel: userlevel
                 });
             }
 

@@ -6,6 +6,7 @@ const app = express();
 const authRoutes = require('./routes/auth'); //from auth
 app.use(express.json());
 
+
 // app.get('/',(req,res) => {
 //     res.send('Hello world!!!');
 // });
