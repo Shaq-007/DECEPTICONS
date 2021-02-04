@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { withRouter } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -12,12 +13,12 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
-function UploadModal() {
+function UploadModal({categoryName, setCategoryName}) {
   var subtitle;
   // /** start states */
   const [name, setName] = useState("");
   const [file, setFile] = useState();
-  const [category, setCategory] = useState("");
+  // const [categoryName, setCategoryName] = useState("");
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -42,7 +43,7 @@ function UploadModal() {
     // event.target.file[0] from <input type= "file" .../> on line 70
     formData.append("image", file);
     formData.append("name", name);
-    formData.append("category", category);
+    formData.append("categoryName", categoryName);
     const options = {
       method: "POST",
       body: formData,
@@ -63,9 +64,9 @@ function UploadModal() {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello !!!</h2>
 
-          <div>Please upload 12 images </div>
+          <h5>Please upload 6 images </h5>
 
           <form
             action="/images/save"
@@ -90,22 +91,24 @@ function UploadModal() {
             </div> */}
 
             <div>
-              <label htmlFor="category">Username</label>
+              <label htmlFor="categoryName">Username:</label>
               <input
-                id="category"
-                name="category"
+                class="form-control"
+                id="categoryName"
+                name="categoryName"
                 onChange={(event) => {
                   const { value } = event.target;
-                  setCategory(value);
+                  setCategoryName(value);
                 }}
-                value={category}
+                value={categoryName}
                 placeholder="Type your Username"
                 required
               ></input>
             </div>
             <div>
-              <label htmlFor="image">Upload Image</label>
+          <label htmlFor="image" >Upload Image: </label>
               <input
+              class="form-control"
                 type="file"
                 id="image"
                 onChange={(event) => {
@@ -127,8 +130,8 @@ function UploadModal() {
                 Submit
               </button>
               <br/><br/>
-              <div>
-                <button onClick={closeModal}>close</button>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-outline-secondary" onClick={closeModal}>close</button>
               </div>
             </div>
           </form>
