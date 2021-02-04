@@ -1,0 +1,20 @@
+.userCards {
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    margin: 0;
+}
+
+.userButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: flex;
+    margin-right: 10px;
+}
