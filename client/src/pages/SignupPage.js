@@ -48,6 +48,7 @@ import "../components/Fonts.css";
 
 const SignupPage = () => {
   const [state, setState] = useState({
+    username: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -71,16 +72,19 @@ const SignupPage = () => {
     }
   };
 
-  const sendDetailsToServer = async (newEmail, newPassword) => {
-    let response = await fetch("/users/create", {
-      method: "post",
+  const sendDetailsToServer = async () => {
+    console.log(state.username, state.email, state.password, state.password_confirmation)
+    let response = await fetch("/api/signup", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: newEmail,
-        password: newPassword,
-        password_confirmation: newPassword,
+        username: state.username,
+        email: state.email,
+        password: state.password,
+        password_confirmation: state.password_confirmation,
       }),
     });
+  
 
     let data = await response.json();
     let message = JSON.stringify(data);
@@ -98,6 +102,18 @@ const SignupPage = () => {
       <div className="card col-10 col-lg-4 login-card mt-2 hv-center">
         <div className="form-text instructionSignUp">New User Signup</div>
         <form>
+        <div className="form-group text-left">
+            <label htmlFor="exampleInputEmail1">username</label>
+            <input
+              type="username"
+              className="form-control"
+              id="username"
+              aria-describedby="emailHelp"
+              placeholder="Enter username"
+              value={state.username}
+              onChange={handleChange}
+            />
+          </div>  
           <div className="form-group text-left">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
