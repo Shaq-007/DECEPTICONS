@@ -3,12 +3,17 @@ let upload_controller = require("./controllers/imageupload");
 let user_controllers = require("./controllers/users");
 let image_controllers = require("./controllers/images");
 const app = express();
-
+const authRoutes = require('./routes/auth'); //from auth
 app.use(express.json());
 
 // app.get('/',(req,res) => {
 //     res.send('Hello world!!!');
 // });
+
+
+//from Auth APIs
+
+app.use('/api', authRoutes);
 
 /// api call to create new users
 app.post("/users/create", user_controllers.create_user);
