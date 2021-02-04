@@ -33,7 +33,7 @@ exports.post_image_custom = async function (req, res, next) {
   var obj = {
     name: req.body.name,
     // desc: req.body.desc,
-    categoryName: req.body.category,
+    categoryName: req.body.categoryName,
     img: {
       data: fs.readFileSync(path.join("./uploads/" + req.file.filename)),
       contentType: "image/png",

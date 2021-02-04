@@ -24,13 +24,13 @@ app.delete("/users/delete/:userid", user_controllers.delete_user);
 // api GET calls for images depending on CATEGORY
 app.get("/images/colors", image_controllers.get_image_colors);
 
-app.get("/images/animals", image_controllers.get_image_animals);
+// app.get("/images/animals", image_controllers.get_image_animals);
 
-app.get("/images/shapes", image_controllers.get_image_shapes);
+// app.get("/images/shapes", image_controllers.get_image_shapes);
 
-app.get("/images/letters", image_controllers.get_image_letters);
+// app.get("/images/letters", image_controllers.get_image_letters);
 
-app.get("/images/custom", image_controllers.get_image_custom);
+app.get("/images/:categoryName", image_controllers.get_image_custom);
 
 ////  Code to upload custom photos
 //// Using the middleware Multer to upload the photo

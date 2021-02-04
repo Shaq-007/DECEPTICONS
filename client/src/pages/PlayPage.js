@@ -7,7 +7,6 @@ import GoBackButton from "../components/GoBackButton";
 import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
-// import Upload from "../components/Upload";
 import UploadModal from "../components/UploadModal";
 import shuffle from 'shuffle-array';
 
@@ -30,6 +29,7 @@ const PlayPage = () => {
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -49,23 +49,23 @@ const PlayPage = () => {
     let data = await response.json();
     setImages(data);
   };
-  const getShapeImages = async () => {
-    let response = await fetch("/images/shapes");
-    let data = await response.json();
-    setImages(data);
-  };
-  const getLetterImages = async () => {
-    let response = await fetch("/images/letters");
-    let data = await response.json();
-    setImages(data);
-  };
-  const getAnimalImages = async () => {
-    let response = await fetch("/images/animals");
-    let data = await response.json();
-    setImages(data);
-  };
-  const getCustomImages = async () => {
-    let response = await fetch("/images/custom");
+  // const getShapeImages = async () => {
+  //   let response = await fetch("/images/shapes");
+  //   let data = await response.json();
+  //   setImages(data);
+  // };
+  // const getLetterImages = async () => {
+  //   let response = await fetch("/images/letters");
+  //   let data = await response.json();
+  //   setImages(data);
+  // };
+  // const getAnimalImages = async () => {
+  //   let response = await fetch("/images/animals");
+  //   let data = await response.json();
+  //   setImages(data);
+  // };
+  const getImages = async (categoryName) => {
+    let response = await fetch("/images/" + categoryName);
     let data = await response.json();
     setImages(data);
     console.log('this is the data', data)
@@ -104,13 +104,13 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Animals"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
-                onClick={getAnimalImages}
+                onClick={() =>  {getImages ("Animals")}}
               />
 
               <CategoryButtons
                 value="Shapes"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
-                onClick={getShapeImages}
+                onClick={() =>  {getImages ("Shapes")}}
               />
 
               <CategoryButtons
@@ -122,7 +122,7 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Letters"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
-                onClick={getLetterImages}
+                onClick={() =>  {getImages ("Letters")}}
               />
             </div>
             <div className="col-5">
@@ -133,16 +133,19 @@ const PlayPage = () => {
               />
             </div>
             <div className="col-3">
-              {/* <button>This is to Upload images</button> */}
-              <UploadModal/>
-              <CategoryButtons
-                value="Custom"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                onClick={getCustomImages}
-              />
+              {/* here need a condition, if user is parent, show this otherwise do not show */}
+              <UploadModal categoryName = {categoryName} setCategoryName = {setCategoryName} />
+              {(categoryName) ? ( 
+                <CategoryButtons
+                  value="Custom"
+                  styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                  onClick={() =>  {getImages (categoryName)}}
+                />            
+
+              ) : null}
+              
             </div>
           </div>
-          {/* <Upload /> */}
         </div>
       </div>
       {throwConfetti()}
