@@ -3,12 +3,18 @@ let upload_controller = require("./controllers/imageupload");
 let user_controllers = require("./controllers/users");
 let image_controllers = require("./controllers/images");
 const app = express();
-
+const authRoutes = require('./routes/auth'); //from auth
 app.use(express.json());
+
 
 // app.get('/',(req,res) => {
 //     res.send('Hello world!!!');
 // });
+
+
+//from Auth APIs
+
+app.use('/api', authRoutes);
 
 /// api call to create new users
 app.post("/users/create", user_controllers.create_user);
@@ -24,13 +30,13 @@ app.delete("/users/delete/:userid", user_controllers.delete_user);
 // api GET calls for images depending on CATEGORY
 app.get("/images/colors", image_controllers.get_image_colors);
 
-app.get("/images/animals", image_controllers.get_image_animals);
+// app.get("/images/animals", image_controllers.get_image_animals);
 
-app.get("/images/shapes", image_controllers.get_image_shapes);
+// app.get("/images/shapes", image_controllers.get_image_shapes);
 
-app.get("/images/letters", image_controllers.get_image_letters);
+// app.get("/images/letters", image_controllers.get_image_letters);
 
-app.get("/images/custom", image_controllers.get_image_custom);
+app.get("/images/:categoryName", image_controllers.get_image_custom);
 
 ////  Code to upload custom photos
 //// Using the middleware Multer to upload the photo

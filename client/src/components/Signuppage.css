@@ -11,15 +11,24 @@
   overflow: hidden;
 }
 
-.formAlignmentSignUp {
+/* .formAlignmentSignUp {
   font-family: "Atma", cursive;
   width: 25%;
   margin-top: 6rem;
-  /* position: relative; */
-  margin-left: auto;
+margin-left: auto;
   margin-right: auto;
 }
+*/
+
+div.card.col-10.col-lg-4.login-card.mt-2.hv-center {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: inherit;
+  margin-top: 6rem !important;
+}
+
 .instructionSignUp {
+  font-family: "Atma", cursive;
   font-size: 40px;
   font-weight: 700;
   color: rgb(57, 9, 145);
