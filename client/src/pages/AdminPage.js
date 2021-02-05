@@ -1,5 +1,4 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
 import "../components/AdminPage.css";
 import { Link } from "react-router-dom";
  
