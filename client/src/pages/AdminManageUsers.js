@@ -1,43 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import UserCard from "../components/UserCard";
+// import UserCard from "../components/UserCard";
+import UserList from "../components/UserList";
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
 
 const AdminManageUsers = () => {
     const [users, setUsers] = useState([]);
-    // const [searchField, setSearchField] = useState("");
-    
+    const [searchfield, setSearchfield] = useState('');
+
     useEffect(() => {
         getUsers();
     }, []);
-    
+
 
     const getUsers = async () => {
         let response = await fetch("/users");
-        let players = await response.json();
-        setUsers(players);
-        console.log(players)
-      };
-      
-    
-    return (
-        <div>
-            <h1>System Users</h1>
-            {
-            users.map((users) => {
-                return (
-                    <div>
-                        <UserCard
-                            key = {users._id}
-                            id = {users._id}
-                            username = {users.username}
-                            email = {users.email}
-                            access = {users.userlevel}
-                        /> 
-                    </div>
-                );
-            })
-        }
-        </div>
-    )
+        let allUsers = await response.json();
+        setUsers(allUsers);
+    };
+
+    const onSearchChange = (event) => {
+        setSearchfield(event.target.value)
+    }
+
+    const filteredUsers = users.filter(user => {
+        return user.username.toLowerCase().includes(searchfield.toLowerCase());
+    })
+
+    return !users.length ?
+        <h1>Loading</h1> :
+        (
+            <div>
+                <h1>System Users</h1>
+                <div>
+                    <SearchBox searchChange={onSearchChange} />
+                    <Scroll>
+                        <UserList users={filteredUsers} />
+                    </Scroll>
+                </div>
+            </div>
+        )
 }
 
 export default AdminManageUsers
