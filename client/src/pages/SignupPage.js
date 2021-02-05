@@ -2,56 +2,13 @@ import React, { useState } from "react";
 import "../components/Signuppage.css";
 import "../components/Fonts.css";
 
-// const SignupPage = () => {
-//   return (
-//     <div className="BackgroundSignUpImage">
-//       <div className="formAlignmentSignUp">
-//         <div className="form-text instructionSignUp">New User Signup</div>
-//         <div>
-//           <label for="exampleInputName" className="form-label">
-//             Email address
-//           </label>
-//           <input
-//             type="name"
-//             className="form-control"
-//             id="exampleInputName"
-//             aria-describedby="namelHelp"
-//           /><br/>
-//           <label for="exampleInputPassword1" className="form-label">
-//             Password
-//           </label>
-//           <input
-//             type="password"
-//             className="form-control"
-//             id="exampleInputPassword1"
-//           />
-//           <br/>
-//           <label for="exampleInputPassword1" className="form-label">
-//             Confirm Password
-//           </label>
-//           <input
-//             type="password"
-//             className="form-control"
-//             id="exampleInputPassword2"
-//           />
-//         </div>
-//         <div className="mb-3"></div>
-
-//         <br />
-//         <button type="submit" className="btn btn-warning">
-//           Sign Up
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
 const SignupPage = () => {
   const [state, setState] = useState({
     username: "",
     email: "",
     password: "",
     password_confirmation: "",
+    userlevel: "1"
   });
 
   const handleChange = (e) => {
@@ -68,12 +25,11 @@ const SignupPage = () => {
       sendDetailsToServer();
     } else {
       alert("Passwords do not match");
-      console.log("heeeeelp");
     }
   };
 
   const sendDetailsToServer = async () => {
-    console.log(state.username, state.email, state.password, state.password_confirmation)
+    console.log(state.username, state.email, state.password, state.password_confirmation, state.userlevel )
     let response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -82,6 +38,7 @@ const SignupPage = () => {
         email: state.email,
         password: state.password,
         password_confirmation: state.password_confirmation,
+        userlevel:state.userlevel
       }),
     });
   

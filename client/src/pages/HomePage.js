@@ -2,6 +2,9 @@ import React from "react";
 import "../components/Homepage.css";
 import "../components/Fonts.css";
 const HomePage = () => {
+
+
+  
   return (
     <div className="backgroundHomePageImage">
       <h1 className="title">MemoryLand</h1>

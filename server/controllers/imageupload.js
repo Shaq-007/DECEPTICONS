@@ -8,31 +8,13 @@ app.use(express.json());
 
 // require('./db/mongoose')
 
-/// Step 6  load the model into app.js
-// var imgModel = require('./db/models');
-
-// Step 7:  handle our post and get requests to our database
-// Retriving the image
-// app.get('/', (req, res) => {
-// 	Image.find({}, (err, items) => {
-// 		if (err) {
-// 			console.log(err);
-// 		}
-// 		else {
-// 			res.render('app', { items: items });
-// 		}
-// 	});
-// });
-
 // Step 8: Handling the POST request
 //Uploading the image
 
 exports.post_image_custom = async function (req, res, next) {
   console.info("the req.body is", req.body);
-  // console.log("the req.file is:", req.file);
   var obj = {
     name: req.body.name,
-    // desc: req.body.desc,
     categoryName: req.body.categoryName,
     img: {
       data: fs.readFileSync(path.join("./uploads/" + req.file.filename)),

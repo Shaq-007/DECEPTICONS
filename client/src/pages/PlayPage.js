@@ -44,26 +44,12 @@ const PlayPage = () => {
   };
 
   // Functions to call api
-  const getColorImages = async () => {
-    let response = await fetch("/images/colors");
-    let data = await response.json();
-    setImages(data);
-  };
-  // const getShapeImages = async () => {
-  //   let response = await fetch("/images/shapes");
+  // const getColorImages = async () => {
+  //   let response = await fetch("/images/colors");
   //   let data = await response.json();
   //   setImages(data);
   // };
-  // const getLetterImages = async () => {
-  //   let response = await fetch("/images/letters");
-  //   let data = await response.json();
-  //   setImages(data);
-  // };
-  // const getAnimalImages = async () => {
-  //   let response = await fetch("/images/animals");
-  //   let data = await response.json();
-  //   setImages(data);
-  // };
+  
   const getImages = async (categoryName) => {
     let response = await fetch("/images/" + categoryName);
     let data = await response.json();
@@ -72,7 +58,8 @@ const PlayPage = () => {
   };
 
   useEffect(() => {
-    getColorImages();
+    getImages ("Colors")
+    // getColorImages();
   }, []);
 
   useEffect(() => {
@@ -116,7 +103,7 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Colors"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
-                onClick={getColorImages}
+                onClick={() =>  {getImages ("Colors")}}
               />
 
               <CategoryButtons
@@ -124,26 +111,25 @@ const PlayPage = () => {
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
                 onClick={() =>  {getImages ("Letters")}}
               />
-            </div>
-            <div className="col-5">
-              <CardBoard
-                funWords={myWords}
-                reward={reward}
-                setReward={setReward}
-              />
-            </div>
-            <div className="col-3">
+
               {/* here need a condition, if user is parent, show this otherwise do not show */}
               <UploadModal categoryName = {categoryName} setCategoryName = {setCategoryName} />
+              
               {(categoryName) ? ( 
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                   onClick={() =>  {getImages (categoryName)}}
                 />            
-
               ) : null}
               
+            </div>
+            <div className="col-8">
+              <CardBoard
+                funWords={myWords}
+                reward={reward}
+                setReward={setReward}
+              />
             </div>
           </div>
         </div>
@@ -153,7 +139,5 @@ const PlayPage = () => {
     </>
   );
 };
-
-// funWords.sort(() => Math.random() - 0.5);
 
 export default PlayPage;

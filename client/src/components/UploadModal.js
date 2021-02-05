@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { withRouter } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -16,7 +15,7 @@ Modal.setAppElement("#root");
 function UploadModal({categoryName, setCategoryName}) {
   var subtitle;
   // /** start states */
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [file, setFile] = useState();
   // const [categoryName, setCategoryName] = useState("");
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -35,14 +34,14 @@ function UploadModal({categoryName, setCategoryName}) {
 
   const send = async (event) => {
     event.preventDefault();
-    console.log(name);
+    // console.log(name);
 
     const formData = new FormData();
     // file is the name of the request parameter
     // file is the state variable  that holds
     // event.target.file[0] from <input type= "file" .../> on line 70
     formData.append("image", file);
-    formData.append("name", name);
+    // formData.append("name", name);
     formData.append("categoryName", categoryName);
     const options = {
       method: "POST",
