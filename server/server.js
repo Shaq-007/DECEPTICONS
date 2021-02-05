@@ -9,8 +9,7 @@ app.use(express.json());
 //from Auth APIs
 app.use("/api", authRoutes);
 
-/// api call to create new users
-// app.post("/users/create", user_controllers.create_user);
+/// api call for users
 
 app.get("/users", user_controllers.get_users);
 
@@ -21,7 +20,6 @@ app.patch("/users/update/:userid", user_controllers.update_userLevel);
 app.delete("/users/delete/:userid", user_controllers.delete_user);
 
 // api GET calls for images depending on CATEGORY
-app.get("/images/colors", image_controllers.get_image_colors);
 
 app.get("/images/:categoryName", image_controllers.get_image_custom);
 
