@@ -137,7 +137,7 @@ exports.signin = (req, res) => {
                         });
                     })
                     .catch(err => {
-                        return res.status(500).json({ errors: "bcrypy.compare:" + err.message });
+                        return res.status(500).json({ errors: "bcrypt.compare:" + err.message });
                     });
             }
         }).catch(err => {
