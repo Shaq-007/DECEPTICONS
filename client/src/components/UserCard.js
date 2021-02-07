@@ -1,14 +1,39 @@
 import React, { useState } from 'react';
 import "./UserCard.css";
 
-const UserCard = ({ username, email, id, access }) => {
+const UserCard = ({ username, email, id, userlevel }) => {
 
-    const [accessLevel, setAccessLevel] = useState(access);
+    const [accessLevel, setAccessLevel] = useState();
 
-    const changingAccess = (event) => {
-        let value = (event.target.value);
-        return setAccessLevel(Number(value));
-    }
+    const changingAccess = (e) => {
+        let value = e.target.value;
+        setAccessLevel(value)
+      };
+    
+      const updateOnClick = (e) => {
+        e.preventDefault();
+          sendDetailsToServer();
+      };
+
+    const sendDetailsToServer = async () => {
+        let response = await fetch(`/users/update/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userlevel: accessLevel
+          }),
+        });
+    
+        let data = await response.json();
+        let message = JSON.stringify(data);
+        console.log(message);
+    
+        if (response.status === 200) {
+          return message;
+        } else {
+          throw Error.message;
+        }
+    };
 
     return (
         <>
@@ -20,7 +45,7 @@ const UserCard = ({ username, email, id, access }) => {
                     <div className="input-group-prepend">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Access</label>
                         <select onChange={changingAccess} className="custom-select" id="inputGroupSelect01">
-                            <option defaultValue>{access}</option>
+                            <option defaultValue>{userlevel}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -28,7 +53,7 @@ const UserCard = ({ username, email, id, access }) => {
                     </div>
 
                     <div className="userButtons">
-                        <button className="btn btn-primary">Update</button>
+                        <button onClick={updateOnClick} className="btn btn-primary">Update</button>
                         <button className="btn btn-danger">Delete</button>
                     </div>
                 </div>

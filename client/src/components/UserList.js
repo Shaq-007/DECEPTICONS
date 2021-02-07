@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserCard from "../components/UserCard";
 
 const UserList = ({ users }) => {
@@ -14,7 +14,7 @@ const UserList = ({ users }) => {
                             id={users[i]._id}
                             username={users[i].username}
                             email={users[i].email}
-                            access={users[i].userlevel}
+                            userlevel={users[i].userlevel}
                         />
                     );
                 })
