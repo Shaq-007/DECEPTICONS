@@ -7,26 +7,28 @@ const HomePage = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState();
+  const [user, setUser] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`submitted email: 
       ${email} password: ${password}`);
     checkDetailsInServer();
-    if (email === `${email}` && password === `${password}`) {
-      setLoggedIn(true);
-      console.log("hello user");
-      goPlay();
-    } else {
-      console.log(
-        "this is checking what is the password",
-        password,
-        `${password}`
-      );
-      alert(
-        "Something went wrong! Please, enter your email and password again."
-      );
-    }
+    // if (email === `${email}` && password === `${password}`) {
+    //   setLoggedIn(true);
+    //   console.log("hello user");
+    //   goPlay();
+    // } else {
+    //   console.log(
+    //     "this is checking what is the password",
+    //     password,
+    //     `${password}`
+    //   );
+    //   alert(
+    //     "Something went wrong! Please, enter your email and password again."
+    //   );
+    // }
   };
 
   const checkDetailsInServer = async () => {
@@ -42,43 +44,29 @@ const HomePage = () => {
       });
       let data = await response.json();
       let message = JSON.stringify(data);
-      console.log("this is the message", message);
 
-      if (response.status === 200) {
-        return message;
-      } else {
-        throw Error.message;
+      if (data.success === true) {
+        setToken(data.access_token);
+        setUser(data.user);
+        // console.log('here is the response', message)
+        setLoggedIn(true);
+        console.log("hello user");
+        goPlay();
+      } 
+      else {
+       console.log("Something went wrong, check your email / password:", data.errors[0].password);
+       setLoggedIn(data.errors[0].password)
       }
     } catch (error) {
+      setLoggedIn(error.message)
       console.log("there is an error with the fetch", error);
     }
   };
 
   const history = useHistory();
   const goPlay = () => {
-    if (loggedIn === true) {
       history.push("play");
-    }
   };
-
-  // const goPlay = () => {
-  //   setLoggedIn(true);
-  //   if (loggedIn === true) {
-  //     history.push("play");
-  //   } else {
-  //     console.log("log in again");
-  //   }
-  // };
-
-  // let data = await response.json();
-  // let message = JSON.stringify(data);
-  // console.log(message);
-
-  // if (response.status === 200) {
-  //   return message;
-  // } else {
-  //   throw Error.message;
-  // }
 
   return (
     <div className="backgroundHomePageImage">
@@ -111,6 +99,8 @@ const HomePage = () => {
               placeholder="Enter password"
               onChange={({ target }) => setPassword(target.value)}
             />
+            <br></br>
+            {loggedIn ? <span style={{ color: "Black" }}>{'username/password is:'+ loggedIn}</span> : <span></span>}
           </div>
           <div className="mb-4"></div>
 

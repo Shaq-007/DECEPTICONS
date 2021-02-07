@@ -8,7 +8,7 @@ import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import UploadModal from "../components/UploadModal";
-import shuffle from 'shuffle-array';
+import shuffle from "shuffle-array";
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -43,23 +43,15 @@ const PlayPage = () => {
     }
   };
 
-  // Functions to call api
-  // const getColorImages = async () => {
-  //   let response = await fetch("/images/colors");
-  //   let data = await response.json();
-  //   setImages(data);
-  // };
-  
   const getImages = async (categoryName) => {
     let response = await fetch("/images/" + categoryName);
     let data = await response.json();
     setImages(data);
-    console.log('this is the data', data)
+    console.log("this is the data", data);
   };
 
   useEffect(() => {
-    getImages ("Colors")
-    // getColorImages();
+    getImages("Colors");
   }, []);
 
   useEffect(() => {
@@ -74,7 +66,7 @@ const PlayPage = () => {
     setMyWords(copyOfWords);
   }, [images]);
 
-  shuffle(myWords)
+  shuffle(myWords);
 
   return (
     <>
@@ -91,38 +83,50 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Animals"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
-                onClick={() =>  {getImages ("Animals")}}
+                onClick={() => {
+                  getImages("Animals");
+                }}
               />
 
               <CategoryButtons
                 value="Shapes"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
-                onClick={() =>  {getImages ("Shapes")}}
+                onClick={() => {
+                  getImages("Shapes");
+                }}
               />
 
               <CategoryButtons
                 value="Colors"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
-                onClick={() =>  {getImages ("Colors")}}
+                onClick={() => {
+                  getImages("Colors");
+                }}
               />
 
               <CategoryButtons
                 value="Letters"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
-                onClick={() =>  {getImages ("Letters")}}
+                onClick={() => {
+                  getImages("Letters");
+                }}
               />
 
               {/* here need a condition, if user is parent, show this otherwise do not show */}
-              <UploadModal categoryName = {categoryName} setCategoryName = {setCategoryName} />
-              
-              {(categoryName) ? ( 
+              <UploadModal
+                categoryName={categoryName}
+                setCategoryName={setCategoryName}
+              />
+
+              {categoryName ? (
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                  onClick={() =>  {getImages (categoryName)}}
-                />            
+                  onClick={() => {
+                    getImages(categoryName);
+                  }}
+                />
               ) : null}
-              
             </div>
             <div className="col-8">
               <CardBoard
