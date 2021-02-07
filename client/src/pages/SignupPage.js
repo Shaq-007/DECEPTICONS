@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../components/Signuppage.css";
 import "../components/Fonts.css";
+import { useHistory } from "react-router-dom";
 
 const SignupPage = () => {
   const [state, setState] = useState({
@@ -8,8 +9,9 @@ const SignupPage = () => {
     email: "",
     password: "",
     password_confirmation: "",
-    userlevel: "1"
+    userlevel: "1",
   });
+  const [signedUp, setSignedUp] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -23,13 +25,21 @@ const SignupPage = () => {
     e.preventDefault();
     if (state.password === state.password_confirmation) {
       sendDetailsToServer();
+      setSignedUp(true);
+      goPlayNow();
     } else {
-      alert("Passwords do not match");
+      console.log("Passwords do not match");
     }
   };
 
   const sendDetailsToServer = async () => {
-    console.log(state.username, state.email, state.password, state.password_confirmation, state.userlevel )
+    console.log(
+      state.username,
+      state.email,
+      state.password,
+      state.password_confirmation,
+      state.userlevel
+    );
     let response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -38,10 +48,9 @@ const SignupPage = () => {
         email: state.email,
         password: state.password,
         password_confirmation: state.password_confirmation,
-        userlevel:state.userlevel
+        userlevel: state.userlevel,
       }),
     });
-  
 
     let data = await response.json();
     let message = JSON.stringify(data);
@@ -54,13 +63,18 @@ const SignupPage = () => {
     }
   };
 
+  const history = useHistory();
+  const goPlayNow = () => {
+    history.push("play");
+  };
+
   return (
     <div className="BackgroundSignUpImage">
       <div className="card col-10 col-lg-4 login-card mt-2 hv-center">
         <div className="form-text instructionSignUp">New User Signup</div>
         <form>
-        <div className="form-group text-left">
-            <label htmlFor="exampleInputEmail1">username</label>
+          <div className="form-group text-left">
+            <label htmlFor="exampleInputEmail1">Username</label>
             <input
               type="username"
               className="form-control"
@@ -70,7 +84,7 @@ const SignupPage = () => {
               value={state.username}
               onChange={handleChange}
             />
-          </div>  
+          </div>
           <div className="form-group text-left">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
@@ -113,7 +127,7 @@ const SignupPage = () => {
             className="btn btn-primary"
             onClick={handleSubmitClick}
           >
-            Register
+            Register and Play
           </button>
         </form>
         <br />
