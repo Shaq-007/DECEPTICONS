@@ -5,7 +5,8 @@ const UserCard = ({ username, email, id, userlevel }) => {
 
     const [accessLevel, setAccessLevel] = useState();
 
-    const changingAccess = (e) => {
+    // ******************* UPDATING ACCESS LEVEL **************************************
+    const changeAccessLevel = (e) => {
         let value = e.target.value;
         setAccessLevel(value)
       };
@@ -27,6 +28,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
         let data = await response.json();
         let message = JSON.stringify(data);
         console.log(message);
+        alert("User level has been updated")
     
         if (response.status === 200) {
           return message;
@@ -34,6 +36,15 @@ const UserCard = ({ username, email, id, userlevel }) => {
           throw Error.message;
         }
     };
+    // ********************************************************************************
+
+
+    // ***************************** DELETING USER ************************************
+
+
+                            // insert code to delete user here 
+
+    // ********************************************************************************
 
     return (
         <>
@@ -44,7 +55,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
                     <p className="card-text"><b>Email:</b> {email}</p>
                     <div className="input-group-prepend">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Access</label>
-                        <select onChange={changingAccess} className="custom-select" id="inputGroupSelect01">
+                        <select onChange={changeAccessLevel} className="custom-select" id="inputGroupSelect01">
                             <option defaultValue>{userlevel}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
