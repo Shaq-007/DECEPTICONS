@@ -72,23 +72,6 @@ function UploadModal({categoryName, setCategoryName}) {
             method="POST"
             encType="multipart/form-data"
           >
-            {/* <div>
-              <label htmlFor="name">Image Title</label>
-              <input
-                type="text"
-                id="name"
-                onChange={(event) => {
-                  const { value } = event.target;
-                  setName(value);
-                  // changeName(event.target.value)
-                }}
-                placeholder="Name"
-                value={name}
-                name="name"
-                required
-              />
-            </div> */}
-
             <div>
               <label htmlFor="categoryName">Username:</label>
               <input
