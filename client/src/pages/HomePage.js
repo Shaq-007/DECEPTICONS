@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../components/Homepage.css";
 import "../components/Fonts.css";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const HomePage = () => {
   const [email, setEmail] = useState();
@@ -15,20 +15,6 @@ const HomePage = () => {
     console.log(`submitted email: 
       ${email} password: ${password}`);
     checkDetailsInServer();
-    // if (email === `${email}` && password === `${password}`) {
-    //   setLoggedIn(true);
-    //   console.log("hello user");
-    //   goPlay();
-    // } else {
-    //   console.log(
-    //     "this is checking what is the password",
-    //     password,
-    //     `${password}`
-    //   );
-    //   alert(
-    //     "Something went wrong! Please, enter your email and password again."
-    //   );
-    // }
   };
 
   const checkDetailsInServer = async () => {
@@ -52,20 +38,25 @@ const HomePage = () => {
         setLoggedIn(true);
         console.log("hello user");
         goPlay();
-      } 
-      else {
-       console.log("Something went wrong, check your email / password:", data.errors[0].password);
-       setLoggedIn(data.errors[0].password)
+      } else if (data.errors[0].password) {
+        console.log(
+          "Something went wrong, check your email / password:",
+          data.errors[0].password
+        );
+        setLoggedIn("Password is  " + data.errors[0].password);
+      } else {
+        console.log("User ", data.errors[0].user);
+        setLoggedIn("User  " + data.errors[0].user);
       }
     } catch (error) {
-      setLoggedIn(error.message)
+      setLoggedIn(error.message);
       console.log("there is an error with the fetch", error);
     }
   };
 
   const history = useHistory();
   const goPlay = () => {
-      history.push("play");
+    history.push("play");
   };
 
   return (
@@ -100,7 +91,13 @@ const HomePage = () => {
               onChange={({ target }) => setPassword(target.value)}
             />
             <br></br>
-            {loggedIn ? <span style={{ color: "Black" }}>{'username/password is:'+ loggedIn}</span> : <span></span>}
+            {loggedIn ? (
+              <span style={{ color: "Black", fontWeight: "700" }}>
+                {loggedIn}
+              </span>
+            ) : (
+              <span></span>
+            )}
           </div>
           <div className="mb-4"></div>
 

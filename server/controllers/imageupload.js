@@ -21,15 +21,19 @@ exports.post_image_custom = async function (req, res, next) {
       contentType: "image/png",
     },
   };
+  // for (i=0; i<6; i++) {
   Image.create(obj, (err, item) => {
     if (err) {
       console.log(err);
     } else {
-      // item.save();
+      // Image.save();
       // res.redirect('/');
       res.status(200).send("image in DB");
     }
   });
+  Image.create(obj, (err, item) => {
+  });
+// }
 };
 
 app.use(function (err, req, res, next) {
