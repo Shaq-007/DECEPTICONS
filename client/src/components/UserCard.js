@@ -33,7 +33,8 @@ const UserCard = ({ username, email, id, userlevel }) => {
       let data = await response.json();
       let message = JSON.stringify(data);
       console.log(message);
-
+      alert("User been Deleted")
+      
       if (response.status === 200) {
         return message;
       } else {
