@@ -16,14 +16,12 @@ const UserCard = ({ username, email, id, userlevel }) => {
           updateAccessInServer();
       };
        
-      const deleteOnClick = (e) =>{
+      const deleteUser = (e) =>{
         e.preventDefault();
-        sendDeleteToServer()
+        deleteUserInServer();
       };
     
-    
-
-    const sendDeleteToServer = async () => {
+    const deleteUserInServer = async () => {
       let response = await fetch(`/users/delete/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json"},
@@ -84,7 +82,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
 
                     <div className="userButtons">
                         <button onClick={updateAccessLevel} className="btn btn-primary">Update</button>
-                        <button onClick= {deleteOnClick} className="btn btn-danger">Delete</button>
+                        <button onClick= {deleteUser} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
