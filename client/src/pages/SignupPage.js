@@ -22,6 +22,10 @@ const SignupPage = () => {
     }));
   };
 
+  const handleCheckboxChange = () => {
+    state.userlevel = 8;
+  };
+
   const handleSubmitClick = (e) => {
     e.preventDefault();
     if (state.password === state.password_confirmation) {
@@ -123,6 +127,21 @@ const SignupPage = () => {
               value={state.password_confirmation}
               onChange={handleChange}
             />
+          </div>
+          <div
+            className="form-check"
+            style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
+          >
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value={state.userlevel}
+              onChange={handleCheckboxChange}
+              id="flexCheckDefault"
+            />
+            <label className="form-check-label" for="flexCheckDefault">
+              I am a Parent
+            </label>
           </div>
           <button
             type="submit"
