@@ -100,7 +100,7 @@ const HomePage = () => {
               onChange={({ target }) => setPassword(target.value)}
             />
             <br></br>
-            {loggedIn ? <span style={{ color: "Black" }}>{'username/password is:'+ loggedIn}</span> : <span></span>}
+            {loggedIn ? <span style={{ color: "black" , fontWeight: "900" , fontSize: "25px"}}>{'username/password is: '+ loggedIn}</span> : <span></span>}
           </div>
           <div className="mb-4"></div>
 

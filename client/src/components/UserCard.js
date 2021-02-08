@@ -14,6 +14,34 @@ const UserCard = ({ username, email, id, userlevel }) => {
         e.preventDefault();
           sendDetailsToServer();
       };
+       
+      const deleteOnClick = (e) =>{
+        e.preventDefault();
+        sendDeleteToServer()
+      };
+    
+    
+
+    const sendDeleteToServer = async () => {
+      let response = await fetch(`/users/delete/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
+          id: id
+        }),
+      });
+
+      let data = await response.json();
+      let message = JSON.stringify(data);
+      console.log(message);
+
+      if (response.status === 200) {
+        return message;
+      } else {
+        throw Error.message;
+      }
+            
+      };
 
     const sendDetailsToServer = async () => {
         let response = await fetch(`/users/update/${id}`, {
@@ -23,7 +51,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
             userlevel: accessLevel
           }),
         });
-    
+      
         let data = await response.json();
         let message = JSON.stringify(data);
         console.log(message);
@@ -54,7 +82,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
 
                     <div className="userButtons">
                         <button onClick={updateOnClick} className="btn btn-primary">Update</button>
-                        <button className="btn btn-danger">Delete</button>
+                        <button onClick= {deleteOnClick} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
