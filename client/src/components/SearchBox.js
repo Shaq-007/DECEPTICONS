@@ -2,13 +2,13 @@ import React from 'react';
 
 const SearchBox = ({ searchfield, searchChange }) => {
     return (
-        <div>
+        <div style= {{ marginTop: "15px", marginBottom: "15px"}}>
             <input 
                 type ='search' 
                 placeholder='search username' 
                 onChange ={searchChange}
-                />
-            </div>
+            />
+        </div>
     );
 }
 
