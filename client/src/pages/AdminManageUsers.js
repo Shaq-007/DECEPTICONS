@@ -32,12 +32,10 @@ const AdminManageUsers = () => {
         (
             <div>
                 <h1>System Users</h1>
-                <div>
-                    <SearchBox searchChange={onSearchChange} />
-                    <Scroll>
-                        <UserList users={filteredUsers} />
-                    </Scroll>
-                </div>
+                <SearchBox searchChange={onSearchChange} />
+                <Scroll>
+                    <UserList users={filteredUsers} />
+                </Scroll>
             </div>
         )
 }

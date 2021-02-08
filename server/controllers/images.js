@@ -4,7 +4,7 @@ const { Image } = require("../db/models");
 // IMAGES - GET by CATEGORY
 
 exports.get_image_custom = async function (req, res) {
-  console.log("custom images categoryName", req.params.categoryName);
+  console.log("categoryName", req.params.categoryName);
   const imagesByCategoryCustom = await Image.find({
     categoryName: req.params.categoryName,
   });

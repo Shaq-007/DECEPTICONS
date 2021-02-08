@@ -16,20 +16,6 @@ const HomePage = () => {
     console.log(`submitted email: 
       ${email} password: ${password}`);
     checkDetailsInServer();
-    // if (email === `${email}` && password === `${password}`) {
-    //   setLoggedIn(true);
-    //   console.log("hello user");
-    //   goPlay();
-    // } else {
-    //   console.log(
-    //     "this is checking what is the password",
-    //     password,
-    //     `${password}`
-    //   );
-    //   alert(
-    //     "Something went wrong! Please, enter your email and password again."
-    //   );
-    // }
   };
 
   const checkDetailsInServer = async () => {
@@ -53,12 +39,15 @@ const HomePage = () => {
         setLoggedIn(true);
         console.log("hello user");
         goPlay();
-      } else {
+      } else if (data.errors[0].password) {
         console.log(
           "Something went wrong, check your email / password:",
           data.errors[0].password
         );
-        setLoggedIn(data.errors[0].password);
+        setLoggedIn("Password is  " + data.errors[0].password);
+      } else {
+        console.log("User ", data.errors[0].user);
+        setLoggedIn("User  " + data.errors[0].user);
       }
     } catch (error) {
       setLoggedIn(error.message);
@@ -73,15 +62,16 @@ const HomePage = () => {
 
   return (
     <div className="backgroundHomePageImage">
-      {/* <div className="row"> */}
       <div className="col-10 col-lg-5 title">MemoryLand</div>
+
       <div className="card col-11 col-lg-5 offset-lg-6 description-card">
         Welcome to a flipping card memory game. Hit PLAY, choose the category
         and pick two cards to find the right match. Have Fun! Suitable for kids
         4+
       </div>
-      {/* </div> */}
+
       <br />
+
       <div class="row">
         <div className="col-11 col-lg-6 playIcon-column">
           <Link to="/play">
@@ -96,6 +86,17 @@ const HomePage = () => {
             />
           </Link>
         </div>
+
+        <br></br>
+
+        {/* {loggedIn ? (
+          <span style={{ color: "Black", fontWeight: "700" }}>{loggedIn}</span>
+        ) : (
+          <span></span>
+        )} */}
+        {/* </div> */}
+
+        <div className="mb-4"></div>
 
         <div className="card col-8 col-lg-3 login-card mt-2 hv-center loginCard">
           <form onSubmit={handleSubmit}>
@@ -128,8 +129,8 @@ const HomePage = () => {
               />
 
               {loggedIn ? (
-                <span style={{ color: "Red" }}>
-                  {"email or password is  " + loggedIn}
+                <span style={{ color: "Black", fontWeight: "700" }}>
+                  {loggedIn}
                 </span>
               ) : (
                 <span></span>
@@ -156,6 +157,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
