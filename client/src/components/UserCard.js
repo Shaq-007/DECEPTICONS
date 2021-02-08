@@ -11,12 +11,12 @@ const UserCard = ({ username, email, id, userlevel }) => {
         setAccessLevel(value)
       };
     
-      const updateOnClick = (e) => {
+      const updateAccessLevel = (e) => {
         e.preventDefault();
-          sendDetailsToServer();
+          updateAccessInServer();
       };
 
-    const sendDetailsToServer = async () => {
+    const updateAccessInServer = async () => {
         let response = await fetch(`/users/update/${id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -36,15 +36,6 @@ const UserCard = ({ username, email, id, userlevel }) => {
           throw Error.message;
         }
     };
-    // ********************************************************************************
-
-
-    // ***************************** DELETING USER ************************************
-
-
-                            // insert code to delete user here 
-
-    // ********************************************************************************
 
     return (
         <>
@@ -64,7 +55,7 @@ const UserCard = ({ username, email, id, userlevel }) => {
                     </div>
 
                     <div className="userButtons">
-                        <button onClick={updateOnClick} className="btn btn-primary">Update</button>
+                        <button onClick={updateAccessLevel} className="btn btn-primary">Update</button>
                         <button className="btn btn-danger">Delete</button>
                     </div>
                 </div>
