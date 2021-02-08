@@ -1,7 +1,8 @@
 /* Below line is used for online Google font */
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
+
 .backgroundHomePageImage {
-  background-image: url(../images/kids2balloon.jpg);
+  background-image: url(../images/balloonkids.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   max-width: 100%;
@@ -12,31 +13,33 @@
 }
 .title {
   font-family: "Henny Penny", cursive;
-  font-size: 100px;
+  font-size: 130px;
   font-weight: 700;
   color: rgb(117, 8, 121);
   position: relative;
   margin-top: 2rem;
-  margin-left: 40rem;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  margin-left: 600px;
+}
+.description-card {
+  font-family: "Happy Monkey", cursive;
+  font-size: 20px;
+  display: flex;
+  background-color: inherit;
+  border: none;
 }
 
-div.card.col-10.col-lg-4.login-card.mt-2.hv-center.loginCard {
+div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
   margin-left: auto;
-  margin-right: 300px;
+  margin-right: auto;
   background-color: inherit;
-  margin-top: 6rem !important;
+  border-radius: 15px;
 }
-/* 
-.formAlignment {
-  font-family: "Atma", cursive;
-  width: 28%;
-  margin-top: 3rem;
-  position: relative;
-  margin-left: 45rem;
-} */
+
 .instruction {
   font-family: "Atma", cursive;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
   color: rgb(209, 13, 13);
   padding-bottom: 10px;
@@ -44,12 +47,16 @@ div.card.col-10.col-lg-4.login-card.mt-2.hv-center.loginCard {
 
 .newUser {
   font-family: "Atma", cursive;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
   color: rgb(57, 9, 145);
 }
 .btn.btn-primary.submit {
   font-family: "Atma", cursive;
+}
+button.btn.btn-warning {
+  margin-left: 20px;
+  margin-bottom: 15px;
 }
 
 /* adding responsiveness */
@@ -57,23 +64,31 @@ div.card.col-10.col-lg-4.login-card.mt-2.hv-center.loginCard {
 /* MOBILE  */
 @media screen and (max-width: 700px) {
   div.backgroundHomePageImage {
-    background-position: 30%;
+    background-position: 5%;
     background-size: cover;
   }
-  h1.title {
-    font-size: 60px;
+  div.col-8.col-lg-5.title {
+    font-size: 55px;
     font-weight: 700;
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
+    margin-left: 0;
+    /* display: flex;
+    justify-content: center; */
     margin-right: auto;
     margin-top: 2rem;
   }
-  div.formAlignment {
+  img {
+    margin-left: 0;
+    width: 55px;
+    height: 55px;
+  }
+  /* div.formAlignment {
     width: 50%;
     margin-top: 9rem;
     margin-left: 9rem;
     margin-right: auto;
+  } */
+  .description-card {
+    margin-left: auto;
   }
 
   div.form-text.instruction,
@@ -85,22 +100,22 @@ div.card.col-10.col-lg-4.login-card.mt-2.hv-center.loginCard {
 /* TABLET */
 @media only screen and (max-width: 1400px) and (min-width: 720px) {
   div.backgroundHomePageImage {
-    background-position: 32%;
+    background-position: 10%;
     background-size: cover;
   }
-  h1.title {
-    font-size: 120px;
+  div.col-8.col-lg-5.title {
+    font-size: 90px;
     font-weight: 700;
     margin-left: auto;
     display: flex;
     justify-content: center;
   }
-  div.formAlignment {
+  /* div.formAlignment {
     width: 45%;
     margin-top: 18rem;
     margin-left: auto;
     margin-right: 2rem;
-  }
+  } */
 
   div.form-text.instruction,
   div.form-text.newUser {

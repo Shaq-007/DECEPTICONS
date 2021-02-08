@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../components/Signuppage.css";
 import "../components/Fonts.css";
 import { useHistory } from "react-router-dom";
+import GoBackButton from "../components/GoBackButton";
 
 const SignupPage = () => {
   const [state, setState] = useState({
@@ -70,6 +71,7 @@ const SignupPage = () => {
 
   return (
     <div className="BackgroundSignUpImage">
+      <GoBackButton />
       <div className="card col-10 col-lg-4 login-card mt-2 hv-center">
         <div className="form-text instructionSignUp">New User Signup</div>
         <form>

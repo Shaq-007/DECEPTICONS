@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../components/Homepage.css";
 import "../components/Fonts.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
+import GoPlayIcon from "../images/video.svg";
 
 const HomePage = () => {
   const [email, setEmail] = useState();
@@ -52,75 +53,106 @@ const HomePage = () => {
         setLoggedIn(true);
         console.log("hello user");
         goPlay();
-      } 
-      else {
-       console.log("Something went wrong, check your email / password:", data.errors[0].password);
-       setLoggedIn(data.errors[0].password)
+      } else {
+        console.log(
+          "Something went wrong, check your email / password:",
+          data.errors[0].password
+        );
+        setLoggedIn(data.errors[0].password);
       }
     } catch (error) {
-      setLoggedIn(error.message)
+      setLoggedIn(error.message);
       console.log("there is an error with the fetch", error);
     }
   };
 
   const history = useHistory();
   const goPlay = () => {
-      history.push("play");
+    history.push("play");
   };
 
   return (
     <div className="backgroundHomePageImage">
-      <h1 className="title">MemoryLand</h1>
-
-      <div className="card col-10 col-lg-4 login-card mt-2 hv-center loginCard">
-        <form onSubmit={handleSubmit}>
-          <div className="form-text instruction">Login to Start Playing</div>
-
-          <div>
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              onChange={({ target }) => setEmail(target.value)}
+      {/* <div className="row"> */}
+      <div className="col-10 col-lg-5 title">MemoryLand</div>
+      <div className="card col-11 col-lg-5 offset-lg-6 description-card">
+        Welcome to a flipping card memory game. Hit PLAY, choose the category
+        and pick two cards to find the right match. Have Fun! Suitable for kids
+        4+
+      </div>
+      {/* </div> */}
+      <br />
+      <div class="row">
+        <div className="col-11 col-lg-6 playIcon-column">
+          <Link to="/play">
+            <img
+              src={GoPlayIcon}
+              style={{
+                width: "300px",
+                hight: "300px",
+                marginLeft: "32rem",
+              }}
+              alt="play icon"
             />
-            <br />
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-            <br></br>
-            {loggedIn ? <span style={{ color: "Black" }}>{'username/password is:'+ loggedIn}</span> : <span></span>}
-          </div>
-          <div className="mb-4"></div>
-
-          <button type="submit" className="btn btn-primary submit">
-            Login and Play
-          </button>
-        </form>
-
-        <br />
-        <br />
-
-        <div className="form-text newUser">
-          New User Signup
-          <br />
-          <Link to="/signup">
-            <button type="submit" className="btn btn-warning">
-              Sign Up
-            </button>
           </Link>
+        </div>
+
+        <div className="card col-8 col-lg-3 login-card mt-2 hv-center loginCard">
+          <form onSubmit={handleSubmit}>
+            <div className="form-text instruction">
+              Login to create a custom category
+            </div>
+
+            <div>
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                onChange={({ target }) => setEmail(target.value)}
+              />
+              <br />
+              <label htmlFor="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                placeholder="Enter password"
+                onChange={({ target }) => setPassword(target.value)}
+              />
+
+              {loggedIn ? (
+                <span style={{ color: "Red" }}>
+                  {"email or password is  " + loggedIn}
+                </span>
+              ) : (
+                <span></span>
+              )}
+            </div>
+            <div className="mb-4"></div>
+
+            <button type="submit" className="btn btn-primary submit">
+              Login and Play
+            </button>
+          </form>
+
           <br />
+
+          <div className="form-text newUser">
+            New User Signup
+            <Link to="/signup">
+              <button type="submit" className="btn btn-warning">
+                Sign Up
+              </button>
+            </Link>
+            <br />
+          </div>
         </div>
       </div>
     </div>
