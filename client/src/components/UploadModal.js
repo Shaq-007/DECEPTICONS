@@ -12,7 +12,7 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
-function UploadModal({categoryName, setCategoryName}) {
+function UploadModal({ categoryName, setCategoryName }) {
   var subtitle;
   // /** start states */
   // const [name, setName] = useState("");
@@ -55,7 +55,9 @@ function UploadModal({categoryName, setCategoryName}) {
   return (
     <div>
       <div>
-        <button onClick={openModal}>Upload your images</button>
+        <button type="button" className="btn btn-success" onClick={openModal}>
+          Upload your images
+        </button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -88,9 +90,9 @@ function UploadModal({categoryName, setCategoryName}) {
               ></input>
             </div>
             <div>
-          <label htmlFor="image" >Upload Image: </label>
+              <label htmlFor="image">Upload Image: </label>
               <input
-              class="form-control"
+                class="form-control"
                 type="file"
                 id="image"
                 onChange={(event) => {
@@ -111,9 +113,12 @@ function UploadModal({categoryName, setCategoryName}) {
               >
                 Submit
               </button>
-              <br/><br/>
+              <br />
+              <br />
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-outline-secondary" onClick={closeModal}>close</button>
+                <button class="btn btn-outline-secondary" onClick={closeModal}>
+                  close
+                </button>
               </div>
             </div>
           </form>

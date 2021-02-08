@@ -10,6 +10,7 @@ import Upload from "./components/Upload";
 import AdminPage from "./pages/AdminPage";
 import AdminManageUsers from "./pages/AdminManageUsers";
 import AdminManageCategories from "./pages/AdminManageCategories";
+import ParentDashboard from "./pages/ParentDashboard";
 
 function App() {
   return (
@@ -23,7 +24,12 @@ function App() {
         <Route exact path="/upload" component={Upload} />
         <Route exact path="/admin" component={AdminPage} />
         <Route exact path="/adminusers" component={AdminManageUsers} />
-        <Route exact path="/admincategories" component={AdminManageCategories} />
+        <Route
+          exact
+          path="/admincategories"
+          component={AdminManageCategories}
+        />
+        <Route exact path="/parent" component={ParentDashboard} />
       </Switch>
     </Router>
   );
