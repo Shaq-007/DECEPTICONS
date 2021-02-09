@@ -18,14 +18,14 @@
   color: rgb(117, 8, 121);
   position: relative;
   margin-top: 2rem;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  margin-left: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .description-card {
   font-family: "Happy Monkey", cursive;
   font-size: 20px;
   display: flex;
+  justify-content: center;
   background-color: inherit;
   border: none;
 }
@@ -45,7 +45,7 @@ div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
   padding-bottom: 10px;
 }
 
-.newUser {
+div.form-text.newUser {
   font-family: "Atma", cursive;
   font-size: 20px;
   font-weight: 700;
@@ -67,33 +67,35 @@ button.btn.btn-warning {
     background-position: 5%;
     background-size: cover;
   }
-  div.col-8.col-lg-5.title {
-    font-size: 55px;
+  div.col-12.col-lg-6.title {
+    font-size: 50px;
     font-weight: 700;
-    margin-left: 0;
-    /* display: flex;
-    justify-content: center; */
+    margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
   img {
-    margin-left: 0;
-    width: 55px;
-    height: 55px;
-  }
-  /* div.formAlignment {
-    width: 50%;
-    margin-top: 9rem;
-    margin-left: 9rem;
-    margin-right: auto;
-  } */
-  .description-card {
-    margin-left: auto;
+    width: 80px;
+    height: 80px;
   }
 
-  div.form-text.instruction,
+  .description-card {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+  }
+  div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
+    margin-top: 1rem !important;
+  }
+
+  div.form-text.instruction {
+    font-size: 25px;
+  }
+
   div.form-text.newUser {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
@@ -103,19 +105,27 @@ button.btn.btn-warning {
     background-position: 10%;
     background-size: cover;
   }
-  div.col-8.col-lg-5.title {
+  div.col-12.col-lg-6.title {
     font-size: 90px;
     font-weight: 700;
     margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
   }
-  /* div.formAlignment {
-    width: 45%;
-    margin-top: 18rem;
+
+  .description-card {
     margin-left: auto;
-    margin-right: 2rem;
-  } */
+    margin-right: auto;
+    font-size: 25px;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
+    margin-top: 2rem !important;
+  }
 
   div.form-text.instruction,
   div.form-text.newUser {
