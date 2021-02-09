@@ -15,8 +15,7 @@ Modal.setAppElement("#root");
 function UploadModal({ categoryName, setCategoryName }) {
   var subtitle;
   // /** start states */
-  // const [name, setName] = useState("");
-  const [file, setFile] = useState();
+  const [files, setFiles] = useState();
   // const [categoryName, setCategoryName] = useState("");
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -35,13 +34,14 @@ function UploadModal({ categoryName, setCategoryName }) {
   const send = async (event) => {
     event.preventDefault();
     // console.log(name);
-
     const formData = new FormData();
     // file is the name of the request parameter
     // file is the state variable  that holds
-    // event.target.file[0] from <input type= "file" .../> on line 70
-    formData.append("image", file);
-    // formData.append("name", name);
+    // event.target.file[0] from <input type= "file" .../> on line 95
+    console.log('number of images', files.length)
+    for (const file of files){
+      formData.append("image", file);
+    }
     formData.append("categoryName", categoryName);
     const options = {
       method: "POST",
@@ -49,7 +49,6 @@ function UploadModal({ categoryName, setCategoryName }) {
     };
 
     let response = await fetch("/images/save", options);
-    // console.log('this is the response', response)
   };
 
   return (
@@ -96,14 +95,15 @@ function UploadModal({ categoryName, setCategoryName }) {
                 type="file"
                 id="image"
                 onChange={(event) => {
-                  const image = event.target.files[0];
-                  setFile(image);
+                  const images = event.target.files;
+                  setFiles(images);
                 }}
                 name="image"
                 required
+                multiple
               />
 
-              <div>{file ? <p></p> : <i></i>}</div>
+              <div>{files ? <p></p> : <i></i>}</div>
             </div>
             <div>
               <button
