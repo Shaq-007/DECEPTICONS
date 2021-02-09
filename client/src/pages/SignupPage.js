@@ -95,6 +95,7 @@ const SignupPage = () => {
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
               type="email"
+              autoComplete="username"
               className="form-control"
               id="email"
               aria-describedby="emailHelp"
@@ -110,6 +111,7 @@ const SignupPage = () => {
             <label htmlFor="exampleInputPassword1">Password</label>
             <input
               type="password"
+              autoComplete="new-password"
               className="form-control"
               id="password"
               placeholder="Password"
@@ -121,6 +123,7 @@ const SignupPage = () => {
             <label htmlFor="exampleInputPassword1">Confirm Password</label>
             <input
               type="password"
+              autoComplete="new-password"
               className="form-control"
               id="password_confirmation"
               placeholder="Confirm Password"
@@ -139,7 +142,7 @@ const SignupPage = () => {
               onChange={handleCheckboxChange}
               id="flexCheckDefault"
             />
-            <label className="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               I am a Parent
             </label>
           </div>

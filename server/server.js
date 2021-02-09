@@ -38,11 +38,14 @@ var storage = multer.diskStorage({
   },
 });
 
-var upload = multer({ storage: storage });
-
+var upload = multer({
+  storage: storage,
+  limits: { files: 6 },
+});
+// console.log("this is the multierror", multer.MulterError)
 app.post(
   "/images/save",
-  upload.single("image"),
+  upload.array("image", 6),
   upload_controller.post_image_custom
 );
 
