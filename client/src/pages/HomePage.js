@@ -4,12 +4,14 @@ import "../components/Fonts.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import GoPlayIcon from "../images/video.svg";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  let setToken = props.setToken;
+  let setUser = props.setUser;
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState();
-  const [user, setUser] = useState();
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,8 +35,8 @@ const HomePage = () => {
       let message = JSON.stringify(data);
 
       if (data.success === true) {
-        setToken(data.access_token);
-        setUser(data.user);
+        setToken(data.token);
+        setUser(data.currentUser);
         // console.log('here is the response', message)
         setLoggedIn(true);
         console.log("hello user");
