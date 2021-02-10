@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../components/Homepage.css";
 import "../components/Fonts.css";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import GoPlayIcon from "../images/video.svg";
+import { Link, useHistory } from "react-router-dom";
+import GoPlayIcon from "../images/video6.svg";
 
 const HomePage = (props) => {
   let setToken = props.setToken;
@@ -64,9 +64,9 @@ const HomePage = (props) => {
 
   return (
     <div className="backgroundHomePageImage">
-      <div className="col-10 col-lg-5 title">MemoryLand</div>
+      <div className="col-12 col-lg-6 title">MemoryLand</div>
 
-      <div className="card col-11 col-lg-5 offset-lg-6 description-card">
+      <div className="card col-10 col-lg-5 offset-lg-6 description-card">
         Welcome to a flipping card memory game. Hit PLAY, choose the category
         and pick two cards to find the right match. Have Fun! Suitable for kids
         4+
@@ -75,36 +75,30 @@ const HomePage = (props) => {
       <br />
 
       <div class="row">
-        <div className="col-11 col-lg-6 playIcon-column">
+        {/* <div className="col-lg-4"></div> */}
+        <div className="col-12 col-lg-3 offset-lg-4 playIcon-column">
           <Link to="/play">
             <img
               src={GoPlayIcon}
               style={{
                 width: "300px",
                 hight: "300px",
-                marginLeft: "32rem",
+                marginLeft: "auto",
+                marginRight: "auto",
+                display: "flex",
               }}
               alt="play icon"
             />
           </Link>
         </div>
 
-        <br></br>
-
-        {/* {loggedIn ? (
-          <span style={{ color: "Black", fontWeight: "700" }}>{loggedIn}</span>
-        ) : (
-          <span></span>
-        )} */}
-        {/* </div> */}
+        <br />
 
         <div className="mb-4"></div>
 
         <div className="card col-8 col-lg-3 login-card mt-2 hv-center loginCard">
           <form onSubmit={handleSubmit}>
-            <div className="form-text instruction">
-              Login to create a custom category
-            </div>
+            <div className="form-text instruction">Parent Login</div>
 
             <div>
               <label htmlFor="exampleInputEmail1" className="form-label">
@@ -118,7 +112,7 @@ const HomePage = (props) => {
                 placeholder="Enter email"
                 onChange={({ target }) => setEmail(target.value)}
               />
-              <br />
+              {/* <br /> */}
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Password
               </label>
@@ -131,21 +125,19 @@ const HomePage = (props) => {
               />
 
               {loggedIn ? (
-                <span style={{ color: "Black", fontWeight: "700" }}>
+                <span style={{ color: "black", fontWeight: "600" }}>
                   {loggedIn}
                 </span>
               ) : (
                 <span></span>
               )}
             </div>
-            <div className="mb-4"></div>
+            <div className="mb-2"></div>
 
             <button type="submit" className="btn btn-primary submit">
               Login and Play
             </button>
           </form>
-
-          <br />
 
           <div className="form-text newUser">
             New User Signup
@@ -159,7 +151,6 @@ const HomePage = (props) => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
