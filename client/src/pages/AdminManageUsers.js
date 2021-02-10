@@ -10,7 +10,7 @@ const AdminManageUsers = () => {
 
     useEffect(() => {
         getUsers();
-    }, []);
+    }, [users]);
 
 
     const getUsers = async () => {
