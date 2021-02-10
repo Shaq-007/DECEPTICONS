@@ -1,5 +1,6 @@
 import React from "react";
 import UploadModal from "../components/UploadModal";
+import { withRouter } from "react-router-dom";
 
 const ParentDashboard = ({ categoryName, setCategoryName }) => {
   return (
@@ -60,4 +61,4 @@ const ParentDashboard = ({ categoryName, setCategoryName }) => {
   );
 };
 
-export default ParentDashboard;
+export default withRouter(ParentDashboard);

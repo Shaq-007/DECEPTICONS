@@ -1,18 +1,23 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+// import ParentDashboard from "../pages/ParentDashboard";
+// import AdminPage from "../pages/AdminPage";
 
-class ProtectedRoute extends React.Component {
-
-    render() {
-        const Component = this.props.component;
-        const currentUser = !null ;
-       
-        return currentUser ? (
-            <Component />
-        ) : (
-            <Redirect to={{ pathname: '/login' }} />
-        );
-    }
+function ProtectedRoute({ loggedIn: loggedIn, component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (loggedIn) {
+          console.log("hey Kate, welcome");
+          return <Component />;
+        } else {
+          console.log("you have to log in");
+          return <Redirect to={{ pathname: "/" }} />;
+        }
+      }}
+    />
+  );
 }
 
 export default ProtectedRoute;
