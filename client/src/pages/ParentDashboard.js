@@ -1,6 +1,7 @@
 import React from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
+import ChangePasswordModal from "../components/ChangePasswordModal";
 
 const ParentDashboard = ({ categoryName, setCategoryName }) => {
   return (
@@ -36,9 +37,10 @@ const ParentDashboard = ({ categoryName, setCategoryName }) => {
             Think your password is compromised? We've got your back. Here you
             can change it with just a click!
           </p>
-          <button type="button" className="btn btn-primary">
+          {/* <button type="button" className="btn btn-primary">
             Change Password
-          </button>
+          </button> */}
+          <ChangePasswordModal />
         </div>
       </div>
       <br />
