@@ -12,11 +12,13 @@ import AdminManageCategories from "./pages/AdminManageCategories";
 import ParentDashboard from "./pages/ParentDashboard";
 import React, { useState } from "react";
 import ProtectedRoute from "./components/ProtectedRout";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
 function App() {
   const [token, setToken] = useState();
   const [user, setUser] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userlevel, setUserlevel] = useState();
 
   return (
     <Router>
@@ -28,8 +30,10 @@ function App() {
             <HomePage
               setToken={setToken}
               setUser={setUser}
-              loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
+              userlevel={userlevel}
+              setUserlevel={setUserlevel}
+              loggedIn={loggedIn}
             />
           }
         />
@@ -38,11 +42,12 @@ function App() {
         <Route exact path="/play" component={PlayPage} />
         <Route exact path="/signup" component={SignupPage} />
         <Route exact path="/upload" component={Upload} />
-        <ProtectedRoute
+        <AdminProtectedRoute
           exact
           path="/admin"
           component={AdminPage}
-          loggedIn={loggedIn}
+          userlevel={userlevel}
+          setUserlevel={setUserlevel}
         />
         <Route exact path="/adminusers" component={AdminManageUsers} />
         <Route
@@ -55,6 +60,7 @@ function App() {
           path="/parent"
           component={ParentDashboard}
           loggedIn={loggedIn}
+          user={user}
         />
       </Switch>
     </Router>

@@ -1,16 +1,20 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-function ProtectedRoute({ user: user, component: Component, ...rest }) {
+function AdminProtectedRoute({
+  userlevel: userlevel,
+  component: Component,
+  ...rest
+}) {
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (user) {
-          console.log("hey Kate, welcome");
+        if (userlevel === 10) {
+          console.log("hey admin, welcome");
           return <Component />;
         } else {
-          console.log("you have to log in");
+          console.log("you are not an admin");
           return <Redirect to={{ pathname: "/" }} />;
         }
       }}
@@ -18,4 +22,4 @@ function ProtectedRoute({ user: user, component: Component, ...rest }) {
   );
 }
 
-export default ProtectedRoute;
+export default AdminProtectedRoute;
