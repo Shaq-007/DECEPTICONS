@@ -99,6 +99,22 @@ exports.update_userLevel = async function (req, res) {
   }
 };
 
+// To update user password
+exports.update_userPassword = async function (req, res) {
+  try {
+    const user = await User.findByIDAndUpdate(req.params.userid, req.body, {
+      new: true,
+    });
+
+    if (!user) {
+      return res.status(404).send("User does not exist");
+    }
+    res.send(user);
+  } catch (e) {
+    res.status(400).send();
+  }
+};
+
 /// Remove an user
 exports.delete_user = async function (req, res) {
   try {

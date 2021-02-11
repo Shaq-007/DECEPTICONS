@@ -13,19 +13,60 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
-function ChangePasswordModal() {
-  var subtitle;
+function ChangePasswordModal({ id, password }) {
+  //   var subtitle;
   // /** start states */
-  const [files, setFiles] = useState();
+  //   const [files, setFiles] = useState();
+
+  const [fields, handleFieldChange] = useState({
+    password: "",
+    oldPassword: "",
+    confirmPassword: "",
+  });
+
+  const [isChanging, setIsChanging] = useState(false);
+
+  function validateForm() {
+    return (
+      //   fields.oldPassword &&
+      //   fields.password &&
+      fields.password === fields.confirmPassword
+    );
+  }
+
+  async function handleChangeClick(e) {
+    e.preventDefault();
+    console.log("this is the password");
+    setIsChanging(true);
+    updatePasswordInServer();
+  }
+
+  const updatePasswordInServer = async () => {
+    let response = await fetch(`/users/update/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        password: password,
+      }),
+    });
+
+    let data = await response.json();
+    let message = JSON.stringify(data);
+    console.log(message);
+    console.log("Password has been updated");
+
+    if (response.status === 200) {
+      return message;
+    } else {
+      throw Error.message;
+    }
+  };
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
-
-  //   function afterOpenModal() {
-  //     subtitle.style.color = "#f00";
-  //   }
 
   function closeModal() {
     setIsOpen(false);
@@ -38,49 +79,45 @@ function ChangePasswordModal() {
         </button>
         <Modal
           isOpen={modalIsOpen}
-          //   onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Example Modal"
         >
           <div className="ChangePassword">
-            {/* <form onSubmit={handleChangeClick}> */}
-            <form>
-              <div bsSize="large" controlId="oldPassword">
+            <form onSubmit={handleChangeClick}>
+              <div>
                 <label>Old Password</label>
                 <br />
                 <input
                   type="password"
-                  //   onChange={handleFieldChange}
-                  //   value={fields.oldPassword}
+                  onChange={handleFieldChange}
+                  value={fields.oldPassword}
                 />
               </div>
               <hr />
 
-              <div bsSize="large" controlId="password">
+              <div>
                 <label>New Password</label>
                 <br />
                 <input
                   type="password"
-                  //   onChange={handleFieldChange}
-                  //   value={fields.password}
+                  onChange={handleFieldChange}
+                  value={fields.password}
                 />
               </div>
-              <div bsSize="large" controlId="confirmPassword">
+              <div>
                 <label>Confirm Password</label>
                 <br />
                 <input
                   type="password"
-                  //   onChange={handleFieldChange}
-                  //   value={fields.confirmPassword}
+                  onChange={handleFieldChange}
+                  value={fields.confirmPassword}
                 />
               </div>
               <button
                 className="btn btn-info"
-                block
                 type="submit"
-                bsSize="large"
-                // disabled={!validateForm()}
+                disabled={!validateForm()}
                 // isLoading={isChanging}
               >
                 Change Password
