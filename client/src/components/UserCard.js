@@ -78,6 +78,13 @@ const UserCard = ({ username, email, id, userlevel }) => {
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="1">4</option>
+                            <option value="2">5</option>
+                            <option value="3">6</option>
+                            <option value="1">7</option>
+                            <option value="2">8</option>
+                            <option value="3">9</option>
+                            <option value="3">10</option>
                         </select>
                     </div>
 
