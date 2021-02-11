@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-function ProtectedRoute({ user: user, component: Component, ...rest }) {
+function ProtectedRoute({ user, component: Component, ...rest }) {
   return (
     <Route
       {...rest}

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 function AdminProtectedRoute({
-  userlevel: userlevel,
+  userlevel,
   component: Component,
   ...rest
 }) {

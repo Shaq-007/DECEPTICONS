@@ -4,7 +4,7 @@ import UserList from "../components/UserList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 
-const AdminManageUsers = () => {
+const AdminManageUsers = ({ userlevel }) => {
     const [users, setUsers] = useState([]);
     const [searchfield, setSearchfield] = useState('');
 

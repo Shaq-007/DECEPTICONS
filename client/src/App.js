@@ -49,12 +49,19 @@ function App() {
           userlevel={userlevel}
           setUserlevel={setUserlevel}
         />
-        <Route exact path="/adminusers" component={AdminManageUsers} />
-        <Route
-          exact
-          path="/admincategories"
-          component={AdminManageCategories}
+        <AdminProtectedRoute 
+        exact path="/adminusers" 
+        component={AdminManageUsers} 
+        userlevel={userlevel}
+        setUserlevel={setUserlevel}
         />
+
+        <AdminProtectedRoute
+          exact path="/admincategories"
+          component={AdminManageCategories}
+          userlevel={userlevel}
+        />
+
         <ProtectedRoute
           exact
           path="/parent"

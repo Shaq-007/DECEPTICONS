@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AdminManageCategories = () => {
+const AdminManageCategories = ({ userlevel }) => {
     return (
         <div>
             
