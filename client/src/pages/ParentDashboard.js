@@ -2,9 +2,19 @@ import React, {useState} from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
+import { useHistory } from "react-router-dom";
 
 const ParentDashboard = () => {
   const [categoryName, setCategoryName] = useState("");
+
+  const handleSubmitClick = ()=> {
+    goPlayNow();
+  }
+  const history = useHistory();
+  const goPlayNow = () => {
+    history.push("play");
+  };
+
   return (
     <div>
       <h2 className="parent-title">Hello Parent! This is your Dashboard. </h2>
@@ -60,6 +70,19 @@ const ParentDashboard = () => {
       </div>
 
       <br />
+
+      <div className="card col-10">
+        <div className="card-header">Go Play</div>
+        <div className="card-body">
+          <p className="card-text">
+            Now your kid can go have fun with you own images!
+          </p>
+          <button type="button" className="btn btn-warning" onClick={handleSubmitClick}>
+            Go play
+          </button>
+        </div>
+      </div>
+
     </div>
   );
 };
