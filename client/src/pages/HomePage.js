@@ -9,6 +9,8 @@ const HomePage = (props) => {
   let setUser = props.setUser;
   let setLoggedIn = props.setLoggedIn;
   let loggedIn = props.loggedIn;
+  let userlevel = props.userlevel;
+  let setUserlevel = props.setUserlevel;
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -37,10 +39,17 @@ const HomePage = (props) => {
       if (data.success === true) {
         setToken(data.token);
         setUser(data.currentUser);
+        setUserlevel(data.userlevel);
         console.log("here is the response", message);
         setLoggedIn(true);
+        setUserlevel(data.currentUser.userlevel);
+        console.log("this is our currentUser", data.currentUser.userlevel);
         console.log("hello user");
-        goPlay();
+        if (data.currentUser.userlevel === 10) {
+          goAdmin();
+        } else {
+          goParentDashboard();
+        }
       } else if (data.errors[0].password) {
         console.log(
           "Something went wrong, check your email / password:",
@@ -58,8 +67,12 @@ const HomePage = (props) => {
   };
 
   const history = useHistory();
-  const goPlay = () => {
+  const goParentDashboard = () => {
     history.push("parent");
+  };
+
+  const goAdmin = () => {
+    history.push("admin");
   };
 
   return (
