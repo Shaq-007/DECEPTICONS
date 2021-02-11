@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 
-const ParentDashboard = ({ categoryName, setCategoryName }) => {
+const ParentDashboard = () => {
+  const [categoryName, setCategoryName] = useState("");
   return (
     <div>
       <h2 className="parent-title">Hello Parent! This is your Dashboard. </h2>
