@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
 
 .backgroundHomePageImage {
-  background-image: url(../images/balloonkids.jpg);
+  background-image: url(../images/rainbowandgrass.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   max-width: 100%;
@@ -13,21 +13,23 @@
 }
 .title {
   font-family: "Henny Penny", cursive;
-  font-size: 130px;
+  font-size: 150px;
   font-weight: 700;
   color: rgb(117, 8, 121);
   position: relative;
   margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
+  display: flex;
+  justify-content: center;
 }
 .description-card {
   font-family: "Happy Monkey", cursive;
   font-size: 20px;
-  display: flex;
-  justify-content: center;
   background-color: inherit;
   border: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
@@ -64,10 +66,10 @@ button.btn.btn-warning {
 /* MOBILE  */
 @media screen and (max-width: 700px) {
   div.backgroundHomePageImage {
-    background-position: 5%;
+    background-position: 50% 50%;
     background-size: cover;
   }
-  div.col-12.col-lg-6.title {
+  div.col-12.col-lg-12.title {
     font-size: 50px;
     font-weight: 700;
     margin-left: auto;
@@ -102,10 +104,10 @@ button.btn.btn-warning {
 /* TABLET */
 @media only screen and (max-width: 1400px) and (min-width: 720px) {
   div.backgroundHomePageImage {
-    background-position: 10%;
+    background-position: 50% 50%;
     background-size: cover;
   }
-  div.col-12.col-lg-6.title {
+  div.col-12.col-lg-12.title {
     font-size: 90px;
     font-weight: 700;
     margin-left: auto;

@@ -7,11 +7,11 @@ import GoPlayIcon from "../images/video6.svg";
 const HomePage = (props) => {
   let setToken = props.setToken;
   let setUser = props.setUser;
+  let setLoggedIn = props.setLoggedIn;
+  let loggedIn = props.loggedIn;
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [loggedIn, setLoggedIn] = useState(false);
- 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const HomePage = (props) => {
       if (data.success === true) {
         setToken(data.token);
         setUser(data.currentUser);
-        // console.log('here is the response', message)
+        console.log("here is the response", message);
         setLoggedIn(true);
         console.log("hello user");
         goPlay();
@@ -59,14 +59,14 @@ const HomePage = (props) => {
 
   const history = useHistory();
   const goPlay = () => {
-    history.push("play");
+    history.push("parent");
   };
 
   return (
     <div className="backgroundHomePageImage">
-      <div className="col-12 col-lg-6 title">MemoryLand</div>
+      <div className="col-12 col-lg-12 title">MemoryLand</div>
 
-      <div className="card col-10 col-lg-5 offset-lg-6 description-card">
+      <div className="card col-10 col-lg-5  description-card">
         Welcome to a flipping card memory game. Hit PLAY, choose the category
         and pick two cards to find the right match. Have Fun! Suitable for kids
         4+
@@ -75,7 +75,6 @@ const HomePage = (props) => {
       <br />
 
       <div class="row">
-        {/* <div className="col-lg-4"></div> */}
         <div className="col-12 col-lg-3 offset-lg-4 playIcon-column">
           <Link to="/play">
             <img
