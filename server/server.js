@@ -17,6 +17,8 @@ app.get("/users/:userid", user_controllers.get_oneuser);
 
 app.patch("/users/update/:userid", user_controllers.update_userLevel);
 
+app.patch("/users/update/:userid", user_controllers.update_userPassword);
+
 app.delete("/users/delete/:userid", user_controllers.delete_user);
 
 // api GET calls for images depending on CATEGORY

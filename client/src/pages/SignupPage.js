@@ -13,6 +13,7 @@ const SignupPage = () => {
     userlevel: "1",
   });
   const [signedUp, setSignedUp] = useState(false);
+  const [signupFail, setSignupFail] = useState()
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -28,10 +29,12 @@ const SignupPage = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
+    console.log('signup user: ', state.username)
+    
     if (state.password === state.password_confirmation) {
       sendDetailsToServer();
-      setSignedUp(true);
-      goPlayNow();
+      // setSignedUp(true);
+      // goPlayNow();
     } else {
       console.log("Passwords do not match");
     }
@@ -62,8 +65,14 @@ const SignupPage = () => {
     console.log(message);
 
     if (response.status === 200) {
+          setSignedUp(true);
+          goPlayNow();
       return message;
+
+      
     } else {
+      console.log('message:', data.errors[0].user)
+      setSignupFail(data.errors[0].user + '.  Please Go Back to sign in')
       throw Error.message;
     }
   };
@@ -150,9 +159,17 @@ const SignupPage = () => {
             type="submit"
             className="btn btn-primary"
             onClick={handleSubmitClick}
-          >
+            >
             Register and Play
           </button>
+          <br></br>
+            {signupFail ? (
+              <span style={{ color: "red", fontWeight: "700" }}>
+                {signupFail}
+              </span>
+            ) : (
+              <span></span>
+            )}
         </form>
         <br />
       </div>
