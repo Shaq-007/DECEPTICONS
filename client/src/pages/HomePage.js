@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../components/Homepage.css";
 import "../components/Fonts.css";
 import { Link, useHistory } from "react-router-dom";
 import GoPlayIcon from "../images/video6.svg";
+import {AuthContext} from '../components/AuthContext';
 
 const HomePage = (props) => {
   let setToken = props.setToken;
-  let setUser = props.setUser;
+  // let setUser = props.setUser;
   let setLoggedIn = props.setLoggedIn;
   let loggedIn = props.loggedIn;
   let userlevel = props.userlevel;
   let setUserlevel = props.setUserlevel;
+
+  const {user, setUser} = useContext(AuthContext);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -37,9 +40,9 @@ const HomePage = (props) => {
       let message = JSON.stringify(data);
 
       if (data.success === true) {
-        setToken(data.token);
+        // setToken(data.token);
         setUser(data.currentUser);
-        setUserlevel(data.userlevel);
+        setUserlevel(data.currentUser.userlevel);
         console.log("here is the response", message);
         setLoggedIn(true);
         setUserlevel(data.currentUser.userlevel);
@@ -61,7 +64,7 @@ const HomePage = (props) => {
         setLoggedIn("User  " + data.errors[0].user);
       }
     } catch (error) {
-      setLoggedIn(error.message);
+      // setLoggedIn(error.message);
       console.log("there is an error with the fetch", error);
     }
   };

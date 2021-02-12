@@ -1,11 +1,14 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 import { useHistory } from "react-router-dom";
+import {AuthContext} from '../components/AuthContext';
 
 const ParentDashboard = () => {
-  const [categoryName, setCategoryName] = useState("");
+  // const [categoryName, setCategoryName] = useState("");
+
+  const {categoryName, setCategoryName} = useContext(AuthContext);
 
   const handleSubmitClick = ()=> {
     goPlayNow();

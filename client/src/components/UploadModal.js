@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-modal";
+import {AuthContext} from './AuthContext';
 
 const customStyles = {
   content: {
@@ -12,7 +13,10 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
-function UploadModal({ categoryName, setCategoryName }) {
+function UploadModal() {
+
+  const {categoryName, setCategoryName} = useContext(AuthContext);
+
   var subtitle;
   // /** start states */
   const [files, setFiles] = useState();
