@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardBoard from "../components/CardBoard";
 import { funWords } from "../fakeDatabase.js/funWords";
 import "../components/CardBoard.css";
@@ -9,6 +9,7 @@ import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import UploadModal from "../components/UploadModal";
 import shuffle from "shuffle-array";
+import {AuthContext} from '../components/AuthContext';
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -29,7 +30,9 @@ const PlayPage = () => {
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
-  const [categoryName, setCategoryName] = useState("");
+  // const [categoryName, setCategoryName] = useState("");
+
+  const {user, categoryName, setCategoryName} = useContext(AuthContext);
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -113,16 +116,18 @@ const PlayPage = () => {
               />
 
               {/* here need a condition, if user is parent, show this otherwise do not show */}
-              <UploadModal
+              {/* <UploadModal
                 categoryName={categoryName}
                 setCategoryName={setCategoryName}
-              />
+              /> */}
 
-              {categoryName ? (
+              {user ? (
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                   onClick={() => {
+                   console.log("getting imagess", categoryName);
+
                     getImages(categoryName);
                   }}
                 />
