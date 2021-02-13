@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-modal";
+import { AuthContext } from "../components/AuthContext";
 
 const customStyles = {
   content: {
@@ -13,53 +14,38 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
-function ChangePasswordModal({ id, password }) {
-  //   var subtitle;
-  // /** start states */
-  //   const [files, setFiles] = useState();
 
-  const [fields, handleFieldChange] = useState({
-    password: "",
-    oldPassword: "",
-    confirmPassword: "",
-  });
+const ChangePasswordModal = () => {
+  const { user, setUser } = useContext(AuthContext);
 
-  const [isChanging, setIsChanging] = useState(false);
+  const [newPassword, setNewPassword] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
 
-  function validateForm() {
-    return (
-      //   fields.oldPassword &&
-      //   fields.password &&
-      fields.password === fields.confirmPassword
-    );
-  }
-
-  async function handleChangeClick(e) {
+  const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log("this is the password");
-    setIsChanging(true);
-    updatePasswordInServer();
-  }
-
-  const updatePasswordInServer = async () => {
-    let response = await fetch(`/users/update/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        password: password,
-      }),
-    });
-
-    let data = await response.json();
-    let message = JSON.stringify(data);
-    console.log(message);
-    console.log("Password has been updated");
-
-    if (response.status === 200) {
-      return message;
+    console.log(
+      "this is what we typed in: ",
+      password,
+      newPassword,
+      confirmPassword
+    );
+    if (newPassword === confirmPassword) {
+      sendNewPasswordToServer();
     } else {
-      throw Error.message;
+      console.log("your password did not match");
     }
+  };
+
+  const sendNewPasswordToServer = async () => {
+    console.log(
+      "this is user pass",
+      user.password,
+      "new password",
+      newPassword,
+      "confirm",
+      confirmPassword
+    );
   };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -84,14 +70,13 @@ function ChangePasswordModal({ id, password }) {
           contentLabel="Example Modal"
         >
           <div className="ChangePassword">
-            <form onSubmit={handleChangeClick}>
+            <form onSubmit={handleSubmitClick}>
               <div>
                 <label>Old Password</label>
                 <br />
                 <input
                   type="password"
-                  onChange={handleFieldChange}
-                  value={fields.oldPassword}
+                  onChange={({ target }) => setPassword(target.value)}
                 />
               </div>
               <hr />
@@ -101,8 +86,7 @@ function ChangePasswordModal({ id, password }) {
                 <br />
                 <input
                   type="password"
-                  onChange={handleFieldChange}
-                  value={fields.password}
+                  onChange={({ target }) => setNewPassword(target.value)}
                 />
               </div>
               <div>
@@ -110,16 +94,10 @@ function ChangePasswordModal({ id, password }) {
                 <br />
                 <input
                   type="password"
-                  onChange={handleFieldChange}
-                  value={fields.confirmPassword}
+                  onChange={({ target }) => setConfirmPassword(target.value)}
                 />
               </div>
-              <button
-                className="btn btn-info"
-                type="submit"
-                disabled={!validateForm()}
-                // isLoading={isChanging}
-              >
+              <button className="btn btn-info" type="submit">
                 Change Password
               </button>
               <br />
@@ -139,6 +117,6 @@ function ChangePasswordModal({ id, password }) {
       <br></br>
     </div>
   );
-}
+};
 
 export default ChangePasswordModal;
