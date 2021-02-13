@@ -1,18 +1,20 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 import { useHistory } from "react-router-dom";
-import {AuthContext} from '../components/AuthContext';
+import { AuthContext } from "../components/AuthContext";
 
 const ParentDashboard = () => {
   // const [categoryName, setCategoryName] = useState("");
 
-  const {categoryName, setCategoryName} = useContext(AuthContext);
+  const { user, setUser, categoryName, setCategoryName } = useContext(
+    AuthContext
+  );
 
-  const handleSubmitClick = ()=> {
+  const handleSubmitClick = () => {
     goPlayNow();
-  }
+  };
   const history = useHistory();
   const goPlayNow = () => {
     history.push("play");
@@ -51,10 +53,8 @@ const ParentDashboard = () => {
             Think your password is compromised? We've got your back. Here you
             can change it with just a click!
           </p>
-          {/* <button type="button" className="btn btn-primary">
-            Change Password
-          </button> */}
-          <ChangePasswordModal />
+
+          <ChangePasswordModal user={user} />
         </div>
       </div>
       <br />
@@ -80,12 +80,15 @@ const ParentDashboard = () => {
           <p className="card-text">
             Now your kid can go have fun with you own images!
           </p>
-          <button type="button" className="btn btn-warning" onClick={handleSubmitClick}>
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={handleSubmitClick}
+          >
             Go play
           </button>
         </div>
       </div>
-
     </div>
   );
 };
