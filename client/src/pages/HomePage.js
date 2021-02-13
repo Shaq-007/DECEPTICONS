@@ -13,9 +13,9 @@ const HomePage = (props) => {
   let userlevel = props.userlevel;
   let setUserlevel = props.setUserlevel;
 
-  const {user, setUser} = useContext(AuthContext);
+  const {user, setUser, email, setEmail} = useContext(AuthContext);
 
-  const [email, setEmail] = useState();
+  // const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = (e) => {

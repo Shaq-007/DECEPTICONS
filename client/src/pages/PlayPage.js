@@ -7,7 +7,6 @@ import GoBackButton from "../components/GoBackButton";
 import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
-import UploadModal from "../components/UploadModal";
 import shuffle from "shuffle-array";
 import {AuthContext} from '../components/AuthContext';
 
@@ -32,7 +31,8 @@ const PlayPage = () => {
   const [myWords, setMyWords] = useState([]);
   // const [categoryName, setCategoryName] = useState("");
 
-  const {user, categoryName, setCategoryName} = useContext(AuthContext);
+  const {user, categoryName, setCategoryName, email} = useContext(AuthContext);
+  console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -48,6 +48,13 @@ const PlayPage = () => {
 
   const getImages = async (categoryName) => {
     let response = await fetch("/images/" + categoryName);
+    let data = await response.json();
+    setImages(data);
+    console.log("this is the data", data);
+  };
+
+  const getImages_custom = async (email) => {
+    let response = await fetch("/custom/" + email);
     let data = await response.json();
     setImages(data);
     console.log("this is the data", data);
@@ -122,13 +129,22 @@ const PlayPage = () => {
               /> */}
 
               {user ? (
+                // <CategoryButtons
+                //   value="Custom"
+                //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                //   onClick={() => {
+                //    console.log("getting imagess", categoryName);
+
+                //     getImages(categoryName);
+                //   }}
+                // />
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                   onClick={() => {
-                   console.log("getting imagess", categoryName);
+                   console.log("getting images", categoryName);
 
-                    getImages(categoryName);
+                   getImages_custom(email);
                   }}
                 />
               ) : null}

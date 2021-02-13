@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Modal from "react-modal";
+import Modal, { setAppElement } from "react-modal";
 import {AuthContext} from './AuthContext';
 
 const customStyles = {
@@ -15,7 +15,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 function UploadModal() {
 
-  const {categoryName, setCategoryName} = useContext(AuthContext);
+  const {categoryName, setCategoryName, email, setEmail} = useContext(AuthContext);
 
   var subtitle;
   // /** start states */
@@ -43,10 +43,12 @@ function UploadModal() {
     // file is the state variable  that holds
     // event.target.file[0] from <input type= "file" .../> on line 95
     console.log('number of images', files.length)
+    console.log('email', email)
     for (const file of files){
       formData.append("image", file);
     }
     formData.append("categoryName", categoryName);
+    formData.append("email", email);
     const options = {
       method: "POST",
       body: formData,
@@ -77,6 +79,24 @@ function UploadModal() {
             method="POST"
             encType="multipart/form-data"
           >
+
+            <div>
+              <label htmlFor="categoryName">email:</label>
+              <input
+                class="form-control"
+                id="Email"
+                name="Email"
+                onChange={(event) => {
+                  const { value } = event.target;
+                  setEmail(value);
+                }}
+                value={email}
+                placeholder="Type your email"
+                required
+              ></input>
+            </div>
+
+
             <div>
               <label htmlFor="categoryName">Username:</label>
               <input
