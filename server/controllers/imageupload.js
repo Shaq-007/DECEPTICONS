@@ -13,9 +13,10 @@ app.use(express.json());
 
 exports.post_image_custom = async function (req, res, next) {
   console.info("the req.files is", req.files);
+  console.info("the req.body.email is", req.body.email)
   for (const file of req.files){
     var obj = {
-      name: req.body.name,
+      email: req.body.email,
       categoryName: req.body.categoryName,
       img: {
         data: fs.readFileSync(path.join("./uploads/" + file.filename)),

@@ -44,7 +44,9 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model("User", userSchema);
 
 const imageSchema = new mongoose.Schema({
-  name: String,
+  email: {
+    type: String,
+  },
   categoryName: String,
   img: {
     data: Buffer,

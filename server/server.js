@@ -23,8 +23,10 @@ app.delete("/users/delete/:userid", user_controllers.delete_user);
 
 // api GET calls for images depending on CATEGORY
 
-app.get("/images/:categoryName", image_controllers.get_image_custom);
+app.get("/images/:categoryName", image_controllers.get_images);
 
+app.get("/custom/:email", image_controllers.get_image_custom);
+///images/${categoryName}/${email}
 ////  Code to upload custom photos
 //// Using the middleware Multer to upload the photo
 var path = require("path");
