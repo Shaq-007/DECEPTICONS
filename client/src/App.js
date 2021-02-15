@@ -22,10 +22,11 @@ function App() {
   const [userlevel, setUserlevel] = useState();
   const [categoryName, setCategoryName] = useState();
   const [email,setEmail] = useState();
+  const [upload, setUpload] = useState(false)
   
 
   return (
-    <AuthContext.Provider value={{user: user, setUser: setUser, categoryName: categoryName,setCategoryName: setCategoryName, email:email, setEmail:setEmail}}>
+    <AuthContext.Provider value={{user: user, setUser: setUser, categoryName: categoryName,setCategoryName: setCategoryName, email:email, setEmail:setEmail, upload:upload, setUpload:setUpload}}>
       <Router>
         <Switch>
           <Route

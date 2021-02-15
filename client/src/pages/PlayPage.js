@@ -31,8 +31,8 @@ const PlayPage = () => {
   const [myWords, setMyWords] = useState([]);
   // const [categoryName, setCategoryName] = useState("");
 
-  const {user, categoryName, setCategoryName, email} = useContext(AuthContext);
-  console.log('this is the categoryName in PlayPage', categoryName)
+  const {user, categoryName, setCategoryName, email, upload,setUpload} = useContext(AuthContext);
+  // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -57,7 +57,11 @@ const PlayPage = () => {
     let response = await fetch("/custom/" + email);
     let data = await response.json();
     setImages(data);
-    console.log("this is the data", data);
+    console.log("this is the data from playpage", data);
+    if(data.length === 0){
+      alert("sorry, you really do not have images in DB, go back and upload images if you want to play with them")
+      setUpload(false)
+    }
   };
 
   useEffect(() => {
@@ -128,7 +132,7 @@ const PlayPage = () => {
                 setCategoryName={setCategoryName}
               /> */}
 
-              {user ? (
+              {user && upload ? (
                 // <CategoryButtons
                 //   value="Custom"
                 //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
@@ -142,7 +146,7 @@ const PlayPage = () => {
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                   onClick={() => {
-                   console.log("getting images", categoryName);
+                   console.log("getting images by Email", email);
 
                    getImages_custom(email);
                   }}

@@ -53,5 +53,16 @@ app.post(
   upload_controller.post_image_custom
 );
 
+app.use(function(err,req,res,next){
+	if (err.code==='LIMIT_FILE_SIZE'){
+		res.status(400).send('File is too large');
+	}else if(err.code==='LIMIT_FILE_COUNT'){
+		res.status(400).send('Too many files' );
+	}else {
+    res.status(400).send(err)
+    console.log('error from app.use', err)
+  }
+})
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

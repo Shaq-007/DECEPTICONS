@@ -8,9 +8,14 @@ import { AuthContext } from "../components/AuthContext";
 const ParentDashboard = () => {
   // const [categoryName, setCategoryName] = useState("");
 
-  const { user, setUser, categoryName, setCategoryName } = useContext(
-    AuthContext
-  );
+  const {
+    user,
+    setUser,
+    categoryName,
+    setCategoryName,
+    upload,
+    setUpload,
+  } = useContext(AuthContext);
 
   const handleSubmitClick = () => {
     goPlayNow();
@@ -20,6 +25,9 @@ const ParentDashboard = () => {
     history.push("play");
   };
 
+ const handleCheckboxChange = () => {
+    setUpload(true);
+  };
   return (
     <div>
       <h2 className="parent-title">Hello Parent! This is your Dashboard. </h2>
@@ -42,10 +50,46 @@ const ParentDashboard = () => {
             setCategoryName={setCategoryName}
           />
         </div>
+        <div
+            className="form-check"
+            style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
+          >
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value={upload}
+              onChange={handleCheckboxChange}
+              id="flexCheckDefault"
+            />
+            <label className="form-check-label" htmlFor="flexCheckDefault">
+              I have loaded images already
+            </label>
+          </div>
+        <div className="card-body">
+          <p className="card-text">
+            Now your kid can go have fun with you own images!
+          </p>
+          <button
+            type="button"
+            className="btn btn-warning goPlay"
+            onClick={handleSubmitClick}
+          >
+            Go play
+          </button>
+        </div>
+
       </div>
       <br />
 
+      {/* this is the third card */}
+
+      {/* <div className="card col-10"> */}
+        {/* <div className="card-header">Go Play</div> */}
+        
+      {/* </div> */}
+
       {/* this is the second card */}
+
       <div className="card col-10">
         <div className="card-header">Change Password</div>
         <div className="card-body">
@@ -73,22 +117,6 @@ const ParentDashboard = () => {
       </div>
 
       <br />
-
-      <div className="card col-10">
-        <div className="card-header">Go Play</div>
-        <div className="card-body">
-          <p className="card-text">
-            Now your kid can go have fun with you own images!
-          </p>
-          <button
-            type="button"
-            className="btn btn-warning"
-            onClick={handleSubmitClick}
-          >
-            Go play
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
