@@ -17,7 +17,7 @@ Modal.setAppElement("#root");
 
 const ChangePasswordModal = () => {
   const { user, setUser } = useContext(AuthContext);
-
+  const {email} = useContext(AuthContext);    ///to get the email of the logged in user//
   const [newPassword, setNewPassword] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
@@ -38,13 +38,21 @@ const ChangePasswordModal = () => {
   };
 
   const sendNewPasswordToServer = async () => {
-    console.log(
-      "this is user pass",
-      user.password,
-      "new password",
-      newPassword,
-      "confirm",
-      confirmPassword
+    let response = await fetch("/api/resetPassword", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+     
+      email: email,
+      oldPassword: password,
+      newPassword: newPassword,        
+      }),
+    });
+    alert("Password Updated");
+
+
+
+    console.log("this is user password", password, "new password", newPassword, "confirm",confirmPassword
     );
   };
 

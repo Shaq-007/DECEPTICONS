@@ -43,7 +43,17 @@ function App() {
               />
             }
           />
-          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/home" children={
+              <HomePage
+                setToken={setToken}
+                // setUser={setUser}
+                setLoggedIn={setLoggedIn}
+                userlevel={userlevel}
+                setUserlevel={setUserlevel}
+                loggedIn={loggedIn}
+              />
+            } 
+          />
           <Route exact path="/categories" component={Categories} />
           <Route exact path="/play" component={PlayPage} />
           <Route exact path="/signup" component={SignupPage} />
