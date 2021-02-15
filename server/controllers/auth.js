@@ -2,6 +2,8 @@ const { User } = require("../db/models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { createJWT } = require("../utils/auth");
+
+
 require("dotenv").config();
 
 //Setting up form validation in our express APIs
@@ -13,7 +15,7 @@ exports.signup = (req, res, next) => {
     username,
     email,
     password,
-    password_confirmation,
+    password_confirmation,    //keeping it just for error net
     userlevel,
   } = req.body;
   console.log("req.body is: ", JSON.stringify(req.body));
@@ -29,7 +31,7 @@ exports.signup = (req, res, next) => {
   if (!password) {
     errors.push({ password: "required" });
   }
-  if (!password_confirmation) {
+  if (!password_confirmation) {                        ///doing the check in front end at signup page
     errors.push({ password_confirmation: "required" });
   }
   if (password != password_confirmation) {
@@ -52,7 +54,7 @@ exports.signup = (req, res, next) => {
           username: username,
           email: email,
           password: password,
-          password_confirmation: password,
+          // password_confirmation: password,    // hashed so that not to save in mongodb
           userlevel: userlevel,
         });
       }
@@ -137,7 +139,9 @@ exports.signin = (req, res) => {
                 if (err) {
                   return res.status(500).json({ errors: " verify " + err });
                 }
-                if (decoded) {
+                if (decoded) { 
+                  user.password = null;  ///trying to not send password back to front end
+                                                       
                   return res.status(200).json({
                     success: true,
                     token: access_token,
@@ -159,3 +163,108 @@ exports.signin = (req, res) => {
       return res.status(500).json({ errors: "exception: " + err.message });
     });
 };
+
+
+//*****************Password Reset********************** //
+
+exports.changePassword = (req, res) => {
+  let { email, oldPassword, newPassword} = req.body;
+console.log(email, oldPassword, newPassword);
+ //validate every request and push into errors array
+let errors = [];
+
+if (!email) {
+  errors.push({ email: "required" });
+}
+if (!emailRegexp.test(email)) {
+  errors.push({ email: "invalid email" });
+}
+if (!oldPassword) {
+  errors.push({ oldPassword: "required" });
+}
+if (!newPassword) {
+  errors.push({ newPassword: "required" });
+}
+if (errors.length > 0) {
+  return res.status(422).json({ errors: errors });
+}
+
+// Signin Logic for password reset//
+User.findOne({ email: email })
+.then((user) => {
+  if (!user) {
+    return res.status(404).json({
+      errors: [{ user: "not found" }],
+    });
+  } else {
+    bcrypt
+      .compare(oldPassword, user.password)
+      .then((isMatch) => {
+        if (!isMatch) {
+          return res
+            .status(404)
+            .json({ errors: [{ password: "incorrect" }] });
+        }
+
+        // console.log("token Secret :" + process.env.TOKEN_SECRET);
+        // console.log("process.env :", process.env);
+        // const access_token = createJWT(            ////dont need as just changing password & not logging in to play session///
+        //   user.email,
+        //   user._id,
+        //   user.userlevel,
+        //   3600
+        // );
+        // jwt.verify(
+        //   access_token,
+        //   process.env.TOKEN_SECRET,
+        //   (err, decoded) => {
+        //     if (err) {
+        //       return res.status(500).json({ errors: " verify " + err });
+        //     }
+        //     if (decoded) {
+        //       return res.status(200).json({
+        //         success: true,
+        //         token: access_token,
+        //         currentUser: user,
+        //         userlevel: userlevel,
+        //       });
+        //     }
+        //   }
+        // );
+
+        //Hash Password //
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(newPassword, salt, function (err, hash) {
+          if (err) throw err;
+          user.password = hash;
+          user
+            .save()
+            .then((response) => {
+              console.log("updated the password: ", hash)
+              res.status(200).json({
+                success: true,
+                result: response,
+              });
+            })
+            .catch((err) => {
+              res.status(500).json({
+                errors: [{ error: err }],
+              });
+            });
+        });
+      });
+
+      })
+      .catch((err) => {
+        return res
+          .status(500)
+          .json({ errors: "bcrypt.compare:" + err.message });
+      });
+  }
+})
+.catch((err) => {
+  return res.status(500).json({ errors: "exception: " + err.message });
+});
+
+
+}

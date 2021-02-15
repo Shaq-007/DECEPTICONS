@@ -55,7 +55,7 @@ const SignupPage = () => {
         username: state.username,
         email: state.email,
         password: state.password,
-        password_confirmation: state.password_confirmation,
+        password_confirmation: state.password_confirmation,    //for checking the match at backend also its a duplication anyway
         userlevel: state.userlevel,
       }),
     });

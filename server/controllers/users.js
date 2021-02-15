@@ -115,7 +115,7 @@ exports.update_userPassword = async function (req, res) {
   }
 };
 
-/// Remove an user
+/// Remove a user
 exports.delete_user = async function (req, res) {
   try {
     const user = await User.findByIdAndDelete(req.params.userid);

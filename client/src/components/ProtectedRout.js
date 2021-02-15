@@ -11,7 +11,7 @@ function ProtectedRoute({ component: Component, ...rest }) {
       {...rest}
       render={(props) => {
         if (user) {
-          console.log("hey Kate, welcome");
+          console.log(`Hey ${user.username} Welcome`);
           return <Component />;
         } else {
           console.log("you have to log in");
