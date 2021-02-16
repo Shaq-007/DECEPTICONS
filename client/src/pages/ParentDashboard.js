@@ -25,12 +25,14 @@ const ParentDashboard = () => {
     history.push("play");
   };
 
- const handleCheckboxChange = () => {
+  const handleCheckboxChange = () => {
     setUpload(true);
   };
   return (
     <div>
-      <h2 className="parent-title">Hello Parent! This is your Dashboard. </h2>
+      <h2 className="parent-title">
+        Hello {user.username}! This is your Dashboard.{" "}
+      </h2>
       <h4 className="dashboard-description">
         You can upload your pictures or change your password.
       </h4>
@@ -51,20 +53,20 @@ const ParentDashboard = () => {
           />
         </div>
         <div
-            className="form-check"
-            style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
-          >
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value={upload}
-              onChange={handleCheckboxChange}
-              id="flexCheckDefault"
-            />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
-              I have loaded images already
-            </label>
-          </div>
+          className="form-check"
+          style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
+        >
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value={upload}
+            onChange={handleCheckboxChange}
+            id="flexCheckDefault"
+          />
+          <label className="form-check-label" htmlFor="flexCheckDefault">
+            I have loaded images already
+          </label>
+        </div>
         <div className="card-body">
           <p className="card-text">
             Now your kid can go have fun with you own images!
@@ -77,15 +79,14 @@ const ParentDashboard = () => {
             Go play
           </button>
         </div>
-
       </div>
       <br />
 
       {/* this is the third card */}
 
       {/* <div className="card col-10"> */}
-        {/* <div className="card-header">Go Play</div> */}
-        
+      {/* <div className="card-header">Go Play</div> */}
+
       {/* </div> */}
 
       {/* this is the second card */}

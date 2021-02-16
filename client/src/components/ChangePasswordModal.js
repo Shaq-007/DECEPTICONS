@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-modal";
 import { AuthContext } from "../components/AuthContext";
 
@@ -17,10 +17,10 @@ Modal.setAppElement("#root");
 
 const ChangePasswordModal = () => {
   const { user, setUser } = useContext(AuthContext);
-  const {email} = useContext(AuthContext);    ///to get the email of the logged in user//
-  const [newPassword, setNewPassword] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+  const { email } = useContext(AuthContext); ///to get the email of the logged in user//
+  const [newPassword, setNewPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
@@ -30,10 +30,21 @@ const ChangePasswordModal = () => {
       newPassword,
       confirmPassword
     );
-    if (newPassword === confirmPassword) {
+    if (
+      password.length === 0 &&
+      newPassword.length === 0 &&
+      confirmPassword.length === 0
+    ) {
+      alert("Please fill out the form!");
+    } else if (
+      password.length !== 0 &&
+      newPassword.length !== 0 &&
+      newPassword === confirmPassword
+    ) {
       sendNewPasswordToServer();
     } else {
       console.log("your password did not match");
+      alert("Something went wrong! Please try again.");
     }
   };
 
@@ -42,17 +53,20 @@ const ChangePasswordModal = () => {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-     
-      email: email,
-      oldPassword: password,
-      newPassword: newPassword,        
+        email: email,
+        oldPassword: password,
+        newPassword: newPassword,
       }),
     });
     alert("Password Updated");
 
-
-
-    console.log("this is user password", password, "new password", newPassword, "confirm",confirmPassword
+    console.log(
+      "this is user password",
+      password,
+      "new password",
+      newPassword,
+      "confirm",
+      confirmPassword
     );
   };
 
