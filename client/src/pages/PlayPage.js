@@ -55,12 +55,19 @@ const PlayPage = () => {
 
   const getImages_custom = async (email) => {
     let response = await fetch("/custom/" + email);
-    let data = await response.json();
-    setImages(data);
-    console.log("this is the data from playpage", data);
-    if(data.length === 0){
+    if(response.status === 400){
+      let error = await response.text()
+      alert(error)
+      setUpload(false)
+    } else {
+      console.log("this is the response", response);
+      let data = await response.json();
+      setImages(data);
+      console.log("this is the data from playpage", data);
+      if(data.length === 0){
       alert("sorry, you really do not have images in DB, go back and upload images if you want to play with them")
       setUpload(false)
+      }
     }
   };
 

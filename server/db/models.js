@@ -47,7 +47,7 @@ const imageSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  categoryName: String,
+  // categoryName: String,
   img: {
     data: Buffer,
     contentType: String,
