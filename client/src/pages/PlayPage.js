@@ -30,7 +30,7 @@ const PlayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
   const [inGame, setInGame] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Colors");
+  const [selectedCategory, setSelectedCategory] = useState("");
   // const [categoryName, setCategoryName] = useState("");
 
   const {
@@ -101,9 +101,9 @@ const PlayPage = () => {
     }
   };
 
-  useEffect(() => {
-    loadImages("Colors");
-  }, []);
+  // useEffect(() => {
+  //   loadImages("Colors");
+  // }, []);
 
   useEffect(() => {
     if (!images) {
@@ -195,11 +195,15 @@ const PlayPage = () => {
               ) : null}
             </div>
             <div className="col-8">
-              <CardBoard
-                funWords={myWords}
-                reward={reward}
-                setReward={setReward}
-              />
+              {myWords.length > 0 ? (
+                <CardBoard
+                  funWords={myWords}
+                  reward={reward}
+                  setReward={setReward}
+                />
+              ) : (
+                <h1>Please select a Category</h1>
+              )}
             </div>
           </div>
         </div>
