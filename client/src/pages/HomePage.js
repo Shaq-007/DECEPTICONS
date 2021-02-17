@@ -104,7 +104,7 @@ const HomePage = (props) => {
 
       <br />
 
-      <div class="row">
+      <div className="row">
         <div className="col-12 col-lg-3 offset-lg-4 playIcon-column">
           <Link to="/play">
             <img
