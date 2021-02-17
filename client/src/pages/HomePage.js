@@ -164,7 +164,7 @@ const HomePage = (props) => {
             <div className="mb-2"></div>
 
             <button type="submit" className="btn btn-primary submit">
-              Login and Play
+              Login
             </button>
           </form>
 

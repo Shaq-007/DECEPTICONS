@@ -29,6 +29,8 @@ const PlayPage = () => {
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
+  const [inGame, setInGame] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Colors");
   // const [categoryName, setCategoryName] = useState("");
 
   const {
@@ -55,15 +57,32 @@ const PlayPage = () => {
     }
   };
 
-  const getImages = async (categoryName) => {
+  const startGame = async (categoryName) => {
+    if (!inGame) {
+      loadImages(categoryName);
+      setInGame(true);
+    }
+  };
+
+  const startGameCustom = async (email) => {
+    if (!inGame) {
+      getImages_custom(email);
+      setInGame(true);
+    }
+  };
+
+  const loadImages = async (categoryName) => {
     let response = await fetch("/images/" + categoryName);
     let data = await response.json();
     setImages(data);
+    setSelectedCategory(categoryName);
     console.log("this is the data", data);
   };
 
   const getImages_custom = async (email) => {
     let response = await fetch("/custom/" + email);
+    // setInGame(true);
+    setSelectedCategory(email);
     if (response.status === 400) {
       let error = await response.text();
       alert(error);
@@ -83,7 +102,7 @@ const PlayPage = () => {
   };
 
   useEffect(() => {
-    getImages("Colors");
+    loadImages("Colors");
   }, []);
 
   useEffect(() => {
@@ -95,10 +114,9 @@ const PlayPage = () => {
       let b64 = giveMeTheImage(i.img);
       copyOfWords[index].base64img = b64;
     });
+    shuffle(copyOfWords);
     setMyWords(copyOfWords);
   }, [images]);
-
-  shuffle(myWords);
 
   return (
     <>
@@ -115,32 +133,36 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Animals"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
+                disabled={inGame && selectedCategory !== "Animals"}
                 onClick={() => {
-                  getImages("Animals");
+                  startGame("Animals");
                 }}
               />
 
               <CategoryButtons
                 value="Shapes"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
+                disabled={inGame && selectedCategory !== "Shapes"}
                 onClick={() => {
-                  getImages("Shapes");
+                  startGame("Shapes");
                 }}
               />
 
               <CategoryButtons
                 value="Colors"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
+                disabled={inGame && selectedCategory !== "Colors"}
                 onClick={() => {
-                  getImages("Colors");
+                  startGame("Colors");
                 }}
               />
 
               <CategoryButtons
                 value="Letters"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
+                disabled={inGame && selectedCategory !== "Letters"}
                 onClick={() => {
-                  getImages("Letters");
+                  startGame("Letters");
                 }}
               />
 
@@ -157,16 +179,17 @@ const PlayPage = () => {
                 //   onClick={() => {
                 //    console.log("getting imagess", categoryName);
 
-                //     getImages(categoryName);
+                //     startGame(categoryName);
                 //   }}
                 // />
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                  disabled={inGame && selectedCategory !== email}
                   onClick={() => {
                     console.log("getting images by Email", email);
 
-                    getImages_custom(email);
+                    startGameCustom(email);
                   }}
                 />
               ) : null}
