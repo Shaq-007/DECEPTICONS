@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import FlippingCard from "../components/FlippingCard";
 import "./CardBoard.css";
 
@@ -16,7 +16,6 @@ const CardBoard = ({ funWords, setReward, twoCardsInPlay, setTwoCardsInPlay, sol
             {
                 funWords.map((words, i) => {
                     return (
-                        // <>
                         <FlippingCard
                             key={i}
                             id={i}
@@ -31,7 +30,6 @@ const CardBoard = ({ funWords, setReward, twoCardsInPlay, setTwoCardsInPlay, sol
                             cardStatus={cardStatus}
                             setCardStatus={setCardStatus}
                         />
-                        // </>
                     );
                 })
             }     
