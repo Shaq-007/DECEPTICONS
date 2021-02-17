@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema(
     userlevel: {
       type: Number,
     },
+    UserStatus: {
+      type: Boolean,
+      default: true
+    },
   },
   {
     timestamps: true,

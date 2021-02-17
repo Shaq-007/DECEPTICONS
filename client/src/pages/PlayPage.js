@@ -30,6 +30,9 @@ const PlayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
   const [inGame, setInGame] = useState(false);
+  const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
+  const [solved, setSolved] = useState([]);
+  const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const {
@@ -123,8 +126,14 @@ const PlayPage = () => {
         <GoBackButton />
         <RewardModal
           reward={reward}
+          setReward={setReward}
           showModal={showModal}
           setShowModal={setShowModal}
+          setTwoCardsInPlay={setTwoCardsInPlay}
+          setSolved={setSolved}
+          setCardStatus={setCardStatus}
+          setInGame={setInGame}
+          setSelectedCategory={setSelectedCategory}
         />
         <div className="containerAlignment">
           <div className="row rowAlignment">
@@ -184,6 +193,12 @@ const PlayPage = () => {
                   funWords={myWords}
                   reward={reward}
                   setReward={setReward}
+                  twoCardsInPlay={twoCardsInPlay}
+                  setTwoCardsInPlay={setTwoCardsInPlay}
+                  solved={solved}
+                  setSolved={setSolved}
+                  cardStatus={cardStatus}
+                  setCardStatus={setCardStatus}
                 />
               ) : (
                 <h1>Please select a Category</h1>
