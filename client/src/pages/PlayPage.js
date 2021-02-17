@@ -8,7 +8,7 @@ import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import shuffle from "shuffle-array";
-import {AuthContext} from '../components/AuthContext';
+import { AuthContext } from "../components/AuthContext";
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -31,7 +31,16 @@ const PlayPage = () => {
   const [myWords, setMyWords] = useState([]);
   // const [categoryName, setCategoryName] = useState("");
 
-  const {user, categoryName, setCategoryName, email, upload,setUpload} = useContext(AuthContext);
+  const {
+    user,
+    categoryName,
+    setCategoryName,
+    email,
+    upload,
+    setUpload,
+    imagesUpload,
+    setImagesUpload,
+  } = useContext(AuthContext);
   // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
@@ -55,12 +64,21 @@ const PlayPage = () => {
 
   const getImages_custom = async (email) => {
     let response = await fetch("/custom/" + email);
-    let data = await response.json();
-    setImages(data);
-    console.log("this is the data from playpage", data);
-    if(data.length === 0){
-      alert("sorry, you really do not have images in DB, go back and upload images if you want to play with them")
-      setUpload(false)
+    if (response.status === 400) {
+      let error = await response.text();
+      alert(error);
+      setUpload(false);
+    } else {
+      console.log("this is the response", response);
+      let data = await response.json();
+      setImages(data);
+      console.log("this is the data from playpage", data);
+      if (data.length === 0) {
+        alert(
+          "sorry, you really do not have images in DB, go back and upload images if you want to play with them"
+        );
+        setUpload(false);
+      }
     }
   };
 
@@ -132,7 +150,7 @@ const PlayPage = () => {
                 setCategoryName={setCategoryName}
               /> */}
 
-              {user && upload ? (
+              {(user && user.imagesUpload) || imagesUpload ? (
                 // <CategoryButtons
                 //   value="Custom"
                 //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
@@ -146,9 +164,9 @@ const PlayPage = () => {
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                   onClick={() => {
-                   console.log("getting images by Email", email);
+                    console.log("getting images by Email", email);
 
-                   getImages_custom(email);
+                    getImages_custom(email);
                   }}
                 />
               ) : null}

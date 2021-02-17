@@ -11,6 +11,7 @@ exports.get_images = async function (req, res) {
   // console.log(imagesByCategoryCustom);
   if (imagesByCategoryCustom != null) {
     // console.log(`success, images found: ${imagesByCategoryCustom}`);
+    console.log(`success, images found: ${imagesByCategoryCustom.length}`);
     res.status(200).json(imagesByCategoryCustom);
   } else {
     console.log("error:cannot find images");
@@ -20,15 +21,28 @@ exports.get_images = async function (req, res) {
 
 exports.get_image_custom = async function (req, res) {
   console.log("Email in custom function", req.params);
+  // if (token === user.token) {
+
+
   const imagesByCategoryCustom = await Image.find({
     email: req.params.email,
   });
   // console.log(imagesByCategoryCustom);
   if (imagesByCategoryCustom != null) {
     // console.log(`success, images found: ${imagesByCategoryCustom}`);
-    res.status(200).json(imagesByCategoryCustom);
+    console.log(`success, images found: ${imagesByCategoryCustom.length}`);
+    if (imagesByCategoryCustom.length === 12) {
+      res.status(200).json(imagesByCategoryCustom);
+    } else {
+      console.log("user has more than 12 images on file, please delete");
+      res.status(400).send('user has more than 12 images on file, please delete');
+    }
+    // res.status(200).json(imagesByCategoryCustom);
   } else {
     console.log("error:cannot find images");
     res.sendStatus(400);
   }
+// } else {
+//   console.log('tokens are different')
+// }
 };
