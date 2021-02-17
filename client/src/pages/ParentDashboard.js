@@ -15,8 +15,8 @@ const ParentDashboard = () => {
     setCategoryName,
     upload,
     setUpload,
-    imagesUpload, 
-    setImagesUpload
+    imagesUpload,
+    setImagesUpload,
   } = useContext(AuthContext);
 
   const handleSubmitClick = () => {
@@ -27,9 +27,7 @@ const ParentDashboard = () => {
     history.push("play");
   };
 
-
-  
-
+  console.log("this is the imagesUpload state", user.imagesUpload);
   // const handleCheckboxChange = () => {
   //   setUpload(true);
   // };
@@ -61,7 +59,7 @@ const ParentDashboard = () => {
           className="form-check"
           style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
         > */}
-          {/* <input
+        {/* <input
             className="form-check-input"
             type="checkbox"
             value={upload}
@@ -73,10 +71,16 @@ const ParentDashboard = () => {
           </label> */}
         {/* </div> */}
         <div className="card-body">
-          {imagesUpload ? 
-          <p className="card-text">
-            Now your kid can go have fun with your own images!
-          </p> : <p className="card-text">Go play without your own images or load them by using the button above </p> }
+          {user.imagesUpload || imagesUpload ? (
+            <p className="card-text">
+              Now your kid can go have fun with your own images!
+            </p>
+          ) : (
+            <p className="card-text">
+              Go play without your own images or load them by using the button
+              above{" "}
+            </p>
+          )}
           <button
             type="button"
             className="btn btn-warning goPlay"

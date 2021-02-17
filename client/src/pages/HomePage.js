@@ -3,7 +3,7 @@ import "../components/Homepage.css";
 import "../components/Fonts.css";
 import { Link, useHistory } from "react-router-dom";
 import GoPlayIcon from "../images/video6.svg";
-import {AuthContext} from '../components/AuthContext';
+import { AuthContext } from "../components/AuthContext";
 
 const HomePage = (props) => {
   // let setToken = props.setToken;
@@ -13,7 +13,16 @@ const HomePage = (props) => {
   let userlevel = props.userlevel;
   let setUserlevel = props.setUserlevel;
 
-  const {user, setUser, email, setEmail,token, setToken, imagesUpload, setImagesUpload} = useContext(AuthContext);
+  const {
+    user,
+    setUser,
+    email,
+    setEmail,
+    token,
+    setToken,
+    imagesUpload,
+    setImagesUpload,
+  } = useContext(AuthContext);
 
   // const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -45,10 +54,11 @@ const HomePage = (props) => {
         setUser(data.currentUser);
         setUserlevel(data.currentUser.userlevel);
         console.log("here is the response", message);
-        console.log('this is the data token', data.token)
-        console.log('this is the token',token)
+        console.log("this is the data token", data.token);
+        console.log("this is the token", token);
         setLoggedIn(true);
         setUserlevel(data.currentUser.userlevel);
+        setImagesUpload(imagesUpload);
         console.log("this is our currentUser", data.currentUser.userlevel);
         console.log("this is our currentUser", userlevel);
         console.log("hello user");
@@ -142,7 +152,7 @@ const HomePage = (props) => {
                 placeholder="Enter password"
                 onChange={({ target }) => setPassword(target.value)}
               />
-              
+
               {loggedIn ? (
                 <span style={{ color: "black", fontWeight: "600" }}>
                   {loggedIn}
