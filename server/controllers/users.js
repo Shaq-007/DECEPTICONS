@@ -128,6 +128,22 @@ exports.delete_user = async function (req, res) {
   }
 };
 
+// To update user imageupload code
+exports.update_imageuploadcode = async function (req, res) {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.userid, req.body, {
+      new: true,
+    });
+
+    if (!user) {
+      return res.status(404).send("User does not exist");
+    }
+    res.send(user);
+  } catch (e) {
+    res.status(400).send();
+  }
+};
+
 /// Remove a document from Project2 using username not id
 // exports.delete_user = async function (req, res) {
 //   const user = req.body.username;

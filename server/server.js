@@ -17,6 +17,8 @@ app.get("/users/:userid", user_controllers.get_oneuser);
 
 app.patch("/users/update/:userid", user_controllers.update_userLevel);
 
+app.patch("/imageupload/update/:userid", user_controllers.update_imageuploadcode);
+
 // app.patch("/users/update/:userid", user_controllers.update_userPassword); ///its a duplication have same api method in authRout//
 
 app.delete("/users/delete/:userid", user_controllers.delete_user);

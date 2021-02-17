@@ -31,7 +31,7 @@ const PlayPage = () => {
   const [myWords, setMyWords] = useState([]);
   // const [categoryName, setCategoryName] = useState("");
 
-  const {user, categoryName, setCategoryName, email, upload,setUpload} = useContext(AuthContext);
+  const {user, categoryName, setCategoryName, email, upload,setUpload,imagesUpload, setImagesUpload} = useContext(AuthContext);
   // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
@@ -139,7 +139,7 @@ const PlayPage = () => {
                 setCategoryName={setCategoryName}
               /> */}
 
-              {user && upload ? (
+              {user && imagesUpload ? (
                 // <CategoryButtons
                 //   value="Custom"
                 //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"

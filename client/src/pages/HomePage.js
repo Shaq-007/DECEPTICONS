@@ -6,14 +6,14 @@ import GoPlayIcon from "../images/video6.svg";
 import {AuthContext} from '../components/AuthContext';
 
 const HomePage = (props) => {
-  let setToken = props.setToken;
+  // let setToken = props.setToken;
   // let setUser = props.setUser;
   let setLoggedIn = props.setLoggedIn;
   let loggedIn = props.loggedIn;
   let userlevel = props.userlevel;
   let setUserlevel = props.setUserlevel;
 
-  const {user, setUser, email, setEmail} = useContext(AuthContext);
+  const {user, setUser, email, setEmail,token, setToken, imagesUpload, setImagesUpload} = useContext(AuthContext);
 
   // const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -40,13 +40,17 @@ const HomePage = (props) => {
       let message = JSON.stringify(data);
 
       if (data.success === true) {
-        // setToken(data.token);
+        // const token = data.token
+        setToken(data.token);
         setUser(data.currentUser);
         setUserlevel(data.currentUser.userlevel);
         console.log("here is the response", message);
+        console.log('this is the data token', data.token)
+        console.log('this is the token',token)
         setLoggedIn(true);
         setUserlevel(data.currentUser.userlevel);
         console.log("this is our currentUser", data.currentUser.userlevel);
+        console.log("this is our currentUser", userlevel);
         console.log("hello user");
         if (data.currentUser.userlevel === 10) {
           goAdmin();
@@ -138,7 +142,7 @@ const HomePage = (props) => {
                 placeholder="Enter password"
                 onChange={({ target }) => setPassword(target.value)}
               />
-
+              
               {loggedIn ? (
                 <span style={{ color: "black", fontWeight: "600" }}>
                   {loggedIn}

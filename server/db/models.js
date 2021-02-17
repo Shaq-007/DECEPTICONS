@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // password_confirmation: {
-    //   type: String,
-    //   required: true,
-    // },
+    imagesUpload: {
+      type: Boolean,
+      default: false
+    },
     userlevel: {
       type: Number,
     },

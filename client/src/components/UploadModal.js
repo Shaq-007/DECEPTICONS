@@ -21,6 +21,9 @@ function UploadModal() {
     setEmail,
     upload,
     setUpload,
+    imagesUpload, 
+    setImagesUpload,
+    user
   } = useContext(AuthContext);
 
   var subtitle;
@@ -69,6 +72,8 @@ function UploadModal() {
       };
 
       let response = await fetch("/images/save", options);
+      setImagesUpload(true)
+
       if (response.status === 400) {
         let error = await response.text();
         // alert(error);
@@ -83,6 +88,28 @@ function UploadModal() {
       //   // alert('You are allowed to load exactly 6 images, thanks')
       //   setErrmessage('You are allowed to load exactly 6 images, thanks')
       // }
+      console.log('this is the user id in upload modal', user._id)
+      let response1 = await fetch(`/imageupload/update/${user._id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          imagesUpload: true
+        }),
+      });
+    // this is a post to update the upload image Key
+      let data1 = await response1.json();
+      let message1 = JSON.stringify(data1);
+      console.log(message1);
+      alert("images upload key has been updated")
+  
+      if (response.status === 200) {
+        return message1;
+      } else {
+        throw Error.message;
+      };
+
+
+
     } else {
       setErrmessage("please load the 6 files")
       // alert("please load the files");

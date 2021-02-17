@@ -15,6 +15,8 @@ const ParentDashboard = () => {
     setCategoryName,
     upload,
     setUpload,
+    imagesUpload, 
+    setImagesUpload
   } = useContext(AuthContext);
 
   const handleSubmitClick = () => {
@@ -25,9 +27,12 @@ const ParentDashboard = () => {
     history.push("play");
   };
 
-  const handleCheckboxChange = () => {
-    setUpload(true);
-  };
+
+  
+
+  // const handleCheckboxChange = () => {
+  //   setUpload(true);
+  // };
   return (
     <div>
       <h2 className="parent-title">
@@ -52,11 +57,11 @@ const ParentDashboard = () => {
             setCategoryName={setCategoryName}
           />
         </div>
-        <div
+        {/* <div
           className="form-check"
           style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
-        >
-          <input
+        > */}
+          {/* <input
             className="form-check-input"
             type="checkbox"
             value={upload}
@@ -65,12 +70,13 @@ const ParentDashboard = () => {
           />
           <label className="form-check-label" htmlFor="flexCheckDefault">
             I have loaded images already
-          </label>
-        </div>
+          </label> */}
+        {/* </div> */}
         <div className="card-body">
+          {imagesUpload ? 
           <p className="card-text">
-            Now your kid can go have fun with you own images!
-          </p>
+            Now your kid can go have fun with your own images!
+          </p> : <p className="card-text">Go play without your own images or load them by using the button above </p> }
           <button
             type="button"
             className="btn btn-warning goPlay"
