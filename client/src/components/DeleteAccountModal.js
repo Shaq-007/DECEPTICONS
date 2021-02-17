@@ -41,18 +41,15 @@ const DeleteAccountModal = () => {
     let data = await response.json();
     let message = JSON.stringify(data);
     console.log(message);
-    alert("User Deleted");
-
+   
     if (response.status === 200) {
-        goHome();
-          
-      
-
+      alert("User Deleted");
+      goHome();
       return message;
-    } else {
+    } 
+    else {
       throw Error.message;
     }
-        
   };
 
   const history = useHistory();
@@ -84,45 +81,17 @@ const DeleteAccountModal = () => {
           <div className="DeleteAccount">
             <form onSubmit={handleSubmitClick}>
               <div>
-                <h3>Please Input Your Email to Delete Your Account</h3>
-                <label>Your Email</label>
-                <br />
-                <input
-                  type="email"
-                  onChange={({ target }) => setTypedEmail(target.value)}
-                // onChange={email}
-                />
+                <h2>Warning!!! </h2>  
+                <h4>You are about to Delete your account</h4>
+                <h4>All data related to this account will be lost</h4>
               </div>
               <hr />
 
-              {/* <div>
-                <label>New Password</label>
-                <br />
-                <input
-                  type="password"
-                  // onChange={({ target }) => setNewPassword(target.value)}
-                />
-              </div> */}
-              {/* <div>
-                <label>Confirm Password</label>
-                <br />
-                <input
-                  type="password"
-                  // onChange={({ target }) => setConfirmPassword(target.value)}
-                />
-              </div> */}
-              <button className="btn btn-info" type="submit">
+              <button className="btn btn-danger" type="submit">
                 Delete Account
               </button>
               <br />
               <br />
-              <button
-                className="btn btn-outline-secondary"
-                style={{ marginLeft: "25%" }}
-                onClick={closeModal}
-              >
-                close
-              </button>
             </form>
           </div>
         </Modal>
