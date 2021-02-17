@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
+import DeleteAccountModal from "../components/DeleteAccountModal";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
 
@@ -15,6 +16,8 @@ const ParentDashboard = () => {
     setCategoryName,
     upload,
     setUpload,
+    imagesUpload,
+    setImagesUpload,
   } = useContext(AuthContext);
 
   const handleSubmitClick = () => {
@@ -25,9 +28,10 @@ const ParentDashboard = () => {
     history.push("play");
   };
 
-  const handleCheckboxChange = () => {
-    setUpload(true);
-  };
+  console.log("this is the imagesUpload state", user.imagesUpload);
+  // const handleCheckboxChange = () => {
+  //   setUpload(true);
+  // };
   return (
     <div>
       <h2 className="parent-title">
@@ -52,11 +56,11 @@ const ParentDashboard = () => {
             setCategoryName={setCategoryName}
           />
         </div>
-        <div
+        {/* <div
           className="form-check"
           style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
-        >
-          <input
+        > */}
+        {/* <input
             className="form-check-input"
             type="checkbox"
             value={upload}
@@ -65,12 +69,19 @@ const ParentDashboard = () => {
           />
           <label className="form-check-label" htmlFor="flexCheckDefault">
             I have loaded images already
-          </label>
-        </div>
+          </label> */}
+        {/* </div> */}
         <div className="card-body">
-          <p className="card-text">
-            Now your kid can go have fun with you own images!
-          </p>
+          {user.imagesUpload || imagesUpload ? (
+            <p className="card-text">
+              Now your kid can go have fun with your own images!
+            </p>
+          ) : (
+            <p className="card-text">
+              Go play without your own images or load them by using the button
+              above{" "}
+            </p>
+          )}
           <button
             type="button"
             className="btn btn-warning goPlay"
@@ -111,9 +122,11 @@ const ParentDashboard = () => {
             We will be sad to see you leave but we have an option for you to do
             that as well.
           </p>
-          <button type="button" className="btn btn-danger">
+
+          <DeleteAccountModal user={user} />
+          {/* <button type="button" className="btn btn-danger">
             Delete Account
-          </button>
+          </button> */}
         </div>
       </div>
 

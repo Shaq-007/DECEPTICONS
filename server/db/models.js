@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // password_confirmation: {
-    //   type: String,
-    //   required: true,
-    // },
+    imagesUpload: {
+      type: Boolean,
+      default: false
+    },
     userlevel: {
       type: Number,
     },
@@ -47,7 +47,7 @@ const imageSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  categoryName: String,
+  // categoryName: String,
   img: {
     data: Buffer,
     contentType: String,

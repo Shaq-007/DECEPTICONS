@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import UserList from "../components/UserList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
+import GoBackButton from "../components/GoBackButton";
+
+
 
 const AdminManageUsers = ({ userlevel }) => {
     const [users, setUsers] = useState([]);
@@ -32,6 +35,8 @@ const AdminManageUsers = ({ userlevel }) => {
         (
             <div>
                 <h1>System Users</h1>
+                <GoBackButton/>
+                        
                 <SearchBox searchChange={onSearchChange} />
                 <Scroll>
                     <UserList users={filteredUsers} />
@@ -39,5 +44,6 @@ const AdminManageUsers = ({ userlevel }) => {
             </div>
         )
 }
+
 
 export default AdminManageUsers

@@ -8,7 +8,7 @@ import RewardModal from "../components/RewardModal";
 import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import shuffle from "shuffle-array";
-import {AuthContext} from '../components/AuthContext';
+import { AuthContext } from "../components/AuthContext";
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -29,9 +29,20 @@ const PlayPage = () => {
   const [reward, setReward] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
+  const [inGame, setInGame] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Colors");
   // const [categoryName, setCategoryName] = useState("");
 
-  const {user, categoryName, setCategoryName, email, upload,setUpload} = useContext(AuthContext);
+  const {
+    user,
+    categoryName,
+    setCategoryName,
+    email,
+    upload,
+    setUpload,
+    imagesUpload,
+    setImagesUpload,
+  } = useContext(AuthContext);
   // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
@@ -46,26 +57,52 @@ const PlayPage = () => {
     }
   };
 
-  const getImages = async (categoryName) => {
+  const startGame = async (categoryName) => {
+    if (!inGame) {
+      loadImages(categoryName);
+      setInGame(true);
+    }
+  };
+
+  const startGameCustom = async (email) => {
+    if (!inGame) {
+      getImages_custom(email);
+      setInGame(true);
+    }
+  };
+
+  const loadImages = async (categoryName) => {
     let response = await fetch("/images/" + categoryName);
     let data = await response.json();
     setImages(data);
+    setSelectedCategory(categoryName);
     console.log("this is the data", data);
   };
 
   const getImages_custom = async (email) => {
     let response = await fetch("/custom/" + email);
-    let data = await response.json();
-    setImages(data);
-    console.log("this is the data from playpage", data);
-    if(data.length === 0){
-      alert("sorry, you really do not have images in DB, go back and upload images if you want to play with them")
-      setUpload(false)
+    // setInGame(true);
+    setSelectedCategory(email);
+    if (response.status === 400) {
+      let error = await response.text();
+      alert(error);
+      setUpload(false);
+    } else {
+      console.log("this is the response", response);
+      let data = await response.json();
+      setImages(data);
+      console.log("this is the data from playpage", data);
+      if (data.length === 0) {
+        alert(
+          "sorry, you really do not have images in DB, go back and upload images if you want to play with them"
+        );
+        setUpload(false);
+      }
     }
   };
 
   useEffect(() => {
-    getImages("Colors");
+    loadImages("Colors");
   }, []);
 
   useEffect(() => {
@@ -77,10 +114,9 @@ const PlayPage = () => {
       let b64 = giveMeTheImage(i.img);
       copyOfWords[index].base64img = b64;
     });
+    shuffle(copyOfWords);
     setMyWords(copyOfWords);
   }, [images]);
-
-  shuffle(myWords);
 
   return (
     <>
@@ -97,32 +133,36 @@ const PlayPage = () => {
               <CategoryButtons
                 value="Animals"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
+                disabled={inGame && selectedCategory !== "Animals"}
                 onClick={() => {
-                  getImages("Animals");
+                  startGame("Animals");
                 }}
               />
 
               <CategoryButtons
                 value="Shapes"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
+                disabled={inGame && selectedCategory !== "Shapes"}
                 onClick={() => {
-                  getImages("Shapes");
+                  startGame("Shapes");
                 }}
               />
 
               <CategoryButtons
                 value="Colors"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
+                disabled={inGame && selectedCategory !== "Colors"}
                 onClick={() => {
-                  getImages("Colors");
+                  startGame("Colors");
                 }}
               />
 
               <CategoryButtons
                 value="Letters"
                 styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
+                disabled={inGame && selectedCategory !== "Letters"}
                 onClick={() => {
-                  getImages("Letters");
+                  startGame("Letters");
                 }}
               />
 
@@ -132,23 +172,24 @@ const PlayPage = () => {
                 setCategoryName={setCategoryName}
               /> */}
 
-              {user && upload ? (
+              {(user && user.imagesUpload) || imagesUpload ? (
                 // <CategoryButtons
                 //   value="Custom"
                 //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
                 //   onClick={() => {
                 //    console.log("getting imagess", categoryName);
 
-                //     getImages(categoryName);
+                //     startGame(categoryName);
                 //   }}
                 // />
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                  disabled={inGame && selectedCategory !== email}
                   onClick={() => {
-                   console.log("getting images by Email", email);
+                    console.log("getting images by Email", email);
 
-                   getImages_custom(email);
+                    startGameCustom(email);
                   }}
                 />
               ) : null}
