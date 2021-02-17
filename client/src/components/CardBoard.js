@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import FlippingCard from "../components/FlippingCard";
 import "./CardBoard.css";
 
-const CardBoard = ({ funWords, setReward }) => {
-    const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
-    const [solved, setSolved] = useState([]);
-    const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
+const CardBoard = ({ funWords, setReward, twoCardsInPlay, setTwoCardsInPlay, solved, setSolved, cardStatus, setCardStatus }) => {
 
     useEffect(() => {
         let result = cardStatus.every( item => item === true);
