@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import UploadModal from "../components/UploadModal";
 import { withRouter } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
+import DeleteAccountModal from "../components/DeleteAccountModal";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
 
@@ -121,9 +122,11 @@ const ParentDashboard = () => {
             We will be sad to see you leave but we have an option for you to do
             that as well.
           </p>
-          <button type="button" className="btn btn-danger">
+
+          <DeleteAccountModal user={user} />
+          {/* <button type="button" className="btn btn-danger">
             Delete Account
-          </button>
+          </button> */}
         </div>
       </div>
 
