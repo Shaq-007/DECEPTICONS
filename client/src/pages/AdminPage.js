@@ -1,11 +1,13 @@
 import React from 'react';
 import "../components/AdminPage.css";
 import { Link } from "react-router-dom";
+import GoBackButton from "../components/GoBackButton";
  
 const AdminPage = () => {
     
-    
+   
     return (
+        
         <div className="container-fluid">
             <div className="adminHeader">
                 <h1 className="adminAccessTitle">Memoryland</h1>
@@ -24,6 +26,7 @@ const AdminPage = () => {
                             Manage Categories
                         </button>
                     </Link>
+                
                 </div>
             </div>
         </div>

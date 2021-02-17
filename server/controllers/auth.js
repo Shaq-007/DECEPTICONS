@@ -124,8 +124,8 @@ exports.signin = (req, res) => {
                 .json({ errors: [{ password: "incorrect" }] });
             }
 
-            console.log("token Secret :" + process.env.TOKEN_SECRET);
-            console.log("process.env :", process.env);
+            // console.log("token Secret :" + process.env.TOKEN_SECRET);
+            // console.log("process.env :", process.env);
             const access_token = createJWT(
               user.email,
               user._id,
