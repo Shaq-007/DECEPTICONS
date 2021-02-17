@@ -5,7 +5,16 @@ import rainbow from "../images/rewardrainbow.svg";
 
 Modal.setAppElement('#root')
 
-const RewardModal = ({ showModal, setShowModal, reward }) => {
+const RewardModal = ({ 
+    showModal, 
+    setShowModal, 
+    reward, setReward, 
+    setSolved, 
+    setTwoCardsInPlay, 
+    setCardStatus, 
+    setInGame, 
+    setSelectedCategory 
+    }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
@@ -17,11 +26,15 @@ const RewardModal = ({ showModal, setShowModal, reward }) => {
     }, [reward, setShowModal]);
 
     const closeModal = () => {
-        setModalIsOpen(false)
-        window.location.reload(false);
-        
-
+        setModalIsOpen(false);
+        setReward(false);
+        setSolved([]);
+        setTwoCardsInPlay([]);
+        setCardStatus([false,false,false,false,false,false,false,false,false,false,false,false]);
+        setInGame(false);
+        setSelectedCategory("");
     }
+
 
     return (
         <>
