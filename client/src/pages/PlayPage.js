@@ -30,10 +30,10 @@ const PlayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [myWords, setMyWords] = useState([]);
   const [inGame, setInGame] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Colors");
   const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
   const [solved, setSolved] = useState([]);
   const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   // const [categoryName, setCategoryName] = useState("");
 
   const {
@@ -104,9 +104,9 @@ const PlayPage = () => {
     }
   };
 
-  useEffect(() => {
-    loadImages("Colors");
-  }, []);
+  // useEffect(() => {
+  //   loadImages("Colors");
+  // }, []);
 
   useEffect(() => {
     if (!images) {
@@ -204,17 +204,21 @@ const PlayPage = () => {
               ) : null}
             </div>
             <div className="col-8">
-            <CardBoard
-                funWords={myWords}
-                reward={reward}
-                setReward={setReward}
-                twoCardsInPlay={twoCardsInPlay}
-                setTwoCardsInPlay={setTwoCardsInPlay}
-                solved={solved}
-                setSolved={setSolved}
-                cardStatus={cardStatus}
-                setCardStatus={setCardStatus}
-              />
+              {myWords.length > 0 ? (
+                <CardBoard
+                  funWords={myWords}
+                  reward={reward}
+                  setReward={setReward}
+                  twoCardsInPlay={twoCardsInPlay}
+                  setTwoCardsInPlay={setTwoCardsInPlay}
+                  solved={solved}
+                  setSolved={setSolved}
+                  cardStatus={cardStatus}
+                  setCardStatus={setCardStatus}
+                />
+              ) : (
+                <h1>Please select a Category</h1>
+              )}
             </div>
           </div>
         </div>
