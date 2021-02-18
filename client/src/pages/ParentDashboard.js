@@ -11,11 +11,8 @@ const ParentDashboard = () => {
 
   const {
     user,
-    setUser,
     categoryName,
     setCategoryName,
-    upload,
-    setUpload,
     imagesUpload,
     setImagesUpload,
   } = useContext(AuthContext);
@@ -29,9 +26,7 @@ const ParentDashboard = () => {
   };
 
   console.log("this is the imagesUpload state", user.imagesUpload);
-  // const handleCheckboxChange = () => {
-  //   setUpload(true);
-  // };
+
   return (
     <div>
       <h2 className="parent-title">
@@ -56,21 +51,7 @@ const ParentDashboard = () => {
             setCategoryName={setCategoryName}
           />
         </div>
-        {/* <div
-          className="form-check"
-          style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
-        > */}
-        {/* <input
-            className="form-check-input"
-            type="checkbox"
-            value={upload}
-            onChange={handleCheckboxChange}
-            id="flexCheckDefault"
-          />
-          <label className="form-check-label" htmlFor="flexCheckDefault">
-            I have loaded images already
-          </label> */}
-        {/* </div> */}
+
         <div className="card-body">
           {user.imagesUpload || imagesUpload ? (
             <p className="card-text">
@@ -92,13 +73,6 @@ const ParentDashboard = () => {
         </div>
       </div>
       <br />
-
-      {/* this is the third card */}
-
-      {/* <div className="card col-10"> */}
-      {/* <div className="card-header">Go Play</div> */}
-
-      {/* </div> */}
 
       {/* this is the second card */}
 
@@ -124,9 +98,7 @@ const ParentDashboard = () => {
           </p>
 
           <DeleteAccountModal user={user} />
-          {/* <button type="button" className="btn btn-danger">
-            Delete Account
-          </button> */}
+
         </div>
       </div>
 

@@ -45,7 +45,6 @@ const PlayPage = () => {
     imagesUpload,
     setImagesUpload,
   } = useContext(AuthContext);
-  // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
     if (reward === true) {

@@ -6,8 +6,6 @@ import GoPlayIcon from "../images/video6.svg";
 import { AuthContext } from "../components/AuthContext";
 
 const HomePage = (props) => {
-  // let setToken = props.setToken;
-  // let setUser = props.setUser;
   let setLoggedIn = props.setLoggedIn;
   let loggedIn = props.loggedIn;
   let userlevel = props.userlevel;
@@ -24,7 +22,6 @@ const HomePage = (props) => {
     setImagesUpload,
   } = useContext(AuthContext);
 
-  // const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = (e) => {
@@ -135,6 +132,7 @@ const HomePage = (props) => {
               </label>
               <input
                 type="email"
+                autoComplete="username"
                 className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
@@ -147,6 +145,7 @@ const HomePage = (props) => {
               </label>
               <input
                 type="password"
+                autoComplete="current-password"
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Enter password"
