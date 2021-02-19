@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Modal from "react-modal";
 import { AuthContext } from "./AuthContext";
 import { useHistory } from "react-router-dom";
@@ -17,16 +17,11 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const DeleteAccountModal = () => {
-  const { user, setUser, email, setEmail } = useContext(AuthContext);
-  const [password, setPassword] = useState();
-  const [typedEmail, setTypedEmail] = useState();
-
-
+  const { user } = useContext(AuthContext);
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
     sendDeleteRequestToServer();
-    
   };
 
   const sendDeleteRequestToServer = async () => {
@@ -34,28 +29,27 @@ const DeleteAccountModal = () => {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user: user
+        user: user,
       }),
     });
 
     let data = await response.json();
     let message = JSON.stringify(data);
     console.log(message);
-   
+
     if (response.status === 200) {
       alert("User Deleted");
       goHome();
       return message;
-    } 
-    else {
+    } else {
       throw Error.message;
     }
   };
 
   const history = useHistory();
   const goHome = () => {
-  history.push("Home");
-};
+    history.push("Home");
+  };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -81,7 +75,7 @@ const DeleteAccountModal = () => {
           <div className="DeleteAccount">
             <form onSubmit={handleSubmitClick}>
               <div>
-                <h2>Warning!!! </h2>  
+                <h2>Warning!!! </h2>
                 <h4>You are about to Delete your account</h4>
                 <h4>All data related to this account will be lost</h4>
               </div>

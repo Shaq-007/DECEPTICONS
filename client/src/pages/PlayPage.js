@@ -34,7 +34,6 @@ const PlayPage = () => {
   const [solved, setSolved] = useState([]);
   const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  // const [categoryName, setCategoryName] = useState("");
 
   const {
     user,
@@ -46,7 +45,6 @@ const PlayPage = () => {
     imagesUpload,
     setImagesUpload,
   } = useContext(AuthContext);
-  // console.log('this is the categoryName in PlayPage', categoryName)
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -175,22 +173,7 @@ const PlayPage = () => {
                 }}
               />
 
-              {/* here need a condition, if user is parent, show this otherwise do not show */}
-              {/* <UploadModal
-                categoryName={categoryName}
-                setCategoryName={setCategoryName}
-              /> */}
-
               {(user && user.imagesUpload) || imagesUpload ? (
-                // <CategoryButtons
-                //   value="Custom"
-                //   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                //   onClick={() => {
-                //    console.log("getting imagess", categoryName);
-
-                //     startGame(categoryName);
-                //   }}
-                // />
                 <CategoryButtons
                   value="Custom"
                   styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"

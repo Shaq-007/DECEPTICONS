@@ -19,7 +19,10 @@ app.get("/users/:userid", user_controllers.get_oneuser);
 
 app.patch("/users/update/:userid", user_controllers.update_userLevel);
 
-app.patch("/imageupload/update/:userid", user_controllers.update_imageuploadcode);
+app.patch(
+  "/imageupload/update/:userid",
+  user_controllers.update_imageuploadcode
+);
 
 // app.patch("/users/update/:userid", user_controllers.update_userPassword); ///its a duplication have same api method in authRout//
 
@@ -49,23 +52,25 @@ var upload = multer({
   storage: storage,
   limits: { files: 6 },
 });
-// console.log("this is the multierror", multer.MulterError)
+
 app.post(
   "/images/save",
   upload.array("image", 6),
-  upload_controller.post_image_custom
+  upload_controller.resizeImages,
+  upload_controller.post_image_custom,
+  upload_controller.getResult
 );
 
-app.use(function(err,req,res,next){
-	if (err.code==='LIMIT_FILE_SIZE'){
-		res.status(400).send('File is too large');
-	}else if(err.code==='LIMIT_FILE_COUNT'){
-		res.status(400).send('Too many files' );
-	}else {
-    res.status(400).send(err)
-    console.log('error from app.use', err)
+app.use(function (err, req, res, next) {
+  if (err.code === "LIMIT_FILE_SIZE") {
+    res.status(400).send("File is too large");
+  } else if (err.code === "LIMIT_FILE_COUNT") {
+    res.status(400).send("Too many files");
+  } else {
+    res.status(400).send(err);
+    console.log("error from app.use", err);
   }
-})
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

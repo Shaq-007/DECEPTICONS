@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-modal";
 import { AuthContext } from "../components/AuthContext";
 
@@ -16,7 +16,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const ChangePasswordModal = () => {
-  const { user, setUser } = useContext(AuthContext);
+  // const { user, setUser } = useContext(AuthContext);
   const { email } = useContext(AuthContext); ///to get the email of the logged in user//
   const [newPassword, setNewPassword] = useState("");
   const [password, setPassword] = useState("");

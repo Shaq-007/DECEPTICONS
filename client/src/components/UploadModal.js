@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Modal, { setAppElement } from "react-modal";
+import Modal from "react-modal";
 import { AuthContext } from "./AuthContext";
 
 const customStyles = {
@@ -56,9 +56,10 @@ function UploadModal() {
       // event.target.file[0] from <input type= "file" .../> on line 95
       console.log("number of images", files.length);
       console.log("email", email);
-      if (files.length < 6) {
-        return setErrmessage("You need to upload exactly 6 images, thanks");
-      }
+      // if (files.length < 6) {
+      //   setMessallow(false)
+      //   return setErrmessage("You need to upload exactly 6 images, thanks");
+      // }
       // if (files.length === 6) {
       for (const file of files) {
         formData.append("image", file);
@@ -72,43 +73,44 @@ function UploadModal() {
       };
 
       let response = await fetch("/images/save", options);
-      setImagesUpload(true)
-
+      
       if (response.status === 400) {
         let error = await response.text();
         // alert(error);
         setToomanyfiles(error);
         console.log('this is the error', error)
         setMessallow(true)
+        setErrmessage(false)
       } else {
         // changes the state to pass it onto Playpage and show the Custom button
         setUpload(true);
+        setImagesUpload(true)
+        console.log('this is the user id in upload modal', user._id)
+        let response1 = await fetch(`/imageupload/update/${user._id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            imagesUpload: true
+          }),
+        });
+      // this is a post to update the upload image Key
+        let data1 = await response1.json();
+        let message1 = JSON.stringify(data1);
+        console.log(message1);
+        alert("images upload key has been updated")
+    
+        if (response.status === 200) {
+          return message1;
+        } else {
+          throw Error.message;
+        };
+
       }
       // }else {
       //   // alert('You are allowed to load exactly 6 images, thanks')
       //   setErrmessage('You are allowed to load exactly 6 images, thanks')
       // }
-      console.log('this is the user id in upload modal', user._id)
-      let response1 = await fetch(`/imageupload/update/${user._id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          imagesUpload: true
-        }),
-      });
-    // this is a post to update the upload image Key
-      let data1 = await response1.json();
-      let message1 = JSON.stringify(data1);
-      console.log(message1);
-      alert("images upload key has been updated")
-  
-      if (response.status === 200) {
-        return message1;
-      } else {
-        throw Error.message;
-      };
-
-
+ 
 
     } else {
       setErrmessage("please load the 6 files")
@@ -141,7 +143,7 @@ function UploadModal() {
             <div>
               <label htmlFor="categoryName">email:</label>
               <input
-                class="form-control"
+                className="form-control"
                 id="Email"
                 name="Email"
                 onChange={(event) => {
@@ -154,25 +156,10 @@ function UploadModal() {
               ></input>
             </div>
 
-            {/* <div>
-              <label htmlFor="categoryName">Username:</label>
-              <input
-                class="form-control"
-                id="categoryName"
-                name="categoryName"
-                onChange={(event) => {
-                  const { value } = event.target;
-                  setCategoryName(value);
-                }}
-                value={categoryName}
-                placeholder="Type your Username"
-                required
-              ></input>
-            </div> */}
             <div>
               <label htmlFor="image">Upload Image: </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="file"
                 id="image"
                 onChange={(event) => {
@@ -210,8 +197,8 @@ function UploadModal() {
                 <span></span>
               )}
               <br />
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-outline-secondary" onClick={closeModal}>
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button className="btn btn-outline-secondary" onClick={closeModal}>
                   close
                 </button>
               </div>
