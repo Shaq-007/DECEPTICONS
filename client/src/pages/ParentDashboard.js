@@ -5,6 +5,7 @@ import ChangePasswordModal from "../components/ChangePasswordModal";
 import DeleteAccountModal from "../components/DeleteAccountModal";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
+import Logout from "../components/Logout";
 
 const ParentDashboard = () => {
   // const [categoryName, setCategoryName] = useState("");
@@ -35,10 +36,10 @@ const ParentDashboard = () => {
   return (
     <div>
       <h2 className="parent-title">
-        Hello {user.username}! This is your Dashboard.{" "}
+        Hello {user.username}! Welcome to your Dashboard.{" "}
       </h2>
       <h4 className="dashboard-description">
-        You can upload your pictures or change your password.
+        Please see parental control options below:
       </h4>
       <br />
       {/* this is the first card */}
@@ -46,9 +47,8 @@ const ParentDashboard = () => {
         <div className="card-header">Create Custom Category</div>
         <div className="card-body">
           <p className="card-text">
-            Have fun with creating a custom category by uploading your own
-            images. Have your kid enjoy finding a match same as with other
-            categories.
+            Have fun creating a custom category by uploading your own
+            photos. You and your child can play with your very own custom pictures!
           </p>
 
           <UploadModal
@@ -74,11 +74,11 @@ const ParentDashboard = () => {
         <div className="card-body">
           {user.imagesUpload || imagesUpload ? (
             <p className="card-text">
-              Now your kid can go have fun with your own images!
+              Now your child can have fun with your own images!
             </p>
           ) : (
             <p className="card-text">
-              Go play without your own images or load them by using the button
+              Play with preselected categories or upload your own images by using the button
               above{" "}
             </p>
           )}
@@ -106,8 +106,7 @@ const ParentDashboard = () => {
         <div className="card-header">Change Password</div>
         <div className="card-body">
           <p className="card-text">
-            Think your password is compromised? We've got your back. Here you
-            can change it with just a click!
+            Think your password is compromised? We've got your back. You can easily change your password here!
           </p>
 
           <ChangePasswordModal user={user} />
@@ -119,14 +118,11 @@ const ParentDashboard = () => {
         <div className="card-header">Delete Account</div>
         <div className="card-body">
           <p className="card-text">
-            We will be sad to see you leave but we have an option for you to do
-            that as well.
+            Need to delete your account? We will be sad to see you leave!
           </p>
 
           <DeleteAccountModal user={user} />
-          {/* <button type="button" className="btn btn-danger">
-            Delete Account
-          </button> */}
+          <Logout />
         </div>
       </div>
 
