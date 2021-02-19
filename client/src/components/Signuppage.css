@@ -2,13 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
 
 .BackgroundSignUpImage {
-  background-image: url(../images/categoriesRainbow.jpg);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url(../images/halfRainbow.jpg);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   height: 100vh;
   max-width: 100%;
   background-position: 50% 50%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 div.card.col-10.col-lg-4.login-card.mt-2.hv-center {
@@ -22,15 +26,16 @@ div.card.col-10.col-lg-4.login-card.mt-2.hv-center {
   font-family: "Atma", cursive;
   font-size: 40px;
   font-weight: 700;
-  color: rgb(57, 9, 145);
+  color: darkcyan;
+  margin-top: 1.5rem;
 }
 
 /* adding mobile responsiveness */
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1000px) {
   div.BackgroundSignUpImage {
     background-size: cover;
-    background-position: 70%;
+    /* background-position: 70%; */
   }
   div.formAlignmentSignUp {
     width: 50%;

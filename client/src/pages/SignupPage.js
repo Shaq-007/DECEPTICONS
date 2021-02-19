@@ -13,7 +13,7 @@ const SignupPage = () => {
     userlevel: "1",
   });
   const [signedUp, setSignedUp] = useState(false);
-  const [signupFail, setSignupFail] = useState()
+  const [signupFail, setSignupFail] = useState();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -29,8 +29,8 @@ const SignupPage = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log('signup user: ', state.username)
-    
+    console.log("signup user: ", state.username);
+
     if (state.password === state.password_confirmation) {
       sendDetailsToServer();
       // setSignedUp(true);
@@ -55,7 +55,7 @@ const SignupPage = () => {
         username: state.username,
         email: state.email,
         password: state.password,
-        password_confirmation: state.password_confirmation,    //for checking the match at backend also its a duplication anyway
+        password_confirmation: state.password_confirmation, //for checking the match at backend also its a duplication anyway
         userlevel: state.userlevel,
       }),
     });
@@ -65,14 +65,12 @@ const SignupPage = () => {
     console.log(message);
 
     if (response.status === 200) {
-          setSignedUp(true);
-          goPlayNow();
+      setSignedUp(true);
+      goPlayNow();
       return message;
-
-      
     } else {
-      console.log('message:', data.errors[0].user)
-      setSignupFail(data.errors[0].user + '.  Please Go Back to sign in')
+      console.log("message:", data.errors[0].user);
+      setSignupFail(data.errors[0].user + ".  Please Go Back to sign in");
       throw Error.message;
     }
   };
@@ -86,7 +84,7 @@ const SignupPage = () => {
     <div className="BackgroundSignUpImage">
       <GoBackButton />
       <div className="card col-10 col-lg-4 login-card mt-2 hv-center">
-        <div className="form-text instructionSignUp">New User Signup</div>
+        <div className="form-text instructionSignUp">New User Signup</div>{" "}
         <form>
           <div className="form-group text-left">
             <label htmlFor="exampleInputEmail1">Username</label>
@@ -142,7 +140,7 @@ const SignupPage = () => {
           </div>
           <div
             className="form-check"
-            style={{ marginLeft: "65%", fontSize: "20px", fontWeight: "600" }}
+            style={{ fontSize: "20px", fontWeight: "600", marginLeft: "40%" }}
           >
             <input
               className="form-check-input"
@@ -155,21 +153,22 @@ const SignupPage = () => {
               I am a Parent
             </label>
           </div>
+          <br />
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-info"
             onClick={handleSubmitClick}
-            >
-            Register and Play
+          >
+            Register
           </button>
           <br></br>
-            {signupFail ? (
-              <span style={{ color: "red", fontWeight: "700" }}>
-                {signupFail}
-              </span>
-            ) : (
-              <span></span>
-            )}
+          {signupFail ? (
+            <span style={{ color: "red", fontWeight: "700" }}>
+              {signupFail}
+            </span>
+          ) : (
+            <span></span>
+          )}
         </form>
         <br />
       </div>
