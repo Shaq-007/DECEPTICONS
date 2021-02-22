@@ -9,6 +9,26 @@
   /* position: relative; */
 }
 
+.cardDeck {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+}
+/* .timecounter {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+
+} */
+
 .containerAlignment {
   margin-bottom: 10px;
   width: 100%;

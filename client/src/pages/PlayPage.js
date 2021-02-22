@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, } from "react";
 import CardBoard from "../components/CardBoard";
 import { funWords } from "../fakeDatabase.js/funWords";
 import "../components/CardBoard.css";
@@ -9,6 +9,24 @@ import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import shuffle from "shuffle-array";
 import { AuthContext } from "../components/AuthContext";
+
+// import Timer from "../components/Timer";
+// import Timer from "../components/Timer-3";
+import "../components/Timer.css";
+// import {seconds} from "../components/Timer";
+
+// import Apple from "../components/Timer-2";
+
+
+// import Component from "../components/AudioTest-1";
+// import Component from "../components/AudioTest-2";
+import PlaySound from "../components/AudioTest-3";
+// import Component from "../components/AudioTest-4";
+// import Player from "../components/AudioTest-4";
+// import MyComponentWithSound from "../components/AudioTest-6";
+// import ReactPlayer from 'react-player';
+
+// import "../components/Timer.css";
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -24,6 +42,7 @@ let giveMeTheImage = (img) => {
   return finalImage;
 };
 
+
 const PlayPage = () => {
   const [images, setImages] = useState();
   const [reward, setReward] = useState(false);
@@ -32,8 +51,11 @@ const PlayPage = () => {
   const [inGame, setInGame] = useState(false);
   const [twoCardsInPlay, setTwoCardsInPlay] = useState([]);
   const [solved, setSolved] = useState([]);
-  const [cardStatus, setCardStatus] = useState([false,false,false,false,false,false,false,false,false,false,false,false]);
+  const [cardStatus, setCardStatus] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
 
   const {
     user,
@@ -44,7 +66,39 @@ const PlayPage = () => {
     setUpload,
     imagesUpload,
     setImagesUpload,
+
   } = useContext(AuthContext);
+
+  //******************* Timer**********************/
+  function toggle() {
+    setIsActive(!isActive);
+  }
+
+  function reset() {
+    setSeconds(0);
+    setIsActive(false);
+  }
+  useEffect(() => {
+    reset()
+  }, [])
+
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+
+  }, [isActive, seconds]);
+
+
+
+  //*************************Timer*********************** */
 
   const throwConfetti = () => {
     if (reward === true) {
@@ -54,7 +108,12 @@ const PlayPage = () => {
 
   const openModal = () => {
     if (showModal === true) {
-      return <RewardModal />;
+
+      return (
+        <div>
+          <RewardModal />;
+        </div>
+      )
     }
   };
 
@@ -119,10 +178,15 @@ const PlayPage = () => {
     setMyWords(copyOfWords);
   }, [images]);
 
+
+
   return (
-    <>
-      <div className="playPage-image">
-        <GoBackButton />
+    
+    <div className="playPage-image">
+        {/* <div>
+        <PlaySound/>
+        <GoBackButton />,
+        </div> */}
         <RewardModal
           reward={reward}
           setReward={setReward}
@@ -137,78 +201,85 @@ const PlayPage = () => {
         <div className="containerAlignment">
           <div className="row rowAlignment">
             <div className=" col-4 categoryRow">
-              <CategoryButtons
-                value="Animals"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
-                disabled={inGame && selectedCategory !== "Animals"}
-                onClick={() => {
-                  startGame("Animals");
-                }}
-              />
-
-              <CategoryButtons
-                value="Shapes"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
-                disabled={inGame && selectedCategory !== "Shapes"}
-                onClick={() => {
-                  startGame("Shapes");
-                }}
-              />
-
-              <CategoryButtons
-                value="Colors"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
-                disabled={inGame && selectedCategory !== "Colors"}
-                onClick={() => {
-                  startGame("Colors");
-                }}
-              />
-
-              <CategoryButtons
-                value="Letters"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
-                disabled={inGame && selectedCategory !== "Letters"}
-                onClick={() => {
-                  startGame("Letters");
-                }}
-              />
-
-              {(user && user.imagesUpload) || imagesUpload ? (
-                <CategoryButtons
-                  value="Custom"
-                  styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                  disabled={inGame && selectedCategory !== email}
-                  onClick={() => {
-                    console.log("getting images by Email", email);
-
-                    startGameCustom(email);
-                  }}
-                />
-              ) : null}
+              <div> <PlaySound/>
+                    <GoBackButton />
+                {/* <Timer/> */}
             </div>
-            <div className="col-8">
-              {myWords.length > 0 ? (
-                <CardBoard
-                  funWords={myWords}
-                  reward={reward}
-                  setReward={setReward}
-                  twoCardsInPlay={twoCardsInPlay}
-                  setTwoCardsInPlay={setTwoCardsInPlay}
-                  solved={solved}
-                  setSolved={setSolved}
-                  cardStatus={cardStatus}
-                  setCardStatus={setCardStatus}
-                />
-              ) : (
-                <h1>Please select a Category</h1>
-              )}
-            </div>
+            <CategoryButtons
+              // className={`${isActive ? 'active' : 'inactive'}`} 
+              value="Animals"
+              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
+              disabled={inGame && selectedCategory !== "Animals"}
+              onClick={() => {
+                startGame("Animals");
+                toggle();
+              }}
+            />
+
+            <CategoryButtons
+              value="Shapes"
+              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
+              disabled={inGame && selectedCategory !== "Shapes"}
+              onClick={() => {
+                startGame("Shapes");
+              }}
+            />
+
+            <CategoryButtons
+              value="Colors"
+              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
+              disabled={inGame && selectedCategory !== "Colors"}
+              onClick={() => {
+                startGame("Colors");
+              }}
+            />
+
+            <CategoryButtons
+              value="Letters"
+              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
+              disabled={inGame && selectedCategory !== "Letters"}
+              onClick={() => {
+                startGame("Letters");
+              }}
+            />
+
+            {(user && user.imagesUpload) || imagesUpload ? (
+              <CategoryButtons
+                value="Custom"
+                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
+                disabled={inGame && selectedCategory !== email}
+                onClick={() => {
+                  console.log("getting images by Email", email);
+
+                  startGameCustom(email);
+                }}
+              />
+            ) : null}
+          </div>
+          <div className="cardDeck">
+            <div>{seconds}s</div>
+            {myWords.length > 0 ? (
+              <CardBoard
+                funWords={myWords}
+                reward={reward}
+                setReward={setReward}
+                twoCardsInPlay={twoCardsInPlay}
+                setTwoCardsInPlay={setTwoCardsInPlay}
+                solved={solved}
+                setSolved={setSolved}
+                cardStatus={cardStatus}
+                setCardStatus={setCardStatus}
+              />
+            ) : (<h1>Please select a Category</h1>)
+            }
+
           </div>
         </div>
       </div>
-      {throwConfetti()}
-      {openModal()}
-    </>
+      { throwConfetti()}
+      { openModal()}
+      {/* {reset()} */}
+    </div>
   );
 };
 

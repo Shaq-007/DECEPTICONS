@@ -1,6 +1,7 @@
-import  { createContext } from 'react';
+import { createContext } from 'react';
 
-export const AuthContext = createContext({user: null, setUser: null, categoryName: null,setCategoryName: null, email:null, setEmail:null, upload:null, setUpload:null, token:null, setToken:null,imagesUpload:null, setImagesUpload:null});
+export const AuthContext = createContext(
+    { user: null, setUser: null, categoryName: null, setCategoryName: null, email: null, setEmail: null, upload: null, setUpload: null, token: null, setToken: null, imagesUpload: null, setImagesUpload: null, isActive: null, setIsActive: null });
 
 // const contextValue = {
 //   user:null,
@@ -14,4 +15,3 @@ export const AuthContext = createContext({user: null, setUser: null, categoryNam
 //   imagesUpload:null,
 //   setImagesUpload:null
 // };
- 
