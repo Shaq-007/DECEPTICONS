@@ -13,7 +13,9 @@ const RewardModal = ({
     setTwoCardsInPlay, 
     setCardStatus, 
     setInGame, 
-    setSelectedCategory 
+    setSelectedCategory,
+    setTotalPlayTime,
+    totalPlayTime
     }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -53,7 +55,7 @@ const RewardModal = ({
                     }}} 
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                     <h2 className="rewardModalTitle">Congratulations!</h2>
-                    <p className="rewardModalBody">Wow, you did great!</p>
+                    <p className="rewardModalBody">Wow! Only {totalPlayTime} seconds to finish</p>
                     <div className="rewardModalImage">
                         <img className="rewardImage" src={rainbow} alt="rainbow"/>
                     </div>

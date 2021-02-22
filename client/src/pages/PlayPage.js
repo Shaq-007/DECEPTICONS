@@ -9,9 +9,6 @@ import Confetti1 from "../components/confetti";
 import CategoryButtons from "../components/CategoryButtons";
 import shuffle from "shuffle-array";
 import { AuthContext } from "../components/AuthContext";
-
-// import Timer from "../components/Timer";
-// import "../components/Timer.css";
 import PlaySound from "../components/Audio";
 
 
@@ -43,16 +40,13 @@ const PlayPage = () => {
 
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [totalPlayTime, setTotalPlayTime] = useState()
 
   const {
     user,
-    categoryName,
-    setCategoryName,
     email,
-    upload,
     setUpload,
     imagesUpload,
-    setImagesUpload,
 
   } = useContext(AuthContext);
 
@@ -62,13 +56,14 @@ const PlayPage = () => {
   }
 
   function reset() {
+    setTotalPlayTime(seconds)
     setSeconds(0);
     setIsActive(false);
   }
   useEffect(() => {
+    
     reset()
-  }, [])
-
+  }, [reward])
 
   useEffect(() => {
     let interval = null;
@@ -93,10 +88,10 @@ const PlayPage = () => {
     }
   };
 
+
   const openModal = () => {
     if (showModal === true) {
-      return 
-        <RewardModal />;       
+      return <RewardModal />;
     }
   };
 
@@ -124,7 +119,6 @@ const PlayPage = () => {
 
   const getImages_custom = async (email) => {
     let response = await fetch("/custom/" + email);
-    // setInGame(true);
     setSelectedCategory(email);
     if (response.status === 400) {
       let error = await response.text();
@@ -161,24 +155,26 @@ const PlayPage = () => {
 
   return (
     <div className="playPage-image">
-       <RewardModal
-          reward={reward}
-          setReward={setReward}
-          showModal={showModal}
-          setShowModal={setShowModal}
-          setTwoCardsInPlay={setTwoCardsInPlay}
-          setSolved={setSolved}
-          setCardStatus={setCardStatus}
-          setInGame={setInGame}
-          setSelectedCategory={setSelectedCategory}
-        />
-        <div className="containerAlignment">
-          <div className="row rowAlignment">
-            <div className=" col-4 categoryRow">
-              <div> <PlaySound/>
-                    <GoBackButton />
-              </div>
-            
+      <RewardModal
+        reward={reward}
+        setReward={setReward}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setTwoCardsInPlay={setTwoCardsInPlay}
+        setSolved={setSolved}
+        setCardStatus={setCardStatus}
+        setInGame={setInGame}
+        setSelectedCategory={setSelectedCategory}
+        setTotalPlayTime={setTotalPlayTime}
+        totalPlayTime={totalPlayTime}
+      />
+      <div className="containerAlignment">
+        <div className="row rowAlignment">
+          <div className=" col-4 categoryRow">
+            <div> <PlaySound />
+              <GoBackButton />
+            </div>
+
             <CategoryButtons
               value="Animals"
               styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
@@ -226,7 +222,6 @@ const PlayPage = () => {
                 disabled={inGame && selectedCategory !== email}
                 onClick={() => {
                   console.log("getting images by Email", email);
-
                   startGameCustom(email);
                   toggle();
                 }}
@@ -255,7 +250,6 @@ const PlayPage = () => {
       </div>
       { throwConfetti()}
       { openModal()}
-      {/* {reset()} */}
     </div>
   );
 };

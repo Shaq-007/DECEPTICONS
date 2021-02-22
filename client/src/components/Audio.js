@@ -1,7 +1,7 @@
 import React from "react";
-import Music from "../assets/SpeakerIcon.jpg";
-import SpeakerOn from "../assets/SoundOn.jpg";
-import SpeakerOff from "../assets/SoundOff.jpg";
+import Music from "../assets/MusicalNotes.svg";
+import SpeakerOn from "../assets/SoundOn.svg";
+import SpeakerOff from "../assets/SoundOff.svg";
 
 class PlaySound extends React.Component {
   constructor(props) {
@@ -36,10 +36,11 @@ class PlaySound extends React.Component {
   render() {
     return (
      <div>
-        <button
+        <button 
+          style = {{background:"none" , border:"none" , outline:"none", marginRight: "10px"}}
           id="audioBtn"
-          onClick={this.togglePlay}><img src={Music} style={{width:"50px", hight:"70px"}}/></button> 
-          {this.state.play ? <img src={SpeakerOn} style={{width:"40px", hight:"70px"}}/> : <img src={SpeakerOff} style={{width:"30px", hight:"30px"}}/>}
+          onClick={this.togglePlay}><img src={Music} style={{width:"50px", height:"50px"}}/></button>
+          {this.state.play ? <img src={SpeakerOn} style={{width:"30px", height:"50px" ,background:"none" , border:"none", transform:"rotate(90deg)"}}/> : <img src={SpeakerOff} style={{width:"30px", height:"50px"}}/>}
 
           </div>   
         
@@ -47,7 +48,4 @@ class PlaySound extends React.Component {
     }
   }
 
-  // ReactDOM.render(<PlaySound />, document.getElementById("root"));
-
-  export default PlaySound;
-
+export default PlaySound;
