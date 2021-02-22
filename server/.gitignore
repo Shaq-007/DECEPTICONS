@@ -118,6 +118,7 @@ dist
 # others
 app_copy.js
 server_copy.js
+# /uploads
 /uploads
 /uploadResize
 

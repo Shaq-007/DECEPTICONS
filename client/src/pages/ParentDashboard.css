@@ -1,0 +1,10 @@
+.backgroundParentDashBoard {
+  background-image: url(../images/color.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  height: 100vh;
+  padding: 0;
+  overflow: auto;
+  background-position: 50% 50%;
+}

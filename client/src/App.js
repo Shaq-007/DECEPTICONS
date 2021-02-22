@@ -12,7 +12,8 @@ import ParentDashboard from "./pages/ParentDashboard";
 import React, { useState } from "react";
 import ProtectedRoute from "./components/ProtectedRout";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
-import { AuthContext } from './components/AuthContext'
+import { AuthContext } from './components/AuthContext';
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState();
@@ -26,6 +27,7 @@ function App() {
 
   const [isActive, setIsActive] = useState(false);
   
+  const history = useHistory();
 
   return (
     <AuthContext.Provider value={{user: user, setUser: setUser, categoryName: categoryName,setCategoryName: setCategoryName, email:email, setEmail:setEmail, upload:upload, setUpload:setUpload, token:token,setToken:setToken,imagesUpload, setImagesUpload, isActive, setIsActive}}>
@@ -87,6 +89,7 @@ function App() {
             path="/parent"
             component={ParentDashboard}
             loggedIn={loggedIn}
+            history={history}
             // user={user}
           />
         </Switch>

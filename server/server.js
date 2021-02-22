@@ -5,6 +5,8 @@ let image_controllers = require("./controllers/images");
 const app = express();
 const authRoutes = require("./routes/auth"); //from auth
 app.use(express.json());
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 //from Auth APIs
 app.use("/api", authRoutes);

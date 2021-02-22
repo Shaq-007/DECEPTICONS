@@ -1,21 +1,28 @@
 import React from 'react';
-import logoutIcon from "../images/logout.svg"
+import { useHistory } from "react-router-dom";
 
-const logout = () => {
-    return (
-        <div>
-        <a href="./home">
-          <img
-            src={logoutIcon}
-            style={{
-              width: "60px",
-              hight: "60px",
-            }}
-            alt="logout icon"
-          />
-        </a>
-      </div>
-    )
+
+const Logout = () => {
+
+  const loggingOut = async () => {
+    let response = await fetch("/api/logout")
+    console.log("hello what's going on?!", response)
+    if (response.status === 200) {
+      console.log("im in!!")
+      goHome();
+    }
+  };
+
+  const history = useHistory();
+  const goHome = () => {
+  history.push("Home");
+  };
+
+  return (
+    <div>
+      <button onClick={loggingOut}>Logout</button>
+    </div>
+  )
 }
 
-export default logout
+export default Logout
