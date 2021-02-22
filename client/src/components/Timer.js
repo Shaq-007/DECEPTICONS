@@ -30,41 +30,30 @@ const Timer = () => {
     }, [isActive, seconds]);
 
     return (
-        <div>
-            
-        <button onClick={toggle}>New button </button>,
-        {seconds}
-        <button onClick={reset}>Reset</button>
+        
+        <div className="app-2">
+            <div className="time">
+                <img
+                    src={stopwatch}
+                    style={{
+                        width: "50px",
+                        hight: "50px",
+                    }}
+                    alt="Timer icon"
+                />
+                {seconds}
+            </div>
+
+            <div className="row">
+                <button className={`button-primary-${isActive ? 'active' : 'inactive'} `} onClick={toggle}>
+                    {isActive ? 'Pause' : 'Start'}
+                </button>
+                <button className="button-secondry" onClick={reset}>
+                    Reset
+                </button>
+            </div>
+
         </div>
-        //        
-        //         
-        //         <button className="button-secondry" onClick={reset}>
-        //             Reset
-        //         </button>
-
-        // <div className="app-2">
-        //     <div className="time">
-        //         <img
-        //             src={stopwatch}
-        //             style={{
-        //                 width: "50px",
-        //                 hight: "50px",
-        //             }}
-        //             alt="Timer icon"
-        //         />
-        //         {seconds}
-        //     </div>
-
-        //     <div className="row">
-        //         <button className={`button-primary-${isActive ? 'active' : 'inactive'} `} onClick={toggle}>
-        //             {isActive ? 'Pause' : 'Start'}
-        //         </button>
-        //         <button className="button-secondry" onClick={reset}>
-        //             Reset
-        //         </button>
-        //     </div>
-
-        // </div>
 
     );
 };

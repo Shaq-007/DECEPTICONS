@@ -11,22 +11,9 @@ import shuffle from "shuffle-array";
 import { AuthContext } from "../components/AuthContext";
 
 // import Timer from "../components/Timer";
-// import Timer from "../components/Timer-3";
-import "../components/Timer.css";
-// import {seconds} from "../components/Timer";
-
-// import Apple from "../components/Timer-2";
-
-
-// import Component from "../components/AudioTest-1";
-// import Component from "../components/AudioTest-2";
-import PlaySound from "../components/AudioTest-3";
-// import Component from "../components/AudioTest-4";
-// import Player from "../components/AudioTest-4";
-// import MyComponentWithSound from "../components/AudioTest-6";
-// import ReactPlayer from 'react-player';
-
 // import "../components/Timer.css";
+import PlaySound from "../components/Audio";
+
 
 let arrayBufferToBase64 = (buffer) => {
   var binary = "";
@@ -108,12 +95,8 @@ const PlayPage = () => {
 
   const openModal = () => {
     if (showModal === true) {
-
-      return (
-        <div>
-          <RewardModal />;
-        </div>
-      )
+      return 
+        <RewardModal />;       
     }
   };
 
@@ -161,10 +144,6 @@ const PlayPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   loadImages("Colors");
-  // }, []);
-
   useEffect(() => {
     if (!images) {
       return;
@@ -181,13 +160,8 @@ const PlayPage = () => {
 
 
   return (
-    
     <div className="playPage-image">
-        {/* <div>
-        <PlaySound/>
-        <GoBackButton />,
-        </div> */}
-        <RewardModal
+       <RewardModal
           reward={reward}
           setReward={setReward}
           showModal={showModal}
@@ -203,10 +177,9 @@ const PlayPage = () => {
             <div className=" col-4 categoryRow">
               <div> <PlaySound/>
                     <GoBackButton />
-                {/* <Timer/> */}
-            </div>
+              </div>
+            
             <CategoryButtons
-              // className={`${isActive ? 'active' : 'inactive'}`} 
               value="Animals"
               styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
               disabled={inGame && selectedCategory !== "Animals"}
@@ -222,6 +195,7 @@ const PlayPage = () => {
               disabled={inGame && selectedCategory !== "Shapes"}
               onClick={() => {
                 startGame("Shapes");
+                toggle();
               }}
             />
 
@@ -231,6 +205,7 @@ const PlayPage = () => {
               disabled={inGame && selectedCategory !== "Colors"}
               onClick={() => {
                 startGame("Colors");
+                toggle();
               }}
             />
 
@@ -240,6 +215,7 @@ const PlayPage = () => {
               disabled={inGame && selectedCategory !== "Letters"}
               onClick={() => {
                 startGame("Letters");
+                toggle();
               }}
             />
 
@@ -252,6 +228,7 @@ const PlayPage = () => {
                   console.log("getting images by Email", email);
 
                   startGameCustom(email);
+                  toggle();
                 }}
               />
             ) : null}
