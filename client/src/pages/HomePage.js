@@ -93,7 +93,7 @@ const HomePage = (props) => {
     <div className="backgroundHomePageImage">
       <div className="col-12 col-lg-12 title">MemoryLand</div>
 
-      <div className="card col-10 col-lg-5  description-card">
+      <div className="card col-10 col-lg-8  description-card">
         Welcome to a flipping card memory game. Hit PLAY, choose the category
         and pick two cards to find the right match. Have Fun! Suitable for kids
         4+
@@ -101,20 +101,10 @@ const HomePage = (props) => {
 
       <br />
 
-      <div className="row">
-        <div className="col-12 col-lg-3 offset-lg-4 playIcon-column">
+      <div className="row row-homePage">
+        <div className="col-12 col-lg-4 offset-lg-2 playIcon-column">
           <Link to="/play">
-            <img
-              src={GoPlayIcon}
-              style={{
-                width: "300px",
-                hight: "300px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "flex",
-              }}
-              alt="play icon"
-            />
+            <img className="goPlay-Icon" src={GoPlayIcon} alt="play icon" />
           </Link>
         </div>
 
@@ -122,7 +112,7 @@ const HomePage = (props) => {
 
         <div className="mb-4"></div>
 
-        <div className="card col-8 col-lg-3 login-card mt-2 hv-center loginCard">
+        <div className="card col-8 col-lg-3 offset-lg-1 login-card mt-2 hv-center loginCard">
           <form onSubmit={handleSubmit}>
             <div className="form-text instruction">Parent Login</div>
 

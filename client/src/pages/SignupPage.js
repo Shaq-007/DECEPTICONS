@@ -33,8 +33,6 @@ const SignupPage = () => {
 
     if (state.password === state.password_confirmation) {
       sendDetailsToServer();
-      // setSignedUp(true);
-      // goPlayNow();
     } else {
       console.log("Passwords do not match");
     }
@@ -77,13 +75,13 @@ const SignupPage = () => {
 
   const history = useHistory();
   const goPlayNow = () => {
-    history.push("play");
+    history.push("home");
   };
 
   return (
     <div className="BackgroundSignUpImage">
       <GoBackButton />
-      <div className="card col-10 col-lg-4 login-card mt-2 hv-center">
+      <div className="card col-9 col-lg-6 login-card mt-2 hv-center">
         <div className="form-text instructionSignUp">New User Signup</div>{" "}
         <form>
           <div className="form-group text-left">
