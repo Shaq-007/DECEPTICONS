@@ -9,13 +9,9 @@ import Logout from "../components/Logout";
 import "../pages/ParentDashboard.css";
 
 const ParentDashboard = () => {
-  const {
-    user,
-    categoryName,
-    setCategoryName,
-    imagesUpload,
-    // setImagesUpload,
-  } = useContext(AuthContext);
+  const { user, categoryName, setCategoryName, imagesUpload } = useContext(
+    AuthContext
+  );
 
   const handleSubmitClick = () => {
     goPlayNow();
@@ -24,8 +20,6 @@ const ParentDashboard = () => {
   const goPlayNow = () => {
     history.push("play");
   };
-
-  console.log("this is the imagesUpload state", user.imagesUpload);
 
   return (
     <div className="backgroundParentDashBoard">
@@ -43,17 +37,6 @@ const ParentDashboard = () => {
         >
           Hello {user.username}! Welcome to the Parent Dashboard.{" "}
         </h2>
-        {/* <h4
-          className="dashboard-description"
-          style={{
-            margin: "auto",
-            display: "flex",
-            justifyContent: "center",
-            // fontFamily: "Happy Monkey",
-          }}
-        >
-          You can upload your images or change your password.
-        </h4> */}
       </div>
       <br />
       {/* this is the first card */}
@@ -73,8 +56,8 @@ const ParentDashboard = () => {
         </div>
         <div className="card-body">
           <p className="card-text">
-            Have fun creating a custom category by uploading your own
-            photos. You and your child can play with your very own custom pictures!
+            Have fun creating a custom category by uploading your own photos.
+            You and your child can play with your very own custom pictures!
           </p>
 
           <UploadModal
@@ -90,8 +73,8 @@ const ParentDashboard = () => {
             </p>
           ) : (
             <p className="card-text">
-              Play with preselected categories or upload your own images by using the button
-              above{" "}
+              Play with preselected categories or upload your own images by
+              using the button above{" "}
             </p>
           )}
           <button
@@ -126,7 +109,8 @@ const ParentDashboard = () => {
         </div>
         <div className="card-body">
           <p className="card-text">
-            Think your password is compromised? We've got your back. You can easily change your password here!
+            Think your password is compromised? We've got your back. You can
+            easily change your password here!
           </p>
 
           <ChangePasswordModal user={user} />
