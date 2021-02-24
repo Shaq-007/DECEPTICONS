@@ -33,9 +33,12 @@ exports.get_image_custom = async function (req, res) {
     console.log(`success, images found: ${imagesByCategoryCustom.length}`);
     if (imagesByCategoryCustom.length === 12) {
       res.status(200).json(imagesByCategoryCustom);
-    } else {
+    } else if (imagesByCategoryCustom.length > 12) {
       console.log("user has more than 12 images on file, please delete");
       res.status(400).send('user has more than 12 images on file, please delete');
+    } else {
+      console.log("user has less than 12 images on file, please add", (12-imagesByCategoryCustom.length)/2 );
+      res.status(400).send('user has less than 12 images on file, please add ' + (12-imagesByCategoryCustom.length)/2);
     }
     // res.status(200).json(imagesByCategoryCustom);
   } else {

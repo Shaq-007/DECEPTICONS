@@ -1,8 +1,11 @@
-.playPage-image {
-  background-image: url("../images/rainbow2.jpg");
+.playPage-background {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1)
+  ), url("../images/vibrantpastel.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 70% 30%;
+  background-position: 50% 50%;
   max-width: 100%;
   height: 100%;
   padding: 0;
@@ -17,7 +20,6 @@
   font-weight: 600;
   line-height: 1.5;
   color: #212529;
-  text-align: center;
 }
 /* .timecounter {
   margin: 0;
@@ -30,12 +32,65 @@
 
 } */
 
-.containerAlignment {
-  margin-bottom: 10px;
-  width: 100%;
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.playPageControls {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-right: 15px;
   margin-top: 20px;
 }
 
-.rowAlignment {
-  width: 100%;
+.categoriesAndCards {
+  margin-top: 10px;
+}
+
+.timerRow {
+  display: flex;
+  justify-content: center;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  font-family: 'janda';
+  background-color: white;
+  border-radius: 10px;
+  width: 200px;
+  margin-left: 250px;
+  color: #6426b6;
+}
+
+.playPageTitle{
+  font-family: 'brighly';
+  font-size: 4rem;
+  color :#6426b6;
+  margin-left: 150px;
+}
+
+.categoryButtons {
+  margin-top: 40px;
+}
+
+.cloud { 
+  background-image: url('../images/smallcloud.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 100%;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-family: 'brighly';
+  color: hotpink;
+}
+
+.greenArrow {
+  height: 90px;
+  width: 90px;
 }

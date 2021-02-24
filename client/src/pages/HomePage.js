@@ -7,8 +7,8 @@ import { AuthContext } from "../components/AuthContext";
 import Credits from "../components/Credits";
 
 const HomePage = (props) => {
-  let setLoggedIn = props.setLoggedIn;
-  let loggedIn = props.loggedIn;
+  let setMessageError = props.setLoggedIn;
+  let messageError = props.loggedIn;
   let userlevel = props.userlevel;
   let setUserlevel = props.setUserlevel;
 
@@ -17,8 +17,6 @@ const HomePage = (props) => {
     setUser,
     email,
     setEmail,
-    token,
-    setToken,
     imagesUpload,
     setImagesUpload,
   } = useContext(AuthContext);
@@ -27,14 +25,11 @@ const HomePage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`submitted email: 
-      ${email} password: ${password}`);
     checkDetailsInServer();
   };
 
   const checkDetailsInServer = async () => {
     try {
-      console.log(email, password);
       let response = await fetch("/api/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,35 +42,29 @@ const HomePage = (props) => {
       let message = JSON.stringify(data);
 
       if (data.success === true) {
-        setToken(data.token);
         setUser(data.currentUser);
         setUserlevel(data.currentUser.userlevel);
-        console.log("here is the response", message);
-        console.log("this is the data token", data.token);
-        console.log("this is the token", token);
-        setLoggedIn(true);
+        setMessageError(true);
         setUserlevel(data.currentUser.userlevel);
         setImagesUpload(imagesUpload);
-        console.log("this is our currentUser", data.currentUser.userlevel);
-        console.log("this is our currentUser", userlevel);
-        console.log("hello user");
         if (data.currentUser.userlevel === 10) {
           goAdmin();
-        } else {
+        } else if (data.currentUser.userlevel === 8) {
           goParentDashboard();
+        } else {
+          goPlayNow();
         }
       } else if (data.errors[0].password) {
         console.log(
           "Something went wrong, check your email / password:",
           data.errors[0].password
         );
-        setLoggedIn("Password is  " + data.errors[0].password);
+        setMessageError("Password is  " + data.errors[0].password);
       } else {
         console.log("User ", data.errors[0].user);
-        setLoggedIn("User  " + data.errors[0].user);
+        setMessageError("User  " + data.errors[0].user);
       }
     } catch (error) {
-      // setLoggedIn(error.message);
       console.log("there is an error with the fetch", error);
     }
   };
@@ -87,6 +76,11 @@ const HomePage = (props) => {
 
   const goAdmin = () => {
     history.push("admin");
+  };
+
+  const history1 = useHistory();
+  const goPlayNow = () => {
+    history1.push("play");
   };
 
   return (
@@ -129,7 +123,6 @@ const HomePage = (props) => {
                 placeholder="Enter email"
                 onChange={({ target }) => setEmail(target.value)}
               />
-              {/* <br /> */}
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Password
               </label>
@@ -142,9 +135,9 @@ const HomePage = (props) => {
                 onChange={({ target }) => setPassword(target.value)}
               />
 
-              {loggedIn ? (
+              {messageError ? (
                 <span style={{ color: "black", fontWeight: "600" }}>
-                  {loggedIn}
+                  {messageError}
                 </span>
               ) : (
                 <span></span>

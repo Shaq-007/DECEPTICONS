@@ -63,7 +63,12 @@ const DeleteAccountModal = () => {
   return (
     <div>
       <div>
-        <button type="button" className="btn btn-danger" onClick={openModal}>
+        <button
+          type="button"
+          className="btn btn-danger"
+          style={{ backgroundColor: "paleVioletRed", border: "none" }}
+          onClick={openModal}
+        >
           Delete Account
         </button>
         <Modal

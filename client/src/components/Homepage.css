@@ -12,10 +12,10 @@
   background-position: 50% 50%;
 }
 .title {
-  font-family: "Henny Penny", cursive;
-  font-size: 150px;
+  font-family: "brighly";
+  font-size: 50px;
   font-weight: 700;
-  color: rgb(117, 8, 121);
+  color :#6426b6;
   position: relative;
   margin-top: 2rem;
   display: flex;

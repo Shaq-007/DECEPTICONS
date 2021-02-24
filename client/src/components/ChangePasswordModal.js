@@ -16,7 +16,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const ChangePasswordModal = () => {
-  // const { user, setUser } = useContext(AuthContext);
   const { email } = useContext(AuthContext); ///to get the email of the logged in user//
   const [newPassword, setNewPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -24,12 +23,6 @@ const ChangePasswordModal = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(
-      "this is what we typed in: ",
-      password,
-      newPassword,
-      confirmPassword
-    );
     if (
       password.length === 0 &&
       newPassword.length === 0 &&
@@ -82,7 +75,12 @@ const ChangePasswordModal = () => {
   return (
     <div>
       <div>
-        <button type="button" className="btn btn-primary" onClick={openModal}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "royalBlue", border: "none" }}
+          onClick={openModal}
+        >
           Change Password
         </button>
         <Modal
@@ -119,7 +117,11 @@ const ChangePasswordModal = () => {
                   onChange={({ target }) => setConfirmPassword(target.value)}
                 />
               </div>
-              <button className="btn btn-info" type="submit">
+              <button
+                className="btn btn-info"
+                style={{ backgroundColor: "royalBlue", border: "none" }}
+                type="submit"
+              >
                 Change Password
               </button>
               <br />

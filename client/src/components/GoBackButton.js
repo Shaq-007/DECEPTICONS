@@ -8,13 +8,8 @@ function GoBackButton() {
         <img
           src={GoBackIcon}
           style={{
-            width: "60px",
-            hight: "60px",
-            // marginLeft: "48%",
-            marginTop: "1rem",
-            display: "block",
-            marginRight: "auto",
-            marginLeft: "auto",
+            width: "50px",
+            height: "50px",
           }}
           alt="play icon"
         />
