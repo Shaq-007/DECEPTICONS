@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
 
 .backgroundHomePageImage {
-  background-image: url(../images/rainbowandgrass.jpg);
+  background-image: url(../images/halfRainbow.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   max-width: 100%;
@@ -18,8 +18,6 @@
   color :#6426b6;
   position: relative;
   margin-top: 2rem;
-  /* margin-left: auto;
-  margin-right: auto; */
   display: flex;
   justify-content: center;
 }
@@ -31,12 +29,23 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
+.goPlay-Icon {
+  width: 400px;
+  height: 400px;
   margin-left: auto;
   margin-right: auto;
-  background-color: inherit;
+  display: flex;
+  filter: drop-shadow(4px 8px 12px purple);
+}
+
+div.card.col-8.col-lg-3.offset-lg-1.login-card.mt-2.hv-center.loginCard {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
   border-radius: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  margin-top: 2rem;
 }
 
 .instruction {
@@ -66,7 +75,7 @@ button.btn.btn-warning {
 /* MOBILE  */
 @media screen and (max-width: 700px) {
   div.backgroundHomePageImage {
-    background-position: 50% 50%;
+    background-position: 50%;
     background-size: cover;
   }
   div.col-12.col-lg-12.title {
@@ -78,9 +87,9 @@ button.btn.btn-warning {
     display: flex;
     justify-content: center;
   }
-  img {
-    width: 80px;
-    height: 80px;
+  .goPlay-Icon {
+    width: 150px;
+    height: 150px;
   }
 
   .description-card {
@@ -88,8 +97,8 @@ button.btn.btn-warning {
     margin-right: auto;
     font-size: 13px;
   }
-  div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
-    margin-top: 1rem !important;
+  div.card.col-8.col-lg-3.offset-lg-1.login-card.mt-2.hv-center.loginCard {
+    margin-top: 2rem !important;
   }
 
   div.form-text.instruction {
@@ -121,16 +130,23 @@ button.btn.btn-warning {
     margin-right: auto;
     font-size: 25px;
   }
-  img {
-    width: 150px;
-    height: 150px;
+  .row-homePage {
+    margin-top: 5px;
   }
-  div.card.col-8.col-lg-3.login-card.mt-2.hv-center.loginCard {
+  .goPlay-Icon {
+    width: 300px;
+    height: 300px;
+    margin-top: 5rem;
+  }
+  div.card.col-8.col-lg-3.offset-lg-1.login-card.mt-2.hv-center.loginCard {
     margin-top: 2rem !important;
   }
 
-  div.form-text.instruction,
   div.form-text.newUser {
-    font-size: 30px;
+    font-size: 17px;
+  }
+
+  div.form-text.instruction {
+    font-size: 20px;
   }
 }

@@ -16,7 +16,6 @@ Modal.setAppElement("#root");
 function UploadModal() {
   const {
     categoryName,
-    setCategoryName,
     email,
     setEmail,
     upload,
@@ -53,13 +52,13 @@ function UploadModal() {
       const formData = new FormData();
       // file is the name of the request parameter
       // file is the state variable  that holds
-      // event.target.file[0] from <input type= "file" .../> on line 95
+      // event.target.file[0] from <input type= "file" .../> on line 160
       console.log("number of images", files.length);
-      console.log("email", email);
-      // if (files.length < 6) {
-      //   setMessallow(false)
-      //   return setErrmessage("You need to upload exactly 6 images, thanks");
-      // }
+      if (files.length < 6) {
+        setUpload(false);
+        setMessallow(false)
+        return setErrmessage("You need to upload exactly 6 images, thanks");
+      }
       // if (files.length === 6) {
       for (const file of files) {
         formData.append("image", file);
@@ -76,7 +75,6 @@ function UploadModal() {
       
       if (response.status === 400) {
         let error = await response.text();
-        // alert(error);
         setToomanyfiles(error);
         console.log('this is the error', error)
         setMessallow(true)
@@ -85,7 +83,6 @@ function UploadModal() {
         // changes the state to pass it onto Playpage and show the Custom button
         setUpload(true);
         setImagesUpload(true)
-        console.log('this is the user id in upload modal', user._id)
         let response1 = await fetch(`/imageupload/update/${user._id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -96,8 +93,6 @@ function UploadModal() {
       // this is a post to update the upload image Key
         let data1 = await response1.json();
         let message1 = JSON.stringify(data1);
-        console.log(message1);
-        alert("images upload key has been updated")
     
         if (response.status === 200) {
           return message1;
@@ -114,7 +109,6 @@ function UploadModal() {
 
     } else {
       setErrmessage("please load the 6 files")
-      // alert("please load the files");
     }
   };
 

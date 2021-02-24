@@ -15,11 +15,13 @@
   overflow: auto;
 }
 
-div.card.col-10.col-lg-4.login-card.mt-2.hv-center {
+div.card.col-9.col-lg-6.login-card.mt-2.hv-center {
   margin-left: auto;
   margin-right: auto;
   background-color: inherit;
-  margin-top: 2rem !important;
+  /* margin-top: 1.5rem !important; */
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  padding: 25px;
 }
 
 .instructionSignUp {
