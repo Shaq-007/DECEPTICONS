@@ -8,21 +8,21 @@ const Credits = () => {
 
     return (
         <div className="Participents">
-            Lovingly built by:
+            {/* Lovingly built by:
             Agata<a href="https://www.linkedin.com/in/agata-palka/" target="_blank" class="fa fa-linkedin"> in </a> 
             &nbsp;&nbsp;Liliana<a href="https://www.linkedin.com/in/liliana-zuleta" target="_blank" class="fa fa-linkedin"> in </a>
             &nbsp;&nbsp;Mona<a href="https://www.linkedin.com/in/mona-randhawa2021/" target="_blank" class="fa fa-linkedin"> in </a>
             &nbsp;&nbsp;Shakeel
             <a href="https://www.linkedin.com/in/ahmad-shakeel-qureshi/" target="_blank" class="fa fa-linkedin"> in  </a>
-     
+      */}
 
 
-            {/* Lovingly built by:
-            <a href="https://www.linkedin.com/in/agata-palka/"> Agata </a> 
-            <a href="https://www.linkedin.com/in/liliana-zuleta"> Liliana </a>
-            <a href="https://www.linkedin.com/in/mona-randhawa2021/"> Mona </a>
-            &
-            <a href="https://www.linkedin.com/in/ahmad-shakeel-qureshi/"> Shakeel </a> */}
+            Lovingly built by:
+            <a href="https://www.linkedin.com/in/agata-palka/"> &nbsp; Agata </a> 
+            <a href="https://www.linkedin.com/in/liliana-zuleta"> &nbsp; Liliana </a>
+            <a href="https://www.linkedin.com/in/mona-randhawa2021/"> &nbsp; Mona </a>
+            &nbsp; &
+            <a href="https://www.linkedin.com/in/ahmad-shakeel-qureshi/"> &nbsp; Shakeel </a>
 
 
 
