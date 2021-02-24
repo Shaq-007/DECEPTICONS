@@ -18,11 +18,11 @@ const Credits = () => {
 
 
             Lovingly built by:
-            <a href="https://www.linkedin.com/in/agata-palka/"> &nbsp; Agata </a> 
-            <a href="https://www.linkedin.com/in/liliana-zuleta"> &nbsp; Liliana </a>
-            <a href="https://www.linkedin.com/in/mona-randhawa2021/"> &nbsp; Mona </a>
+            <a href="https://www.linkedin.com/in/agata-palka/"  target="_blank"> &nbsp; Agata </a> 
+            <a href="https://www.linkedin.com/in/liliana-zuleta"  target="_blank"> &nbsp; Liliana </a>
+            <a href="https://www.linkedin.com/in/mona-randhawa2021/"  target="_blank"> &nbsp; Mona </a>
             &nbsp; &
-            <a href="https://www.linkedin.com/in/ahmad-shakeel-qureshi/"> &nbsp; Shakeel </a>
+            <a href="https://www.linkedin.com/in/ahmad-shakeel-qureshi/"  target="_blank"> &nbsp; Shakeel </a>
 
 
 
