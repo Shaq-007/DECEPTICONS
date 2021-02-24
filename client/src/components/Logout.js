@@ -21,7 +21,8 @@ const Logout = () => {
       <button
         onClick={loggingOut}
         style={{
-          backgroundColor: "peachPuff",
+          backgroundColor: "darkMagenta",
+          color: "white",
           borderRadius: "5px",
           display: "block",
           marginLeft: "auto",
