@@ -82,7 +82,12 @@ const ChangePasswordModal = () => {
   return (
     <div>
       <div>
-        <button type="button" className="btn btn-primary" onClick={openModal}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "royalBlue", border: "none" }}
+          onClick={openModal}
+        >
           Change Password
         </button>
         <Modal
@@ -119,7 +124,11 @@ const ChangePasswordModal = () => {
                   onChange={({ target }) => setConfirmPassword(target.value)}
                 />
               </div>
-              <button className="btn btn-info" type="submit">
+              <button
+                className="btn btn-info"
+                style={{ backgroundColor: "royalBlue", border: "none" }}
+                type="submit"
+              >
                 Change Password
               </button>
               <br />

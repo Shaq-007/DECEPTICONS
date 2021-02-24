@@ -8,3 +8,8 @@
   overflow: auto;
   background-position: 50% 50%;
 }
+
+.btn.btn-success {
+  background-color: cadetblue;
+  border: none;
+}
