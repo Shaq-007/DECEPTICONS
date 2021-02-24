@@ -7,3 +7,23 @@ html, body {
 #root {
     height: 100%;
 }
+
+@font-face {
+    font-family: 'janda';
+    src: local('janda'), url(./assets/fonts/janda-manatee-font/JandaManateeSolid-EOR4.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Kbdunktank';
+    src: local('Kbdunktank'), url(./assets/fonts/kbdunktank-font/Kbdunktank-A5ag.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'brighly';
+    src: local('brighly'), url(./assets/fonts/brighly-crush-font/BrighlyCrushShine-8Ma90.otf) format('truetype');
+}
+
+@font-face {
+    font-family: 'bubbles';
+    src: local('bubbles'), url(./assets/fonts/bubble-bobble-font/BubbleBobble-rg3rx.ttf) format('truetype');
+}

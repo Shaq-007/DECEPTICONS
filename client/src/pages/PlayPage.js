@@ -10,6 +10,7 @@ import CategoryButtons from "../components/CategoryButtons";
 import shuffle from "shuffle-array";
 import { AuthContext } from "../components/AuthContext";
 import PlaySound from "../components/Audio";
+import GreenArrow from "../images/greenarrow.svg"
 
 
 let arrayBufferToBase64 = (buffer) => {
@@ -61,7 +62,7 @@ const PlayPage = () => {
     setIsActive(false);
   }
   useEffect(() => {
-    
+
     reset()
   }, [reward])
 
@@ -154,83 +155,89 @@ const PlayPage = () => {
 
 
   return (
-    <div className="playPage-image">
-      <RewardModal
-        reward={reward}
-        setReward={setReward}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        setTwoCardsInPlay={setTwoCardsInPlay}
-        setSolved={setSolved}
-        setCardStatus={setCardStatus}
-        setInGame={setInGame}
-        setSelectedCategory={setSelectedCategory}
-        setTotalPlayTime={setTotalPlayTime}
-        totalPlayTime={totalPlayTime}
-      />
-      <div className="containerAlignment">
-        <div className="row rowAlignment">
-          <div className=" col-4 categoryRow">
-            <div> <PlaySound />
-              <GoBackButton />
-            </div>
+    <div className="container playPage-background">
 
+      <div className="row playPageControls">
+        <RewardModal
+          reward={reward}
+          setReward={setReward}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          setTwoCardsInPlay={setTwoCardsInPlay}
+          setSolved={setSolved}
+          setCardStatus={setCardStatus}
+          setInGame={setInGame}
+          setSelectedCategory={setSelectedCategory}
+          setTotalPlayTime={setTotalPlayTime}
+          totalPlayTime={totalPlayTime}
+        />
+
+        <PlaySound />
+        <h1 className="playPageTitle">MEMORYLAND</h1>
+        <GoBackButton />
+      </div>
+
+      <div className="row categoriesAndCards">
+
+        <div className="col-lg-3 col-md-12 col-sm-12 categoryButtons">
+          <CategoryButtons
+            value="Animals"
+            styleClass="btn-outline-secondary button-image animals"
+            disabled={inGame && selectedCategory !== "Animals"}
+            onClick={() => {
+              startGame("Animals");
+              toggle();
+            }}
+          />
+
+          <CategoryButtons
+            value="Shapes"
+            styleClass="btn-outline-secondary button-image shapes"
+            disabled={inGame && selectedCategory !== "Shapes"}
+            onClick={() => {
+              startGame("Shapes");
+              toggle();
+            }}
+          />
+
+          <CategoryButtons
+            value="Colors"
+            styleClass="btn-outline-secondary button-image colors"
+            disabled={inGame && selectedCategory !== "Colors"}
+            onClick={() => {
+              startGame("Colors");
+              toggle();
+            }}
+          />
+
+          <CategoryButtons
+            value="Letters"
+            styleClass="btn-outline-secondary button-image letters"
+            disabled={inGame && selectedCategory !== "Letters"}
+            onClick={() => {
+              startGame("Letters");
+              toggle();
+            }}
+          />
+
+          {(user && user.imagesUpload) || imagesUpload ? (
             <CategoryButtons
-              value="Animals"
-              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image animals"
-              disabled={inGame && selectedCategory !== "Animals"}
+              value="Custom"
+              styleClass="btn-outline-secondary button-image custom"
+              disabled={inGame && selectedCategory !== email}
               onClick={() => {
-                startGame("Animals");
+                console.log("getting images by Email", email);
+                startGameCustom(email);
                 toggle();
               }}
             />
+          ) : null}
+        </div>
 
-            <CategoryButtons
-              value="Shapes"
-              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image shapes"
-              disabled={inGame && selectedCategory !== "Shapes"}
-              onClick={() => {
-                startGame("Shapes");
-                toggle();
-              }}
-            />
-
-            <CategoryButtons
-              value="Colors"
-              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image colors"
-              disabled={inGame && selectedCategory !== "Colors"}
-              onClick={() => {
-                startGame("Colors");
-                toggle();
-              }}
-            />
-
-            <CategoryButtons
-              value="Letters"
-              styleClass="btn-outline-secondary btn-block buttonsAlignment button-image letters"
-              disabled={inGame && selectedCategory !== "Letters"}
-              onClick={() => {
-                startGame("Letters");
-                toggle();
-              }}
-            />
-
-            {(user && user.imagesUpload) || imagesUpload ? (
-              <CategoryButtons
-                value="Custom"
-                styleClass="btn-outline-secondary btn-block buttonsAlignment button-image custom"
-                disabled={inGame && selectedCategory !== email}
-                onClick={() => {
-                  console.log("getting images by Email", email);
-                  startGameCustom(email);
-                  toggle();
-                }}
-              />
-            ) : null}
-          </div>
+        <div className="col-lg-9 col-md-12 col-sm-12 cardColumn">
           <div className="cardDeck">
-            <div>{seconds}s</div>
             {myWords.length > 0 ? (
+              <>
               <CardBoard
                 funWords={myWords}
                 reward={reward}
@@ -242,9 +249,17 @@ const PlayPage = () => {
                 cardStatus={cardStatus}
                 setCardStatus={setCardStatus}
               />
-            ) : (<h1>Please select a Category</h1>)
+              <div className="timer">{seconds}s</div>
+              </>
+            ) : (<div className="cloud">
+                  <div>
+                    <img className="greenArrow" src={GreenArrow}/>
+                  </div>
+                  <div>
+                    <p className="cloudMessage">Select a Category</p>
+                  </div>
+                </div>)
             }
-
           </div>
         </div>
       </div>

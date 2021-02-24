@@ -1,57 +1,20 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-}
-
-/* this controls the background image */
-.bgImage {
-  background-image: url(../images/background2.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: 100%;
-  height: 100vh;
-  padding: 0;
-  overflow: hidden;
-}
-
-.guestName {
-  color: white;
-  width: 300px;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* this holds all 4 buttons in one container and positions the buttons vertically */
-.buttonsContainer {
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* this helps to position the buttons in the center horizontally */
-.buttonsAlignment {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* this controls the font, font color, and animation of the buttons */
 .animals,
 .shapes,
 .letters,
 .custom,
 .colors {
-  width: 100%;
-  font-size: 3vw;
+  width: 200px;
+  height: 60px;
   margin-bottom: 20px;
   color: white;
   transition: 0.7s;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .custom {
-  font-size: 40px;
+  font-size: 25px;
   color: white;
   transition: 0.7s;
 }
@@ -80,8 +43,8 @@ body {
 /* this styles the images included in each button */
 .button-image:before {
   content: "";
-  width: 4vw;
-  height: 4vw;
+  width: 35px;
+  height: 35px;
   display: inline-block;
   margin-right: 15px;
   vertical-align: text-top;

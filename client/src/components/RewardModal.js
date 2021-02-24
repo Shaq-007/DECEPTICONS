@@ -49,16 +49,17 @@ const RewardModal = ({
                         backgroundColor: 'rgba(255, 255, 255, 0.25)'
                     }, 
                     content: {
-                        width: "500px", 
-                        height:"auto", 
+                        width: "550px", 
+                        height:"600px", 
                         margin:"auto",
                     }}} 
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                     <h2 className="rewardModalTitle">Congratulations!</h2>
-                    <p className="rewardModalBody">Wow! Only {totalPlayTime} seconds to finish</p>
                     <div className="rewardModalImage">
                         <img className="rewardImage" src={rainbow} alt="rainbow"/>
                     </div>
+                    <p className="rewardModalBody">Wow!</p>
+                    <p className="rewardModalBody">You finished the game in {totalPlayTime} seconds!</p>
                     <div className="rewardButtonContainer">
                         <button className="btn btn-success" onClick={closeModal}>Play Again?</button>
                     </div>

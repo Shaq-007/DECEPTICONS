@@ -15,15 +15,17 @@ body {
 }
 
 .cardRows {
-  padding: 10px;
-  width: 500px;
+  padding: 20px;
+  width: 700px;
   margin-left: auto;
   margin-right: auto;
-  background-color: inherit;
+  /* background-image: radial-gradient( circle farthest-corner at 0.8% 3.1%,  rgba(255,188,224,1) 0%, rgba(170,165,255,1) 46%, rgba(165,255,205,1) 100.2% ); */
+  background-image: white;
+  border-radius: 10px;
   display: inline-grid;
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
   justify-items: center;
 }
