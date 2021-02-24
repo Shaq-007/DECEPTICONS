@@ -39,8 +39,8 @@ class PlaySound extends React.Component {
         <button 
           style = {{background:"none" , border:"none" , outline:"none", marginRight: "10px"}}
           id="audioBtn"
-          onClick={this.togglePlay}><img src={Music} style={{width:"50px", height:"50px"}}/></button>
-          {this.state.play ? <img src={SpeakerOn} style={{width:"30px", height:"50px" ,background:"none" , border:"none", transform:"rotate(90deg)"}}/> : <img src={SpeakerOff} style={{width:"30px", height:"50px"}}/>}
+          onClick={this.togglePlay}><img src={Music} style={{width:"50px", height:"50px"}} alt=' '/></button>
+          {this.state.play ? <img src={SpeakerOn} style={{width:"30px", height:"50px" ,background:"none" , border:"none", transform:"rotate(90deg)"}} alt=' '/> : <img src={SpeakerOff} style={{width:"30px", height:"50px"}} alt=' '/>}
 
           </div>   
         
