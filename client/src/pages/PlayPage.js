@@ -80,7 +80,6 @@ const PlayPage = () => {
   }, [isActive, seconds]);
 
 
-
   //*************************Timer*********************** */
 
   const throwConfetti = () => {

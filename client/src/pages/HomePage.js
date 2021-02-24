@@ -4,6 +4,7 @@ import "../components/Fonts.css";
 import { Link, useHistory } from "react-router-dom";
 import GoPlayIcon from "../images/video6.svg";
 import { AuthContext } from "../components/AuthContext";
+import Credits from "../components/Credits";
 
 const HomePage = (props) => {
   let setMessageError = props.setLoggedIn;
@@ -160,6 +161,8 @@ const HomePage = (props) => {
           </div>
         </div>
       </div>
+      <br/><br/>
+      <Credits/>
     </div>
   );
 };
