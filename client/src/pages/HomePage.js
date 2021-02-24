@@ -4,6 +4,7 @@ import "../components/Fonts.css";
 import { Link, useHistory } from "react-router-dom";
 import GoPlayIcon from "../images/video6.svg";
 import { AuthContext } from "../components/AuthContext";
+import Credits from "../components/Credits";
 
 const HomePage = (props) => {
   let setLoggedIn = props.setLoggedIn;
@@ -46,7 +47,6 @@ const HomePage = (props) => {
       let message = JSON.stringify(data);
 
       if (data.success === true) {
-        // const token = data.token
         setToken(data.token);
         setUser(data.currentUser);
         setUserlevel(data.currentUser.userlevel);
@@ -168,6 +168,8 @@ const HomePage = (props) => {
           </div>
         </div>
       </div>
+      <br/><br/>
+      <Credits/>
     </div>
   );
 };

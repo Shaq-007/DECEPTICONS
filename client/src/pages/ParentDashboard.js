@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
 import Logout from "../components/Logout";
 import "../pages/ParentDashboard.css";
+import Credits from "../components/Credits";
 
 const ParentDashboard = () => {
   const {
@@ -159,6 +160,7 @@ const ParentDashboard = () => {
       </div>
 
       <br />
+      <Credits/>
     </div>
   );
 };

@@ -79,7 +79,6 @@ const PlayPage = () => {
   }, [isActive, seconds]);
 
 
-
   //*************************Timer*********************** */
 
   const throwConfetti = () => {
@@ -229,7 +228,7 @@ const PlayPage = () => {
             ) : null}
           </div>
           <div className="cardDeck">
-            <div>{seconds}s</div>
+            <div className="timerclock">{seconds}s</div>
             {myWords.length > 0 ? (
               <CardBoard
                 funWords={myWords}
