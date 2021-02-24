@@ -31,8 +31,8 @@ const ParentDashboard = () => {
             marginTop: "2rem",
             display: "flex",
             justifyContent: "center",
-            fontFamily: "Henny Penny",
-            color: "purple",
+            fontFamily: "Brighly",
+            color: "#6426b6",
             marginLeft: "2rem",
           }}
         >
