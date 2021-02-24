@@ -9,13 +9,9 @@ import Logout from "../components/Logout";
 import "../pages/ParentDashboard.css";
 
 const ParentDashboard = () => {
-  const {
-    user,
-    categoryName,
-    setCategoryName,
-    imagesUpload,
-    // setImagesUpload,
-  } = useContext(AuthContext);
+  const { user, categoryName, setCategoryName, imagesUpload } = useContext(
+    AuthContext
+  );
 
   const handleSubmitClick = () => {
     goPlayNow();
@@ -24,8 +20,6 @@ const ParentDashboard = () => {
   const goPlayNow = () => {
     history.push("play");
   };
-
-  console.log("this is the imagesUpload state", user.imagesUpload);
 
   return (
     <div className="backgroundParentDashBoard">

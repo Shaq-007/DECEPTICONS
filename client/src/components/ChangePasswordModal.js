@@ -16,7 +16,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const ChangePasswordModal = () => {
-  // const { user, setUser } = useContext(AuthContext);
   const { email } = useContext(AuthContext); ///to get the email of the logged in user//
   const [newPassword, setNewPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -24,12 +23,6 @@ const ChangePasswordModal = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(
-      "this is what we typed in: ",
-      password,
-      newPassword,
-      confirmPassword
-    );
     if (
       password.length === 0 &&
       newPassword.length === 0 &&

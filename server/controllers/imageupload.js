@@ -6,19 +6,17 @@ const { Image } = require("../db/models");
 
 app.use(express.json());
 
-// require('./db/mongoose')
-
 // Step 8: Handling the POST request
 //Uploading the image
 
 exports.post_image_custom = async function (req, res, next) {
   console.info("the req.files is", req.files);
-  console.info("the req.body.email is", req.body.email)
-  console.info("the req.body.resizeImages is", req.body.resizeImages)
-  for (const filename of req.body.resizeImages){
+  console.info("the req.body.email is", req.body.email);
+  console.info("the req.body.resizeImages is", req.body.resizeImages);
+  for (const filename of req.body.resizeImages) {
     var obj = {
       email: req.body.email,
-      categoryName: 'test',
+      categoryName: "custom",
       img: {
         data: fs.readFileSync(path.join(filename)),
         contentType: "image/png",
@@ -27,49 +25,42 @@ exports.post_image_custom = async function (req, res, next) {
     Image.create(obj, (err, item) => {
       if (err) {
         console.log(err);
-        res.status(400).send(err)
-      } 
+        res.status(400).send(err);
+      }
     });
     Image.create(obj, (err, item) => {
       if (err) {
         console.log(err);
-        res.status(400).send(err)
+        res.status(400).send(err);
       }
     });
   }
   // res.status(200).send("image in DB");
-  next()
+  next();
 };
 
 //Resizing images
 const sharp = require("sharp");
 
 exports.resizeImages = async (req, res, next) => {
-  console.log('this is req.files on imageUpload', req.files)
+  console.log("this is req.files on imageUpload", req.files);
   if (!req.files) return next();
   req.body.resizeImages = [];
   await Promise.all(
-    req.files.map(async file => {
-      try{
-
-        // const filename = file.originalname.replace(/\..+$/, "");
-        // const newFilename = `bezkoder-${filename}-${Date.now()}.jpeg`;
-        // const filename = path.join( + file.filename)
+    req.files.map(async (file) => {
+      try {
         const newFilename = `uploadResize/${file.filename}-${Date.now()}.jpeg`;
-        console.log(" the buffer", file.buffer)
+        console.log(" the buffer", file.buffer);
 
         await sharp(file.path)
-        .resize(156, 142, {fit:'inside'})
-        .toFormat("jpeg")
-        .jpeg({ quality: 90 })
-        .toFile(`${newFilename}`);
-        console.log("this is newfile", newFilename)
+          .resize(200, 200, { fit: "inside" })
+          .toFormat("jpeg")
+          .jpeg({ quality: 90 })
+          .toFile(`${newFilename}`);
+        console.log("this is newfile", newFilename);
         req.body.resizeImages.push(newFilename);
-
-      }
-      catch (err) {
-        console.log('this is the exception', err.message)
-
+      } catch (err) {
+        console.log("this is the exception", err.message);
       }
     })
   );
@@ -82,9 +73,7 @@ exports.getResult = async (req, res) => {
     return res.send(`You must select at least 1 image.`);
   }
 
-  const images = req.body.resizeImages
-    .map(image => "" + image + "")
-    .join("");
+  const images = req.body.resizeImages.map((image) => "" + image + "").join("");
 
   return res.send(`Images were uploaded:${images}`);
 };

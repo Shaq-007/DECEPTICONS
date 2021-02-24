@@ -39,7 +39,6 @@ function App() {
             children={
               <HomePage
                 setToken={setToken}
-                // setUser={setUser}
                 setLoggedIn={setLoggedIn}
                 userlevel={userlevel}
                 setUserlevel={setUserlevel}
@@ -50,7 +49,6 @@ function App() {
           <Route exact path="/home" children={
               <HomePage
                 setToken={setToken}
-                // setUser={setUser}
                 setLoggedIn={setLoggedIn}
                 userlevel={userlevel}
                 setUserlevel={setUserlevel}
@@ -61,7 +59,6 @@ function App() {
           <Route exact path="/categories" component={Categories} />
           <Route exact path="/play" component={PlayPage} />
           <Route exact path="/signup" component={SignupPage} />
-          {/* <Route exact path="/upload" component={Upload} /> */}
           <AdminProtectedRoute
             exact
             path="/admin"
@@ -90,7 +87,6 @@ function App() {
             component={ParentDashboard}
             loggedIn={loggedIn}
             history={history}
-            // user={user}
           />
         </Switch>
       </Router>
