@@ -4,7 +4,7 @@ import GoBackIcon from "../assets/rewind.svg";
 function GoBackButton() {
   return (
     <div>
-      <a href="./home">
+      <a href="./">
         <img
           src={GoBackIcon}
           style={{
