@@ -4,7 +4,7 @@ import GoBackAdminIcon from "../assets/go-back-arrow.svg";
 function GoBackAdminArrow() {
   return (
     <div>
-      <a href="./home">
+      <a href="./">
         <img
           src={GoBackAdminIcon}
           style={{
