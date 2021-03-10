@@ -162,7 +162,7 @@ const HomePage = (props) => {
         </div>
       </div>
       <br/><br/>
-      <Credits/>
+      {/* <Credits/> */}
     </div>
   );
 };

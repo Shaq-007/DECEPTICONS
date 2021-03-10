@@ -147,7 +147,7 @@ const ParentDashboard = () => {
       </div>
 
       <br />
-      <Credits/>
+      {/* <Credits/> */}
     </div>
   );
 };
