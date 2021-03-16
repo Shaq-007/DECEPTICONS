@@ -9,6 +9,7 @@
 
 const mongoose = require("mongoose");
 const connectionURL = process.env.DATABASE_URL 
+
 console.log('connected to db')
 mongoose.connect(connectionURL, {
     useUnifiedTopology: true,
