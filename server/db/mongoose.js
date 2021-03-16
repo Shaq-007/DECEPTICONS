@@ -8,7 +8,7 @@
 // });
 
 const mongoose = require("mongoose");
-const connectionURL = process.env.DATABASE_URL || 'mongodb+srv://Liliana:BSrhhxBUT5499zvH@cluster0.hicow.mongodb.net/MemoryLand?retryWrites=true&w=majority'
+const connectionURL = process.env.DATABASE_URL 
 console.log('connected to db')
 mongoose.connect(connectionURL, {
     useUnifiedTopology: true,
